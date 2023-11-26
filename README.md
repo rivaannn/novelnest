@@ -58,14 +58,14 @@ Branch yang tersedia :
 
 ## Dokumentasi Git Pull dan Git Push setiap mengerjakan
 
-Sebelum lanjut mengerjakan progress di masing-masing branch, kita git pull dulu :
-```bash
-git pull
-```
-
-Setelah itu, pindah ke branch nya masing-masing (contoh disini kita pindah branch ke branch rivan):
+sebelum itu, pindah ke branch nya masing-masing (contoh disini kita pindah branch ke branch rivan):
 ```bash
 git checkout rivan
+```
+
+setelahh itu lanjut mengerjakan progress di masing-masing branch, jangan lupa untuk git pull dulu :
+```bash
+git pull origin main
 ```
 
 Setelah itu, jalankan `php artisan serve` untuk memulai server laravel nya.

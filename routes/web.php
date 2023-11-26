@@ -18,5 +18,17 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::get('/', function () {
-    return view('app');
+    return view('home');
+});
+
+Route::get('/about', function () {
+    return view('about.about');
+});
+
+Route::get('/kategori', function () {
+    return view('kategori.kategori');
+});
+
+Route::get('/blog', function () {
+    return view('blog.blog');
 });

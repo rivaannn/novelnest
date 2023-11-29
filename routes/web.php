@@ -17,26 +17,28 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-
 Route::get('/', function () {
     return view('home');
 });
-
 Route::get('/about', function () {
-    return view('about.about');
+    return view('about.index');
 });
-
 Route::get('/kategori', function () {
-    return view('kategori.kategori');
+    return view('kategori.index');
 });
-
 Route::get('/blog', function () {
-    return view('blog.blog');
+    return view('blog.index');
+});
+Route::get('/login', function () {
+    return view('login.login');
 });
 
+Route::get('/register', function () {
+    return view('register.register');
+});
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return view('dashboard.dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {

@@ -30,12 +30,12 @@ Route::get('/kategori', function () {
 Route::get('/blog', function () {
     return view('blog.index');
 });
-Route::get('/login', function () {
-    return view('login.login');
+Route::get('/auth', function () {
+    return view('auth.login');
 });
 
-Route::get('/register', function () {
-    return view('register.register');
+Route::get('/auth', function () {
+    return view('auth.register');
 });
 
 Route::get('/dashboard', function () {

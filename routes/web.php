@@ -16,19 +16,25 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
-Route::get('/', function () {
-    return view('home');
+    return view('home', [
+        'active' => 'home'
+    ]);
 });
 Route::get('/about', function () {
-    return view('about.index');
+    return view('about.index', [
+        'title' => 'Tentang Kami',
+        'active' => 'about'
+    ]);
 });
 Route::get('/kategori', function () {
-    return view('kategori.index');
+    return view('kategori.index', [
+        'active' => 'kategori'
+    ]);
 });
 Route::get('/blog', function () {
-    return view('blog.index');
+    return view('blog.index', [
+        'active' => 'blog'
+    ]);
 });
 Route::get('/auth', function () {
     return view('auth.login');

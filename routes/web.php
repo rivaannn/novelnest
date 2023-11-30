@@ -36,6 +36,7 @@ Route::get('/blog', function () {
         'active' => 'blog'
     ]);
 });
+
 Route::get('/auth', function () {
     return view('auth.login');
 });

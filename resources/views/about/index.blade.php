@@ -4,7 +4,7 @@
         <div class="max-w-screen-xl px-4 py-16 mx-auto sm:px-6 sm:py-24 lg:px-8">
             <div class="max-w-3xl">
                 <h2 class="text-3xl font-bold sm:text-4xl">
-                    Tentang Kami
+                    {{ $title }}
                 </h2>
             </div>
 

@@ -22,7 +22,7 @@ composer install
 ```
 Jangan lupa untuk menginstall semua node package yang kita butuhkan seperti:
 ```bash
-npm install -D tailwindcss postcss autoprefixer flowbite
+npm install
 ```
 Jika ingin dikembangkan, bisa dengan menjalankan
 ```bash

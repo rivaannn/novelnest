@@ -17,19 +17,12 @@
                 <div class="lg:py-16">
                     <article class="space-y-4 text-gray-600">
                         <p>
-                            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aut qui
-                            hic atque tenetur quis eius quos ea neque sunt, accusantium soluta
-                            minus veniam tempora deserunt? Molestiae eius quidem quam repellat.
-                        </p>
-
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorum
-                            explicabo quidem voluptatum voluptas illo accusantium ipsam quis,
-                            vel mollitia? Vel provident culpa dignissimos possimus, perferendis
-                            consectetur odit accusantium dolorem amet voluptates aliquid,
-                            ducimus tempore incidunt quas. Veritatis molestias tempora
-                            distinctio voluptates sint! Itaque quasi corrupti, sequi quo odit
-                            illum impedit!
+                        <p class="text-3xl font-bold">Awal Mula</p>
+                        Website ini didirikan untuk meningkatkan kesadaran betapa pentingnya memaksimalkan potensi
+                        internet melalui sebuah website. Website ini diciptakan sebagai platform daring yang inovatif
+                        bagi para pembaca buku agar dapat mengakses buku dengan mudah, dan penulis buku dapat dengan
+                        mudah
+                        menuangkan karya tulisnya lalu membagikannya kepada semua orang.
                         </p>
                     </article>
                 </div>
@@ -43,12 +36,14 @@
         <div class="container px-6 py-10 mx-auto">
             <div class="xl:flex xl:items-center xL:-mx-4">
                 <div class="xl:w-1/2 xl:mx-4">
-                    <h1 class="text-3xl font-semibold text-gray-800 capitalize lg:text-4xl dark:text-white">Tim Pengembang
-                    </h1>
+                    <h2 class="text-3xl font-bold sm:text-4xl">
+                        Tim Pengembang </h2>
 
                     <p class="max-w-2xl mt-4 text-gray-500 dark:text-gray-300">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo incidunt ex placeat modi magni quia
-                        error alias, adipisci rem similique, at omnis eligendi optio eos harum.
+                        Kami adalah kelompok yang berdedikasi untuk menyelesaikan tugas besar dengan kreatif. Dengan
+                        beragam keahlian dalam pengembangan perangkat lunak, desain, dan manajemen project, kami bekerja
+                        sama untuk merancang dan mengimplementasikan pelajaran yang sudah kami pelajari untuk memenuhi
+                        tantangan teknologi modern.
                     </p>
                 </div>
 

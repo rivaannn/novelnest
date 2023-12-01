@@ -16,14 +16,15 @@
 
                 <div class="lg:py-16">
                     <article class="space-y-4 text-gray-600">
-                        <p>
-                        <p class="text-3xl font-bold">Awal Mula</p>
-                        Website ini didirikan untuk meningkatkan kesadaran betapa pentingnya memaksimalkan potensi
-                        internet melalui sebuah website. Website ini diciptakan sebagai platform daring yang inovatif
-                        bagi para pembaca buku agar dapat mengakses buku dengan mudah, dan penulis buku dapat dengan
-                        mudah
-                        menuangkan karya tulisnya lalu membagikannya kepada semua orang.
+                        <p class="mb-4 text-3xl font-bold">Awal Mula
+                        <p class="space-x-2 text-md">Website ini didirikan untuk meningkatkan kesadaran betapa
+                            pentingnya memaksimalkan potensi
+                            internet melalui sebuah website. Website ini diciptakan sebagai platform daring yang inovatif
+                            bagi para pembaca buku agar dapat mengakses buku dengan mudah, dan penulis buku dapat dengan
+                            mudah
+                            menuangkan karya tulisnya lalu membagikannya kepada semua orang.</p>
                         </p>
+                        <p>
                     </article>
                 </div>
             </div>
@@ -31,14 +32,12 @@
     </section>
 
     {{-- Team  --}}
-    <!-- component -->
     <section class="bg-white dark:bg-gray-900">
         <div class="container px-6 py-10 mx-auto">
             <div class="xl:flex xl:items-center xL:-mx-4">
                 <div class="xl:w-1/2 xl:mx-4">
                     <h2 class="text-3xl font-bold sm:text-4xl">
                         Tim Pengembang </h2>
-
                     <p class="max-w-2xl mt-4 text-gray-500 dark:text-gray-300">
                         Kami adalah kelompok yang berdedikasi untuk menyelesaikan tugas besar dengan kreatif. Dengan
                         beragam keahlian dalam pengembangan perangkat lunak, desain, dan manajemen project, kami bekerja

@@ -43,7 +43,7 @@
                         Kami adalah kelompok yang berdedikasi untuk menyelesaikan tugas besar dengan kreatif. Dengan
                         beragam keahlian dalam pengembangan perangkat lunak, desain, dan manajemen project, kami bekerja
                         sama untuk merancang dan mengimplementasikan pelajaran yang sudah kami pelajari untuk memenuhi
-                        tantangan teknologi modern.
+                        tantangan teknologi modern saat ini.
                     </p>
                 </div>
 

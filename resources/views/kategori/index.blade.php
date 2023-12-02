@@ -9,17 +9,8 @@
                 <h2 class="mb-2 text-xl font-semibold">Filter Kategori</h2>
                 <!-- Dropdown for International Buku -->
                 <div class="mb-2">
-                    <label for="international" class="block text-gray-700">International Buku</label>
-                    <select id="international" name="international" class="w-full px-3 py-2 border rounded">
-                        <!-- Add options as needed -->
-                        <option value="1">Option 1</option>
-                        <option value="2">Option 2</option>
-                    </select>
-                </div>
-                <!-- Dropdown for Buku -->
-                <div class="mb-2">
-                    <label for="buku" class="block text-gray-700">Buku</label>
-                    <select id="buku" name="buku" class="w-full px-3 py-2 border rounded">
+                    <label for="kategori" class="block text-gray-700">Kategori Buku</label>
+                    <select id="kategori" name="kategori" class="w-full px-3 py-2 border rounded">
                         <!-- Add options as needed -->
                         <option value="1">Option 1</option>
                         <option value="2">Option 2</option>

@@ -78,58 +78,21 @@
         <h1 class="mt-8 mb-8 text-4xl font-bold">Rekomendasi Buku Novelnest</h1>
 
         <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-            <a href="#" class="overflow-hidden transition duration-300 bg-white rounded-lg shadow-md hover:shadow-lg">
-                <img class="object-cover object-center w-full h-48" src="https://source.unsplash.com/800x1200/?book"
-                    alt="Book Image">
-                <div class="p-4">
-                    <h2 class="mb-2 text-xl font-bold">MELANGKAH</h2>
-                    <p class="mb-2 text-gray-700">Penulis: JS KHAIREN</p>
-                    <p class="mb-2 text-gray-700">Harga: Rp 74.400</p>
-                    <!-- Badges Kategori -->
-                    <span
-                        class="inline-block px-2 py-1 text-xs font-semibold tracking-wide text-white bg-blue-500 rounded">Agama</span>
-                </div>
-            </a>
-
-            <a href="#" class="overflow-hidden transition duration-300 bg-white rounded-lg shadow-md hover:shadow-lg">
-                <img class="object-cover object-center w-full h-48" src="https://source.unsplash.com/800x1200/?book"
-                    alt="Book Image">
-                <div class="p-4">
-                    <h2 class="mb-2 text-xl font-bold">MELANGKAH</h2>
-                    <p class="mb-2 text-gray-700">Penulis: JS KHAIREN</p>
-                    <p class="mb-2 text-gray-700">Harga: Rp 74.400</p>
-                    <!-- Badges Kategori -->
-                    <span
-                        class="inline-block px-2 py-1 text-xs font-semibold tracking-wide text-white bg-blue-500 rounded">Pendidikan</span>
-                </div>
-            </a>
-
-            <a href="#" class="overflow-hidden transition duration-300 bg-white rounded-lg shadow-md hover:shadow-lg">
-                <img class="object-cover object-center w-full h-48" src="https://source.unsplash.com/800x1200/?book"
-                    alt="Book Image">
-                <div class="p-4">
-                    <h2 class="mb-2 text-xl font-bold">MELANGKAH</h2>
-                    <p class="mb-2 text-gray-700">Penulis: JS KHAIREN</p>
-                    <p class="mb-2 text-gray-700">Harga: Rp 74.400</p>
-                    <!-- Badges Kategori -->
-                    <span
-                        class="inline-block px-2 py-1 text-xs font-semibold tracking-wide text-white bg-blue-500 rounded">Programming</span>
-                </div>
-            </a>
-
-            <a href="#" class="overflow-hidden transition duration-300 bg-white rounded-lg shadow-md hover:shadow-lg">
-                <img class="object-cover object-center w-full h-48" src="https://source.unsplash.com/800x1200/?book"
-                    alt="Book Image">
-                <div class="p-4">
-                    <h2 class="mb-2 text-xl font-bold">MELANGKAH</h2>
-                    <p class="mb-2 text-gray-700">Penulis: JS KHAIREN</p>
-                    <p class="mb-2 text-gray-700">Harga: Rp 74.400</p>
-                    <!-- Badges Kategori -->
-                    <span
-                        class="inline-block px-2 py-1 text-xs font-semibold tracking-wide text-white bg-blue-500 rounded">Anak
-                        - Anak</span>
-                </div>
-            </a>
+            @for ($i = 0; $i < 4; $i++)
+                <a href="#"
+                    class="overflow-hidden transition duration-300 bg-white rounded-lg shadow-md hover:shadow-lg">
+                    <img class="object-cover object-center w-full h-48" src="https://source.unsplash.com/800x1200/?book"
+                        alt="Book Image">
+                    <div class="p-4">
+                        <h2 class="mb-2 text-xl font-bold">MELANGKAH</h2>
+                        <p class="mb-2 text-gray-700">Penulis: JS KHAIREN</p>
+                        <p class="mb-2 text-gray-700">Harga: Rp 74.400</p>
+                        <!-- Badges Kategori -->
+                        <span
+                            class="inline-block px-2 py-1 text-xs font-semibold tracking-wide text-white bg-blue-500 rounded">Programming</span>
+                    </div>
+                </a>
+            @endfor
         </div>
     </div>
 
@@ -150,8 +113,7 @@
                 class="grid mt-16 overflow-hidden border divide-x divide-y rounded-xl sm:grid-cols-2 lg:divide-y-0 lg:grid-cols-3 xl:grid-cols-4">
                 <div class="relative group bg-white transition hover:z-[1] hover:shadow-2xl">
                     <div class="relative p-8 space-y-8">
-                        <img src="https://source.unsplash.com/1600x800/?book" class="shadow-md"
-                            alt="burger illustration">
+                        <img src="https://source.unsplash.com/1600x800/?book" class="shadow-md" alt="burger illustration">
                         <div class="space-y-2">
                             <h5 class="text-xl font-medium text-gray-800 transition group-hover:text-blue-600">First
                                 feature</h5>
@@ -167,8 +129,7 @@
                 </div>
                 <div class="relative group bg-white transition hover:z-[1] hover:shadow-2xl">
                     <div class="relative p-8 space-y-8">
-                        <img src="https://source.unsplash.com/1600x800/?book" class="shadow-md"
-                            alt="burger illustration">
+                        <img src="https://source.unsplash.com/1600x800/?book" class="shadow-md" alt="burger illustration">
 
                         <div class="space-y-2">
                             <h5 class="text-xl font-medium text-gray-800 transition group-hover:text-blue-600">Second
@@ -185,8 +146,7 @@
                 </div>
                 <div class="relative group bg-white transition hover:z-[1] hover:shadow-2xl">
                     <div class="relative p-8 space-y-8">
-                        <img src="https://source.unsplash.com/1600x800/?book" class="shadow-md"
-                            alt="burger illustration">
+                        <img src="https://source.unsplash.com/1600x800/?book" class="shadow-md" alt="burger illustration">
 
                         <div class="space-y-2">
                             <h5 class="text-xl font-medium text-gray-800 transition group-hover:text-blue-600">Third
@@ -204,7 +164,7 @@
                 <div class="relative group bg-gray-100 transition hover:z-[1] hover:shadow-2xl lg:hidden xl:block">
                     <div
                         class="flex items-center justify-center p-8 mt-20 space-y-8 transition duration-300 border-dashed rounded-lg group-hover:bg-white group-hover:border group-hover:scale-90">
-                        <a href="#" class=" group-hover:text-blue-600">
+                        <a href="{{ url('/blog') }}" class=" group-hover:text-blue-600">
                             <img src="https://source.unsplash.com/2000x800/?book" class="bg-cover shadow-md"
                                 alt="burger illustration">
 

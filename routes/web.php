@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UsersController;
+use App\Http\Controllers\BooksController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -71,6 +72,16 @@ Route::middleware(['auth'])->group(function () {
 });
 
 
+// Route untuk Book
+Route::middleware(['auth'])->group(function () {
+    Route::get('/books', [BooksController::class, 'index'])->name('books.index');
+    Route::get('/books/{book}', [BooksController::class, 'show'])->name('books.show');
+    Route::get('/books/create', [BooksController::class, 'create'])->name('books.create');
+    Route::post('/books', [BooksController::class, 'store'])->name('books.store');
+    Route::get('/books/{book}/edit', [BooksController::class, 'edit'])->name('books.edit');
+    Route::patch('/books/{book}', [BooksController::class, 'update'])->name('books.update');
+    Route::delete('/books/{book}', [BooksController::class, 'destroy'])->name('books.destroy');
+});
 
 
 require __DIR__ . '/auth.php';

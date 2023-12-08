@@ -3,18 +3,18 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="text-xl font-semibold leading-tight text-gray-800 dark:text-gray-200">
-            {{ __('List Data Users') }}
+            {{ __('List Data Buku') }}
         </h2>
     </x-slot>
     <div class="py-12">
         <div class="flex items-end justify-end mb-6 me-96">
             <a href="{{ route('users.create') }}"
                 class="inline-block px-4 py-2 text-white bg-green-600 rounded-md hover:bg-green-700 focus:outline-none focus:shadow-outline-green active:bg-green-800">
-                {{ __('Tambah User') }}
+                {{ __('Tambah Buku') }}
             </a>
         </div>
         <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
-            @if ($users->isEmpty())
+            @if ($books->isEmpty())
                 <p>{{ __('No users found.') }}</p>
             @else
                 <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
@@ -38,27 +38,27 @@
                         </tr>
                     </thead>
                     <tbody class="bg-white divide-y divide-gray-200 dark:bg-gray-900 dark:divide-gray-700">
-                        @foreach ($users as $key => $user)
+                        @foreach ($books as $key => $book)
                             <tr>
                                 <td class="px-6 py-4 whitespace-nowrap">
                                     {{ $key + 1 }}
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap">
-                                    {{ $user->name }}
+                                    {{ $book->name }}
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap">
-                                    {{ $user->email }}
+                                    {{ $book->email }}
                                 </td>
                                 <td class="px-6 py-4 text-sm font-medium text-right whitespace-nowrap">
-                                    <a href="{{ route('users.show', $user->id) }}"
+                                    <a href="{{ route('books.show', $book->id) }}"
                                         class="inline-block px-4 py-2 ml-2 text-yellow-600 bg-yellow-100 rounded-md hover:bg-yellow-300 focus:outline-none focus:shadow-outline-yellow active:bg-yellow-300">
                                         {{ __('View') }}
                                     </a>
-                                    <a href="{{ route('users.edit', $user->id) }}"
+                                    <a href="{{ route('books.edit', $book->id) }}"
                                         class="inline-block px-4 py-2 ml-2 text-blue-600 bg-blue-100 rounded-md hover:bg-blue-200 focus:outline-none focus:shadow-outline-blue active:bg-blue-300">
                                         {{ __('Edit') }}
                                     </a>
-                                    <form action="{{ route('users.destroy', $user->id) }}" method="POST"
+                                    <form action="{{ route('books.destroy', $book->id) }}" method="POST"
                                         class="inline">
                                         @csrf
                                         @method('DELETE')

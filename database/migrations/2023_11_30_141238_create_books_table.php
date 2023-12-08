@@ -17,7 +17,7 @@ return new class extends Migration
             $table->text("sinopsis");
             $table->float("price");
             $table->float("isbn");
-            $table->integer("wriiter_id");
+            $table->integer("writer_id");
             $table->integer("publisher_id");
             $table->timestamps();
         });

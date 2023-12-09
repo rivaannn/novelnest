@@ -3,6 +3,7 @@
 namespace App\Models;
 
 // use App\Models\Category;
+use App\Models\Writter;
 use App\Models\Publishers;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -15,5 +16,8 @@ class Book extends Model
     }
     public function publisher() {
         return $this->belongsTo(Publishers::class, 'publisher_id');
+    }
+    public function categories() {
+        return $this->belongsToMany(Category::class, 'book_categories');
     }
 }

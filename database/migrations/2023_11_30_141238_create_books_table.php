@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string("book_number")->default('');
             $table->integer("writter_id");
             $table->integer("publisher_id");
+            $table->integer('category_id');
             $table->timestamps();
         });
     }

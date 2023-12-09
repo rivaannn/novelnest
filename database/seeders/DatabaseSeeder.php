@@ -17,9 +17,10 @@ class DatabaseSeeder extends Seeder
             'name' => 'rivan',
             'email' => 'rivan@gmail.com',
         ]);
-        
+
         $this->call([
             CategorySeeder::class,
+            RoleSeeder::class,
         ]);
     }
 }

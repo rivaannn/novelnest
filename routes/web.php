@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
@@ -15,11 +16,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('home', [
-        'active' => 'home'
-    ]);
-});
+// Route Untuk Home
+Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/about', function () {
     return view('about.index', [
         'title' => 'Tentang NovelNest',
@@ -59,7 +57,7 @@ Route::get('/users/create', function () {
     return view('dashboard.users.create');
 });
 
-// Route Untuk Users 
+// Route Untuk Users
 Route::middleware(['auth'])->group(function () {
     Route::get('/users', [UsersController::class, 'index'])->name('users.index');
     Route::get('/users/{user}', [UsersController::class, 'show'])->name('users.show');
@@ -69,8 +67,6 @@ Route::middleware(['auth'])->group(function () {
     Route::patch('/users/{user}', [UsersController::class, 'update'])->name('users.update');
     Route::delete('/users/{user}', [UsersController::class, 'destroy'])->name('users.destroy');
 });
-
-
 
 
 require __DIR__ . '/auth.php';

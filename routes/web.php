@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
@@ -15,11 +16,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('home', [
-        'active' => 'home'
-    ]);
-});
+// Route::get('/', function () {
+//     return view('home', [
+//         'active' => 'home'
+//     ]);
+// });
+Route::get('/',[HomeController::class, 'index']);
 Route::get('/about', function () {
     return view('about.index', [
         'title' => 'Tentang NovelNest',
@@ -59,7 +61,7 @@ Route::get('/users/create', function () {
     return view('dashboard.users.create');
 });
 
-// Route Untuk Users 
+// Route Untuk Users
 Route::middleware(['auth'])->group(function () {
     Route::get('/users', [UsersController::class, 'index'])->name('users.index');
     Route::get('/users/{user}', [UsersController::class, 'show'])->name('users.show');

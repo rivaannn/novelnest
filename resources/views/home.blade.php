@@ -27,47 +27,14 @@
 
         <div class="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-6">
             <!-- Kategori 1 -->
+            @foreach ( $categories as $category )
             <div class="flex flex-col items-center">
-                <a href="#">
-                    <img class="object-cover" src="https://source.unsplash.com/120x120/?book" alt="Kategori 1 Logo">
-                    <p class="text-xl text-center">Programming</p>
+                <a href="#" class="bg-gray-200 w-full rounded text-gray-600">
+                    <p class="text-xl text-center">{{ $category->name }}</p>
                 </a>
             </div>
-            <!-- Kategori 2 -->
-            <div class="flex flex-col items-center">
-                <a href="#">
-                    <img class="object-cover" src="https://source.unsplash.com/120x120/?book" alt="Kategori 1 Logo">
-                    <p class="text-xl text-center">Programming</p>
-                </a>
-            </div>
-            <!-- Kategori 3 -->
-            <div class="flex flex-col items-center">
-                <a href="#">
-                    <img class="object-cover" src="https://source.unsplash.com/120x120/?book" alt="Kategori 1 Logo">
-                    <p class="text-xl text-center">Programming</p>
-                </a>
-            </div>
-            <!-- Kategori 4 -->
-            <div class="flex flex-col items-center">
-                <a href="#">
-                    <img class="object-cover" src="https://source.unsplash.com/120x120/?book" alt="Kategori 1 Logo">
-                    <p class="text-xl text-center">Programming</p>
-                </a>
-            </div>
-            <!-- Kategori 5 -->
-            <div class="flex flex-col items-center">
-                <a href="#">
-                    <img class="object-cover" src="https://source.unsplash.com/120x120/?book" alt="Kategori 1 Logo">
-                    <p class="text-xl text-center">Programming</p>
-                </a>
-            </div>
-            <!-- Kategori 6 -->
-            <div class="flex flex-col items-center">
-                <a href="#">
-                    <img class="object-cover" src="https://source.unsplash.com/120x120/?book" alt="Kategori 1 Logo">
-                    <p class="text-xl text-center">Programming</p>
-                </a>
-            </div>
+            @endforeach
+
         </div>
     </div>
 

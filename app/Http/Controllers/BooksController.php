@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StorebooksRequest;
 use App\Http\Requests\UpdatebooksRequest;
-use App\Models\books;
+use App\Models\Books;
 
 class BooksController extends Controller
 {
@@ -13,7 +13,8 @@ class BooksController extends Controller
      */
     public function index()
     {
-        //
+        $books = Books::all();
+        return view('dashboard.books.index', compact('books'));
     }
 
     /**

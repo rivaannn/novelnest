@@ -3,6 +3,7 @@
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UsersController;
+use App\Http\Controllers\BooksController;
 use Illuminate\Support\Facades\Route;
 
 /*

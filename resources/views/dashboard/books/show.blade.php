@@ -13,17 +13,15 @@
                 <div class="p-6 text-gray-900 dark:text-gray-400">
                     <div class="mb-4">
                         <div class="text-xl font-semibold text-gray-800 dark:text-gray-200">
-                            {{ $books->title }}
+                            {{ $book->title }}
                         </div>
                     </div>
                     <div class="text-sm text-gray-500 dark:text-gray-400">
-                        {{ $books->description }}
+                        {{ $book->description }}
                     </div>
                 </div>
                 <div class="mt-4">
-                    <a href="{{ route('books.index') }}" class="text-indigo-600 hover:text-indigo-900">Kembali
-                        ke
-                        Buku</a>
+                    <a href="{{ route('books.index') }}" class="text-indigo-600 hover:text-indigo-900">Kembali ke Buku</a>
                 </div>
             </div>
         </div>

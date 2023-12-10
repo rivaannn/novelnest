@@ -48,9 +48,8 @@ class BooksController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Books $books)
-    {
-        return view('dashboard.books.show', compact('books'));
+    public function show(Books $book) {
+        return view('dashboard.books.show', compact('book'));
     }
 
     /**

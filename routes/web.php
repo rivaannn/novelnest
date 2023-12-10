@@ -108,11 +108,4 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('/books/{book}', [BooksController::class, 'destroy'])->name('books.destroy');
 });
 
-Route::middleware(['auth'])->group(function () {
-    Route::get('/books', [BooksController::class, 'index'])->name('books.index');
-    Route::get('/books/{book}', [UsersController::class, 'show'])->name('books.show');
-    Route::delete('/books/{book}', [UsersController::class, 'destroy'])->name('books.destroy');
-    Route::get('/books/{book}/edit', [UsersController::class, 'edit'])->name('books.edit');
-});
-
 require __DIR__ . '/auth.php';

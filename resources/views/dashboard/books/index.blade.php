@@ -45,7 +45,7 @@
                                     {{ $book->title }}
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap">
-                                    {{ mb_strimwidth($book->description, 0, 50, '...') }}
+                                    {{ mb_strimwidth($book->description, 0, 30, '...') }}
                                     {{ $book->title }}
                                 </td>
                                 <td class="px-6 py-4 text-sm font-medium text-right whitespace-nowrap">

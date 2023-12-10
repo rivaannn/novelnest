@@ -13,11 +13,11 @@
                 {{ __('Tambah Blog Baru') }}
             </a>
         </div>
-        <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
+        <div class="flex justify-center items-center mx-auto max-w-full sm:px-6 lg:px-8">
             @if ($blogs->isEmpty())
                 <p>{{ __('Buku tidak Ditemukan!!!') }}</p>
             @else
-                <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
+                <table class="max-w-full divide-y divide-gray-200 dark:divide-gray-700">
                     <thead class="bg-gray-50 dark:bg-gray-800">
                         <tr>
                             <th scope="col"
@@ -27,6 +27,10 @@
                             <th scope="col"
                                 class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase dark:text-gray-400">
                                 {{ __('Title') }}
+                            </th>
+                            <th scope="col"
+                                class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase dark:text-gray-400">
+                                {{ __('Slug') }}
                             </th>
                             <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-right">
                                 {{ __('Actions') }}
@@ -41,6 +45,9 @@
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap">
                                     {{ $blog->title }}
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    {{ $blog->slug }}
                                 </td>
                                 <td class="px-6 py-4 text-sm font-medium text-right whitespace-nowrap">
                                     <a href="{{ route('blogs.show', $blog->id) }}"
@@ -70,4 +77,5 @@
     </div>
     </div>
     </div>
+    @include('partials.footer')
 </x-app-layout>

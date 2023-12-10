@@ -1,11 +1,11 @@
 <footer class="p-4 bg-white md:p-8 lg:p-10 dark:bg-gray-800">
     <div class="max-w-screen-xl mx-auto text-center">
         <a href="#" class="flex items-center justify-center text-2xl font-semibold text-gray-900 dark:text-white">
-            <img src="https://flowbite.com/docs/images/logo.svg" class="h-8" alt="Flowbite Logo">
+            <x-application-logo class="w-auto h-8 text-gray-800 fill-current" />
             <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white ms-2">Novelnest</span>
         </a>
-        <p class="my-6 text-gray-500 dark:text-gray-400">Open-source library of over 400+ web components and interactive
-            elements built for better web.</p>
+        <p class="my-6 text-gray-500 dark:text-gray-400">Novelnest Tempat
+            di Mana Cerita Tak Terbatas.</p>
         <div class="flex mt-4 mb-6 space-x-5 sm:justify-center md:mt-0 rtl:space-x-reverse">
             <a href="#" class="text-gray-400 hover:text-gray-900 dark:hover:text-white">
                 <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"

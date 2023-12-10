@@ -19,12 +19,12 @@
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('books.index')" :active="request()->routeIs('books.index')">
+                    <x-nav-link :href="route('books.index')" :active="request()->routeIs('books.index', 'books.show', 'books.edit', 'books.create')">
                         {{ __('Buku') }}
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('blogs.index')" :active="request()->routeIs('blogs.index')">
+                    <x-nav-link :href="route('blogs.index')" :active="request()->routeIs('blogs.index', 'blogs.show', 'blogs.edit', 'blogs.create')">
                         {{ __('Blog') }}
                     </x-nav-link>
                 </div>
@@ -34,7 +34,7 @@
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('users.index')" :active="request()->routeIs('users.index')">
+                    <x-nav-link :href="route('users.index')" :active="request()->routeIs('users.index', 'users.show', 'users.edit', 'users.create')">
                         {{ __('User') }}
                     </x-nav-link>
                 </div>
@@ -60,6 +60,10 @@
                     </x-slot>
 
                     <x-slot name="content">
+                        {{-- Dashboard --}}
+                        <x-dropdown-link :href="route('home')">
+                            {{ __('Home') }}
+                        </x-dropdown-link>
                         <x-dropdown-link :href="route('profile.edit')">
                             {{ __('Profile') }}
                         </x-dropdown-link>
@@ -99,6 +103,18 @@
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('books.index')" :active="request()->routeIs('books.index')">
+                {{ __('Buku') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('blogs.index')" :active="request()->routeIs('blogs.index')">
+                {{ __('Blog') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link href="">
+                {{ __('Penulis') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('users.index')" :active="request()->routeIs('users.index')">
+                {{ __('User') }}
             </x-responsive-nav-link>
         </div>
 

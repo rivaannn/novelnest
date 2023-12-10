@@ -32,6 +32,10 @@
                                 class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase dark:text-gray-400">
                                 {{ __('Email') }}
                             </th>
+                            <th scope="col"
+                                class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase dark:text-gray-400">
+                                {{ __('Dibuat Pada') }}
+                            </th>
                             <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-right">
                                 {{ __('Actions') }}
                             </th>
@@ -48,6 +52,9 @@
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap">
                                     {{ $user->email }}
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    {{ $user->created_at->format('d F Y') }}
                                 </td>
                                 <td class="px-6 py-4 text-sm font-medium text-right whitespace-nowrap">
                                     <a href="{{ route('users.show', $user->id) }}"
@@ -77,4 +84,5 @@
     </div>
     </div>
     </div>
+    @include('partials.footer')
 </x-app-layout>

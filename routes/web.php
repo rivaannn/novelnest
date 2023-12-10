@@ -1,8 +1,13 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\UsersController;
+
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\BooksController;
+use App\Http\Controllers\UsersController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SocialiteController;
+use App\Http\Controllers\BlogsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,11 +20,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('home', [
-        'active' => 'home'
-    ]);
-});
+// Route Untuk Home
+Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/about', function () {
     return view('about.index', [
         'title' => 'Tentang NovelNest',
@@ -44,6 +46,20 @@ Route::get('/auth', function () {
 Route::get('/auth', function () {
     return view('auth.register');
 });
+// Untuk redirect ke Google
+Route::get('login/google/redirect', [SocialiteController::class, 'redirect'])
+    ->middleware(['guest'])
+    ->name('redirect');
+
+// Untuk callback dari Google
+Route::get('login/google/callback', [SocialiteController::class, 'callback'])
+    ->middleware(['guest'])
+    ->name('callback');
+
+// Untuk logout
+Route::post('logout', [SocialiteController::class, 'logout'])
+    ->middleware(['auth'])
+    ->name('logout');
 
 Route::get('/dashboard', function () {
     return view('dashboard.dashboard');
@@ -59,7 +75,7 @@ Route::get('/users/create', function () {
     return view('dashboard.users.create');
 });
 
-// Route Untuk Users 
+// Route Untuk Users
 Route::middleware(['auth'])->group(function () {
     Route::get('/users', [UsersController::class, 'index'])->name('users.index');
     Route::get('/users/{user}', [UsersController::class, 'show'])->name('users.show');
@@ -70,7 +86,33 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('/users/{user}', [UsersController::class, 'destroy'])->name('users.destroy');
 });
 
+// Route Untuk Blog
+Route::middleware(['auth'])->group(function () {
+    Route::get('/blogs', [BlogsController::class, 'index'])->name('blogs.index');
+    Route::get('/blogs/{blog}', [BlogsController::class, 'show'])->name('blogs.show');
+    Route::get('/blogs/create', [BlogsController::class, 'create'])->name('blogs.create');
+    Route::post('/blogs', [BlogsController::class, 'store'])->name('blogs.store');
+    Route::get('/blogs/{blog}/edit', [BlogsController::class, 'edit'])->name('blogs.edit');
+    Route::patch('/blogs/{blog}', [BlogsController::class, 'update'])->name('blogs.update');
+    Route::delete('/blogs/{blog}', [BlogsController::class, 'destroy'])->name('blogs.destroy');
+});
 
+// Route Untuk Books
+Route::middleware(['auth'])->group(function () {
+    Route::get('/books', [BooksController::class, 'index'])->name('books.index');
+    Route::get('/books/{book}', [BooksController::class, 'show'])->name('books.show');
+    Route::get('/books/create', [BooksController::class, 'create'])->name('books.create');
+    Route::post('/books', [BooksController::class, 'store'])->name('books.store');
+    Route::get('/books/{book}/edit', [BooksController::class, 'edit'])->name('books.edit');
+    Route::patch('/books/{book}', [BooksController::class, 'update'])->name('books.update');
+    Route::delete('/books/{book}', [BooksController::class, 'destroy'])->name('books.destroy');
+});
 
+Route::middleware(['auth'])->group(function () {
+    Route::get('/books', [BooksController::class, 'index'])->name('books.index');
+    Route::get('/books/{book}', [UsersController::class, 'show'])->name('books.show');
+    Route::delete('/books/{book}', [UsersController::class, 'destroy'])->name('books.destroy');
+    Route::get('/books/{book}/edit', [UsersController::class, 'edit'])->name('books.edit');
+});
 
 require __DIR__ . '/auth.php';

@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Publishers;
+use App\Models\Writter;
+use App\Models\Category;
 
 class Books extends Model
 {
@@ -41,14 +43,19 @@ class Books extends Model
         'status',
     ];
 
-    public function writer()
+    public function writter()
     {
-        return $this->belongsTo(Writer::class);
+        return $this->belongsTo(Writter::class);
     }
 
     public function publisher()
     {
         return $this->belongsTo(Publishers::class);
+    }
+
+    public function category()
+    {
+        return $this->belongsToMany(Category::class, 'book_categories');
     }
 
     public function bookOrder()

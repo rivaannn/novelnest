@@ -48,22 +48,23 @@ class BooksController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Books $book) {
+    public function show(Books $book)
+    {
         return view('dashboard.books.show', compact('book'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Books $books)
+    public function edit(Books $book)
     {
-        return view('dashboard.books.edit', compact('books'));
+        return view('dashboard.books.edit', compact('book'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdatebooksRequest $request, Books $books)
+    public function update(UpdatebooksRequest $request, Books $book)
     {
         $request->validated([
             'title' => 'required|string|max:255',
@@ -76,16 +77,19 @@ class BooksController extends Controller
             'image' => 'required|image',
             'status' => 'required|in:1,0',
         ]);
-        $books->update($request->all());
+        $book->update([
+            'title' => $request->input('title'),
+            'description' => $request->input('description'),
+        ]);
         return redirect()->route('books.index')->with('success', 'Buku berhasil diperbarui.');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Books $books)
+    public function destroy(Books $book)
     {
-        $books->delete();
+        $book->delete();
         return redirect()->route('books.index')->with('success', 'Buku berhasil dihapus.');
     }
 }

@@ -15,38 +15,58 @@
                         @csrf
 
                         <div class="mb-4">
-                            <label for="name"
-                                class="block text-sm font-medium text-gray-600 dark:text-gray-300">Nama</label>
-                            <input type="text" name="name" id="name"
+                            <label for="title"
+                                class="block text-sm font-medium text-gray-600 dark:text-gray-300">Judul</label>
+                            <input type="text" name="title" id="title"
                                 class="w-full p-2 mt-1 border rounded-md focus:outline-none focus:border-indigo-500">
                         </div>
 
                         <div class="mb-4">
-                            <label for="email"
-                                class="block text-sm font-medium text-gray-600 dark:text-gray-300">Email</label>
-                            <input type="email" name="email" id="email"
+                            <label for="slug"
+                                class="block text-sm font-medium text-gray-600 dark:text-gray-300">Slug</label>
+                            <input type="text" name="slug" id="slug"
                                 class="w-full p-2 mt-1 border rounded-md focus:outline-none focus:border-indigo-500">
                         </div>
 
                         <div class="mb-4">
-                            <label for="password"
-                                class="block text-sm font-medium text-gray-600 dark:text-gray-300">Kata Sandi</label>
-                            <input type="password" name="password" id="password"
+                            <label for="category"
+                                class="block text-sm font-medium text-gray-600 dark:text-gray-300">Kategori</label>
+                            <input type="text" name="category" id="category"
                                 class="w-full p-2 mt-1 border rounded-md focus:outline-none focus:border-indigo-500">
                         </div>
 
                         <div class="mb-4">
-                            <label for="password_confirmation"
-                                class="block text-sm font-medium text-gray-600 dark:text-gray-300">Konfirmasi Kata
-                                Sandi</label>
-                            <input type="password" name="password_confirmation" id="password_confirmation"
+                            <label for="image"
+                                class="block text-sm font-medium text-gray-600 dark:text-gray-300">Gambar</label>
+                            <input type="text" name="image" id="image"
                                 class="w-full p-2 mt-1 border rounded-md focus:outline-none focus:border-indigo-500">
+                        </div>
+
+                        <div class="mb-4">
+                            <label for="body"
+                                class="block text-sm font-medium text-gray-600 dark:text-gray-300">Isi</label>
+                            <textarea name="body" id="body" rows="4"
+                                class="w-full p-2 mt-1 border rounded-md focus:outline-none focus:border-indigo-500"></textarea>
+                        </div>
+
+                        <div class="mb-4">
+                            <label for="status"
+                                class="block text-sm font-medium text-gray-600 dark:text-gray-300">Status</label>
+                            <select name="status" id="status"
+                                class="w-full p-2 mt-1 border rounded-md focus:outline-none focus:border-indigo-500">
+                                <option value="draft">Draft</option>
+                                <option value="published">Published</option>
+                            </select>
                         </div>
 
                         <div class="flex items-center justify-end mt-4">
+                            <a href="{{ route('blogs.index') }}"
+                                class="inline-block px-4 py-2 mr-2 text-white bg-gray-500 rounded-md hover:bg-gray-600 focus:outline-none focus:shadow-outline-gray active:bg-gray-700">
+                                {{ __('Cancel') }}
+                            </a>
                             <button type="submit"
-                                class="inline-block px-4 py-2 text-white bg-indigo-600 rounded-md hover:bg-indigo-700 focus:outline-none focus:shadow-outline-indigo active:bg-indigo-800">
-                                {{ __('Buat Blog Baru') }}
+                                class="inline-block px-4 py-2 text-white bg-blue-600 rounded-md hover:bg-blue-700 focus:outline-none focus:shadow-outline-blue active:bg-blue-800">
+                                {{ __('Tambah Blog') }}
                             </button>
                         </div>
                     </form>
@@ -54,4 +74,5 @@
             </div>
         </div>
     </div>
+    @include('partials.footer')
 </x-app-layout>

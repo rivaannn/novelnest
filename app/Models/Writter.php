@@ -4,11 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Book;
 
 class Writter extends Model
 {
     use HasFactory;
-    public function books() {
+    public function books()
+    {
         return $this->hasMany(Book::class);
     }
 }

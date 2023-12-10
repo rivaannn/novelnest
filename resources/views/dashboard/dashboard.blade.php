@@ -21,34 +21,36 @@
             <div class="grid grid-cols-1 gap-4 md:grid-cols-3">
                 <!-- Card Buku -->
                 <div class="p-6 transition-transform transform bg-white rounded-lg shadow-md hover:scale-105">
-                    <h3 class="text-xl font-semibold text-gray-800 dark:text-gray-200">Jumlah Buku</h3>
-                    <p class="text-2xl font-bold text-indigo-600">{{ App\Models\Books::count() }}</p>
-                    <x-elongated-button href="{{ route('books.index') }}">Detail</x-elongated-button>
+                    <h3 class="text-xl font-semibold text-gray-800 dark:text-gray-200 text-center">Jumlah Buku</h3>
+                    <p class="text-2xl font-bold text-blue-600 text-center">{{ App\Models\Books::count() }}</p>
+                    <x-elongated-button href="{{ route('books.index') }}">
+                        Detail</x-elongated-button>
                     <!-- Isi konten tambahan di sini -->
                 </div>
                 <!-- Card Blog -->
                 <div class="p-6 transition-transform transform bg-white rounded-lg shadow-md hover:scale-105">
-                    <h3 class="text-xl font-semibold text-gray-800 dark:text-gray-200">Jumlah Blog</h3>
-                    <p class="text-2xl font-bold text-indigo-600">{{ App\Models\Blogs::count() }}</p>
+                    <h3 class="text-xl font-semibold text-gray-800 dark:text-gray-200 text-center">Jumlah Blog</h3>
+                    <p class="text-2xl font-bold text-blue-600 text-center">{{ App\Models\Blogs::count() }}</p>
                     <x-elongated-button href="{{ route('blogs.index') }}">Detail</x-elongated-button>
                     <!-- Isi konten tambahan di sini -->
                 </div>
                 <!-- Card Penulis -->
                 <div class="p-6 transition-transform transform bg-white rounded-lg shadow-md hover:scale-105">
-                    <h3 class="text-xl font-semibold text-gray-800 dark:text-gray-200">Jumlah Penulis</h3>
-                    <p class="text-2xl font-bold text-indigo-600">10</p>
+                    <h3 class="text-xl font-semibold text-gray-800 dark:text-gray-200 text-center">Jumlah Penulis</h3>
+                    <p class="text-2xl font-bold text-blue-600 text-center">10</p>
                     <x-elongated-button href="#">Detail</x-elongated-button>
                     <!-- Isi konten tambahan di sini -->
                 </div>
 
                 <!-- Card Pengguna -->
                 <div class="p-6 transition-transform transform bg-white rounded-lg shadow-md hover:scale-105">
-                    <h3 class="text-xl font-semibold text-gray-800 dark:text-gray-200">Jumlah Pengguna</h3>
-                    <p class="text-2xl font-bold text-indigo-600">{{ \App\Models\User::count() }}</p>
+                    <h3 class="text-xl font-semibold text-gray-800 dark:text-gray-200 text-center">Jumlah Pengguna</h3>
+                    <p class="text-2xl font-bold text-blue-600 text-center">{{ \App\Models\User::count() }}</p>
                     <x-elongated-button href="{{ route('users.index') }}">Detail</x-elongated-button>
                     <!-- Isi konten tambahan di sini -->
                 </div>
             </div>
         </div>
     </div>
+    @include('partials.footer')
 </x-app-layout>

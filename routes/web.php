@@ -8,6 +8,7 @@ use App\Http\Controllers\UsersController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SocialiteController;
 use App\Http\Controllers\BlogsController;
+use App\Http\Controllers\WritersController;
 
 /*
 |--------------------------------------------------------------------------
@@ -75,6 +76,14 @@ Route::get('/users/create', function () {
     return view('dashboard.users.create');
 });
 
+Route::get('/books/create', function () {
+    return view('dashboard.books.create');
+});
+
+Route::get('/blogs/create', function () {
+    return view('dashboard.blogs.create');
+});
+
 // Route Untuk Users
 Route::middleware(['auth'])->group(function () {
     Route::get('/users', [UsersController::class, 'index'])->name('users.index');
@@ -107,5 +116,6 @@ Route::middleware(['auth'])->group(function () {
     Route::patch('/books/{book}', [BooksController::class, 'update'])->name('books.update');
     Route::delete('/books/{book}', [BooksController::class, 'destroy'])->name('books.destroy');
 });
+
 
 require __DIR__ . '/auth.php';

@@ -35,17 +35,17 @@ class BlogsController extends Controller
         return redirect('/dashboard/blogs')->with('success', 'Data Berhasil Ditambahkan!');
     }
 
-    public function show(Blogs $blogs)
+    public function show(Blogs $blog)
     {
-        return view('dashboard.blogs.show', compact('blogs'));
+        return view('dashboard.blogs.show', compact('blog'));
     }
 
-    public function edit(Blogs $blogs)
+    public function edit(Blogs $blog)
     {
-        return view('dashboard.blogs.edit', compact('blogs'));
+        return view('dashboard.blogs.edit', compact('blog'));
     }
 
-    public function update(Request $request, Blogs $blogs)
+    public function update(Request $request, Blogs $blog)
     {
         $request->validate([
             'title' => 'required|max:255|min:3',
@@ -57,7 +57,7 @@ class BlogsController extends Controller
             'status' => 'required|max:255|min:3'
         ]);
 
-        Blogs::where('id', $blogs->id)
+        Blogs::where('id', $blog->id)
             ->update([
                 'title' => $request->title,
                 'slug' => $request->slug,
@@ -70,9 +70,9 @@ class BlogsController extends Controller
         return redirect('/dashboard/blogs')->with('success', 'Data Berhasil Diubah!');
     }
 
-    public function destroy(Blogs $blogs)
+    public function destroy(Blogs $blog)
     {
-        Blogs::destroy($blogs->id);
-        return redirect('/dashboard/blogs')->with('success', 'Data Berhasil Dihapus!');
+        Blogs::destroy($blog->id);
+        return redirect()->route('blogs.index')->with('success', 'Blog berhasil dihapus.');
     }
 }

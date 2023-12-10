@@ -6,6 +6,9 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SocialiteController;
+use App\Http\Controllers\BooksController;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BlogsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -83,6 +86,28 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/users/{user}/edit', [UsersController::class, 'edit'])->name('users.edit');
     Route::patch('/users/{user}', [UsersController::class, 'update'])->name('users.update');
     Route::delete('/users/{user}', [UsersController::class, 'destroy'])->name('users.destroy');
+});
+
+// Route Untuk Books
+Route::middleware(['auth'])->group(function () {
+    Route::get('/books', [BooksController::class, 'index'])->name('books.index');
+    Route::get('/books/{book}', [BooksController::class, 'show'])->name('books.show');
+    Route::get('/books/create', [BooksController::class, 'create'])->name('books.create');
+    Route::post('/books', [BooksController::class, 'store'])->name('books.store');
+    Route::get('/books/{book}/edit', [BooksController::class, 'edit'])->name('books.edit');
+    Route::patch('/books/{book}', [BooksController::class, 'update'])->name('books.update');
+    Route::delete('/books/{book}', [BooksController::class, 'destroy'])->name('books.destroy');
+});
+
+// Route Untuk Blog
+Route::middleware(['auth'])->group(function () {
+    Route::get('/blogs', [BlogsController::class, 'index'])->name('blogs.index');
+    Route::get('/blogs/{blog}', [BlogsController::class, 'show'])->name('blogs.show');
+    Route::get('/blogs/create', [BlogsController::class, 'create'])->name('blogs.create');
+    Route::post('/blogs', [BlogsController::class, 'store'])->name('blogs.store');
+    Route::get('/blogs/{blog}/edit', [BlogsController::class, 'edit'])->name('blogs.edit');
+    Route::patch('/blogs/{blog}', [BlogsController::class, 'update'])->name('blogs.update');
+    Route::delete('/blogs/{blog}', [BlogsController::class, 'destroy'])->name('blogs.destroy');
 });
 
 

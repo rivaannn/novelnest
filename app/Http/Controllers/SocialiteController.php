@@ -7,12 +7,15 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Laravel\Socialite\Facades\Socialite;
 
-class SocialiteController extends Controller {
-    public function redirect() {
+class SocialiteController extends Controller
+{
+    public function redirect()
+    {
         return Socialite::driver('google')->redirect();
     }
 
-    public function callback() {
+    public function callback()
+    {
         // Google user object dari google
         $userFromGoogle = Socialite::driver('google')->user();
 
@@ -44,12 +47,12 @@ class SocialiteController extends Controller {
         return redirect('/');
     }
 
-    public function logout(Request $request) {
+    public function logout(Request $request)
+    {
         auth('web')->logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
         return redirect('/');
     }
-
 }

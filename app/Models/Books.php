@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Publishers;
 
 class Books extends Model
 {
@@ -29,13 +30,15 @@ class Books extends Model
      */
 
     protected $fillable = [
-        'judul',
-        'sinopsis',
+        'title',
+        'description',
         'price',
-        'isbn',
+        'book_number',
         'writer_id',
-        'stock',
-        'status'
+        'publisher_id',
+        'year',
+        'image',
+        'status',
     ];
 
     public function writer()
@@ -45,7 +48,7 @@ class Books extends Model
 
     public function publisher()
     {
-        return $this->belongsTo(Publisher::class);
+        return $this->belongsTo(Publishers::class);
     }
 
     public function bookOrder()

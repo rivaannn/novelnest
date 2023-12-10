@@ -7,7 +7,6 @@ use App\Http\Controllers\UsersController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SocialiteController;
 use App\Http\Controllers\BooksController;
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BlogsController;
 
 /*

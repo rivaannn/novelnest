@@ -1,4 +1,4 @@
-<!-- resources/views/dashboard/users/index.blade.php -->
+<!-- resources/views/dashboard/blogs/index.blade.php -->
 
 <x-app-layout>
     <x-slot name="header">
@@ -15,9 +15,7 @@
         </div>
         <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
             @if ($blogs->isEmpty())
-                <p class="text-xl text-center text-red-500 border-2 outline-dashed">
-                    {{ __('Tidak Ada Blog yang ditemukan.') }}
-                </p>
+                <p>{{ __('Buku tidak Ditemukan!!!') }}</p>
             @else
                 <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
                     <thead class="bg-gray-50 dark:bg-gray-800">
@@ -28,11 +26,7 @@
                             </th>
                             <th scope="col"
                                 class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase dark:text-gray-400">
-                                {{ __('Name') }}
-                            </th>
-                            <th scope="col"
-                                class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase dark:text-gray-400">
-                                {{ __('Email') }}
+                                {{ __('Title') }}
                             </th>
                             <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-right">
                                 {{ __('Actions') }}
@@ -46,10 +40,7 @@
                                     {{ $key + 1 }}
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap">
-                                    {{ $blog->name }}
-                                </td>
-                                <td class="px-6 py-4 whitespace-nowrap">
-                                    {{ $blog->email }}
+                                    {{ $blog->title }}
                                 </td>
                                 <td class="px-6 py-4 text-sm font-medium text-right whitespace-nowrap">
                                     <a href="{{ route('blogs.show', $blog->id) }}"

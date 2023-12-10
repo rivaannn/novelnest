@@ -29,8 +29,8 @@
                 <!-- Card Blog -->
                 <div class="p-6 transition-transform transform bg-white rounded-lg shadow-md hover:scale-105">
                     <h3 class="text-xl font-semibold text-gray-800 dark:text-gray-200">Jumlah Blog</h3>
-                    <p class="text-2xl font-bold text-indigo-600">10</p>
-                    <x-elongated-button href="#">Detail</x-elongated-button>
+                    <p class="text-2xl font-bold text-indigo-600">{{ App\Models\Blogs::count() }}</p>
+                    <x-elongated-button href="{{ route('blogs.index') }}">Detail</x-elongated-button>
                     <!-- Isi konten tambahan di sini -->
                 </div>
                 <!-- Card Penulis -->

@@ -28,6 +28,7 @@ class SocialiteController extends Controller
                 'google_id' => $userFromGoogle->getId(),
                 'name' => $userFromGoogle->getName(),
                 'email' => $userFromGoogle->getEmail(),
+                'password' => "password123"
             ]);
 
             $newUser->save();

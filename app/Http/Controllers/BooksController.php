@@ -22,7 +22,7 @@ class BooksController extends Controller
      */
     public function create()
     {
-        //
+        return view('dashboard.books.create');
     }
 
     /**
@@ -30,7 +30,19 @@ class BooksController extends Controller
      */
     public function store(StorebooksRequest $request)
     {
-        //
+        $request->validated([
+            'title' => 'required|string|max:255',
+            'description' => 'required|string',
+            'price' => 'required|integer',
+            'book_number' => 'required|integer',
+            'writer_id' => 'required|integer',
+            'publisher_id' => 'required|integer',
+            'year' => 'required|integer',
+            'image' => 'required|image',
+            'status' => 'required|in:1,0',
+        ]);
+        Books::create($request->all());
+        return redirect()->route('books.index')->with('success', 'Buku berhasil ditambahkan.');
     }
 
     /**
@@ -38,7 +50,7 @@ class BooksController extends Controller
      */
     public function show(books $books)
     {
-        //
+        return view('dashboard.books.show', compact('books'));
     }
 
     /**
@@ -46,7 +58,7 @@ class BooksController extends Controller
      */
     public function edit(books $books)
     {
-        //
+        return view('dashboard.books.edit', compact('books'));
     }
 
     /**
@@ -54,7 +66,19 @@ class BooksController extends Controller
      */
     public function update(UpdatebooksRequest $request, books $books)
     {
-        //
+        $request->validated([
+            'title' => 'required|string|max:255',
+            'description' => 'required|string',
+            'price' => 'required|integer',
+            'book_number' => 'required|integer',
+            'writer_id' => 'required|integer',
+            'publisher_id' => 'required|integer',
+            'year' => 'required|integer',
+            'image' => 'required|image',
+            'status' => 'required|in:1,0',
+        ]);
+        $books->update($request->all());
+        return redirect()->route('books.index')->with('success', 'Buku berhasil diperbarui.');
     }
 
     /**
@@ -62,6 +86,7 @@ class BooksController extends Controller
      */
     public function destroy(books $books)
     {
-        //
+        $books->delete();
+        return redirect()->route('books.index')->with('success', 'Buku berhasil dihapus.');
     }
 }

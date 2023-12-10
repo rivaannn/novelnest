@@ -1,8 +1,11 @@
 <?php
 
+
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UsersController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SocialiteController;
 use App\Http\Controllers\BooksController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BlogsController;
@@ -44,6 +47,21 @@ Route::get('/auth', function () {
 Route::get('/auth', function () {
     return view('auth.register');
 });
+// Untuk redirect ke Google
+Route::get('login/google/redirect', [SocialiteController::class, 'redirect'])
+    ->middleware(['guest'])
+    ->name('redirect');
+
+// Untuk callback dari Google
+Route::get('login/google/callback', [SocialiteController::class, 'callback'])
+    ->middleware(['guest'])
+    ->name('callback');
+
+// Untuk logout
+Route::post('logout', [SocialiteController::class, 'logout'])
+    ->middleware(['auth'])
+    ->name('logout');
+
 
 Route::get('/dashboard', function () {
     return view('dashboard.dashboard');

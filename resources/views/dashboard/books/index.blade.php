@@ -44,6 +44,10 @@
                                 <td class="px-6 py-4 whitespace-nowrap">
                                     {{ $book->title }}
                                 </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    {{ mb_strimwidth($book->description, 0, 50, '...') }}
+                                    {{ $book->title }}
+                                </td>
                                 <td class="px-6 py-4 text-sm font-medium text-right whitespace-nowrap">
                                     <a href="{{ route('books.show', $book->id) }}"
                                         class="inline-block px-4 py-2 ml-2 text-yellow-600 bg-yellow-100 rounded-md hover:bg-yellow-300 focus:outline-none focus:shadow-outline-yellow active:bg-yellow-300">

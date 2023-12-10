@@ -3,10 +3,10 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\BooksController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SocialiteController;
-use App\Http\Controllers\BooksController;
 use App\Http\Controllers\BlogsController;
 
 /*
@@ -61,7 +61,6 @@ Route::post('logout', [SocialiteController::class, 'logout'])
     ->middleware(['auth'])
     ->name('logout');
 
-
 Route::get('/dashboard', function () {
     return view('dashboard.dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -87,17 +86,6 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('/users/{user}', [UsersController::class, 'destroy'])->name('users.destroy');
 });
 
-// Route Untuk Books
-Route::middleware(['auth'])->group(function () {
-    Route::get('/books', [BooksController::class, 'index'])->name('books.index');
-    Route::get('/books/{book}', [BooksController::class, 'show'])->name('books.show');
-    Route::get('/books/create', [BooksController::class, 'create'])->name('books.create');
-    Route::post('/books', [BooksController::class, 'store'])->name('books.store');
-    Route::get('/books/{book}/edit', [BooksController::class, 'edit'])->name('books.edit');
-    Route::patch('/books/{book}', [BooksController::class, 'update'])->name('books.update');
-    Route::delete('/books/{book}', [BooksController::class, 'destroy'])->name('books.destroy');
-});
-
 // Route Untuk Blog
 Route::middleware(['auth'])->group(function () {
     Route::get('/blogs', [BlogsController::class, 'index'])->name('blogs.index');
@@ -109,5 +97,22 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('/blogs/{blog}', [BlogsController::class, 'destroy'])->name('blogs.destroy');
 });
 
+// Route Untuk Books
+Route::middleware(['auth'])->group(function () {
+    Route::get('/books', [BooksController::class, 'index'])->name('books.index');
+    Route::get('/books/{book}', [BooksController::class, 'show'])->name('books.show');
+    Route::get('/books/create', [BooksController::class, 'create'])->name('books.create');
+    Route::post('/books', [BooksController::class, 'store'])->name('books.store');
+    Route::get('/books/{book}/edit', [BooksController::class, 'edit'])->name('books.edit');
+    Route::patch('/books/{book}', [BooksController::class, 'update'])->name('books.update');
+    Route::delete('/books/{book}', [BooksController::class, 'destroy'])->name('books.destroy');
+});
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/books', [BooksController::class, 'index'])->name('books.index');
+    Route::get('/books/{book}', [UsersController::class, 'show'])->name('books.show');
+    Route::delete('/books/{book}', [UsersController::class, 'destroy'])->name('books.destroy');
+    Route::get('/books/{book}/edit', [UsersController::class, 'edit'])->name('books.edit');
+});
 
 require __DIR__ . '/auth.php';

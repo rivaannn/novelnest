@@ -5,20 +5,20 @@
         <div class="container px-5 py-24 mx-auto">
             <div class="flex flex-wrap mx-auto lg:w-4/5">
                 <img alt="ecommerce" class="object-cover object-center w-full border border-gray-200 rounded lg:w-1/2"
-                    src="https://www.whitmorerarebooks.com/pictures/medium/2465.jpg">
+                    src="https://source.unsplash.com/1200x800/?book/{{ $books->id }}">
                 <div class="w-full mt-6 lg:w-1/2 lg:pl-10 lg:py-6 lg:mt-0">
                     <h2 class="text-sm tracking-widest text-gray-500 title-font">{{ __('Nama Buku : ') }}</h2>
                     <h1 class="mb-1 text-3xl font-medium text-gray-900 title-font">{{ $books->title }}</h1>
                     <h2 class="mt-2 text-sm tracking-widest text-gray-500 title-font">{{ __('Deskripsi Buku : ') }}</h2>
                     <p class="leading-relaxed">{{ $books->description }}</p>
-                    <h2 class="mt-2 text-sm tracking-widest text-gray-500 title-font">{{ __('Buku Nomber : ') }}</h2>
-                    <p class="leading-relaxed">{{ $books->books_number }}</p>
+                    <h2 class="mt-2 text-sm tracking-widest text-gray-500 title-font">{{ __('Buku Number : ') }}</h2>
+                    <p class="leading-relaxed">{{ $books->book_number }}</p>
                     <h2 class="mt-2 text-sm tracking-widest text-gray-500 title-font">{{ __('Penulis : ') }}</h2>
-                    <p class="leading-relaxed">{{ $books->writter_id }}</p>
+                    <p class="leading-relaxed">{{ $books->writter->name }}</p>
                     <h2 class="mt-2 text-sm tracking-widest text-gray-500 title-font">{{ __('Penerbit : ') }}</h2>
-                    <p class="leading-relaxed">{{ $books->publisher_id }}</p>
+                    <p class="leading-relaxed">{{ $books->publisher->nama }}</p>
                     <h2 class="mt-2 text-sm tracking-widest text-gray-500 title-font">{{ __('Kategori : ') }}</h2>
-                    <p class="leading-relaxed">{{ $books->category_id }}</p>
+                    <p class="leading-relaxed">{{ $books->category->name }}</p>
                     <div class="flex items-center pb-5 mt-6 mb-5 border-b-2 border-gray-200">
                     </div>
                     <div class="flex">

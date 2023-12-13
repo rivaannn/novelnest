@@ -21,11 +21,11 @@
                     <h2 class="mt-2 text-sm tracking-widest text-gray-500 title-font">{{ __('Buku Nomber : ') }}</h2>
                     <p class="leading-relaxed">{{ $book->book_number }}</p>
                     <h2 class="mt-2 text-sm tracking-widest text-gray-500 title-font">{{ __('Penulis : ') }}</h2>
-                    <p class="leading-relaxed">{{ $book->writter_id }}</p>
+                    <p class="leading-relaxed">{{ $book->writter->name }}</p>
                     <h2 class="mt-2 text-sm tracking-widest text-gray-500 title-font">{{ __('Penerbit : ') }}</h2>
-                    <p class="leading-relaxed">{{ $book->publisher_id }}</p>
+                    <p class="leading-relaxed">{{ $book->publisher->nama }}</p>
                     <h2 class="mt-2 text-sm tracking-widest text-gray-500 title-font">{{ __('Kategori : ') }}</h2>
-                    <p class="leading-relaxed">{{ $book->category_id }}</p>
+                    <p class="leading-relaxed">{{ $book->category->name }}</p>
                     <div class="flex items-center pb-5 mt-6 mb-5 border-b-2 border-gray-200">
                     </div>
                     <div class="flex">

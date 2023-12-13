@@ -45,17 +45,17 @@ class Books extends Model
 
     public function writter()
     {
-        return $this->belongsTo(Writter::class);
+        return $this->belongsTo(Writter::class, 'writter_id');
     }
 
     public function publisher()
     {
-        return $this->belongsTo(Publishers::class);
+        return $this->belongsTo(Publishers::class, 'publisher_id');
     }
 
     public function category()
     {
-        return $this->belongsToMany(Category::class, 'book_categories');
+        return $this->belongsTo(Category::class, 'category_id');
     }
 
     public function bookOrder()

@@ -70,7 +70,7 @@
 </div>
 
 
-<div class="p-6 mt-6 bg-white shadow-sm dark:bg-gray-800 sm:rounded-lg">
-    {{-- {{ $blogs->links() }} --}}
+<div class="flex items-center justify-center mt-12 bg-white shadow-sm dark:bg-gray-800 sm:rounded-lg">
+    {{ $blogs->links() }}
 </div>
 @endsection

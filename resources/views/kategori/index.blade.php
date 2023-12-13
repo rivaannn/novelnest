@@ -63,7 +63,8 @@
                 @endif
                 <a href="/kategori/detailbuku/{{ $book->id }}"
                     class="block p-4 bg-white rounded-md shadow-md hover:shadow-lg">
-                    <img class="object-cover object-center w-full h-48 mb-2" src="https://source.unsplash.com/1200x800/?book/{{ $book->id }}" alt="Nama Produk">
+                    <img class="object-cover object-center w-full h-48 mb-2"
+                        src="https://source.unsplash.com/1200x800/?book/{{ $book->id }}" alt="Nama Produk">
                     <h3 class="text-lg font-semibold">{{ $book->title }}</h3>
                     <p class="text-gray-700">Penulis: {{ $book->writter->name }}</p>
                     <p class="text-lg text-blue-700">{{ 'RP.' . number_format($book->price, 2, ',', '.') }}</p>
@@ -72,7 +73,7 @@
         </div>
 
         {{-- Pagination --}}
-        <div class="flex items-center justify-center mt-8">
+        <div class="flex mt-8 justify-beetween items-beetween">
             {{ $books->links() }}
         </div>
     </div>

@@ -1,6 +1,7 @@
 <?php
 
 
+use App\Models\Blogs;
 use App\Models\Books;
 use App\Models\Category;
 use Illuminate\Support\Facades\Route;
@@ -40,8 +41,10 @@ Route::get('/kategori', function () {
     ]);
 });
 Route::get('/blog', function () {
+    $blogs = Blogs::all();
     return view('blog.index', [
         'active' => 'blog',
+        'blogs' => $blogs,
     ]);
 });
 

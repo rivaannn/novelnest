@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Books;
+use App\Models\Writter;
+use App\Models\Category;
+use App\Models\Publishers;
+use Illuminate\Routing\Controller;
 use App\Http\Requests\StorebooksRequest;
 use App\Http\Requests\UpdatebooksRequest;
-use App\Models\Books;
 
 class BooksController extends Controller
 {
@@ -20,31 +24,36 @@ class BooksController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
-    {
-        return view('dashboard.books.create');
+    public function create() {
+        $writter = Writter::all();
+        $publishers = Publishers::all();
+        return view('dashboard.books.create', [
+            'writers'=> $writter,
+            'publishers'=> $publishers,
+            'categories' => Category::all()
+        ]);
     }
+
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StorebooksRequest $request)
-    {
+    public function store(StorebooksRequest $request) {
         $request->validated([
             'title' => 'required|string|max:255',
             'description' => 'required|string',
             'price' => 'required|integer',
-            'book_number' => 'required|integer',
-            'writer_id' => 'required|integer',
-            'publisher_id' => 'required|integer',
-            'year' => 'required|integer',
-            'image' => 'required|image',
-            'status' => 'required|in:1,0',
+            'writter_id' => 'required|integer',
+            'publisher_id' => 'required|integer'
         ]);
+        self::generate_book_number();
         Books::create($request->all());
         return redirect()->route('books.index')->with('success', 'Buku berhasil ditambahkan.');
     }
 
+    public function generate_book_number() {
+        // code ..
+    }
     /**
      * Display the specified resource.
      */

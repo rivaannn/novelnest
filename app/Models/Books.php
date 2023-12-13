@@ -31,17 +31,17 @@ class Books extends Model
      * @var array<int, string>
      */
 
-    protected $fillable = [
-        'title',
-        'description',
-        'price',
-        'book_number',
-        'writer_id',
-        'publisher_id',
-        'year',
-        'image',
-        'status',
-    ];
+    // protected $fillable = [
+    //     'title',
+    //     'description',
+    //     'price',
+    //     'book_number',
+    //     'writter_id',
+    //     'publisher_id',
+    //     'year',
+    //     'image',
+    //     'status',
+    // ];
 
     public function writter()
     {

@@ -23,129 +23,124 @@
 
     {{-- Kategori Buku --}}
     <div class="container mx-auto mt-8">
-        <h1 class="mt-4 mb-8 text-4xl font-bold text-center">Genre Buku</h1>
-        <div class="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-6">
-            <!-- Kategori 1 -->
+        <h1 class="mt-4 mb-8 text-4xl font-bold text-center">Kategori Buku</h1>
+        <div class="grid grid-cols-4 gap-4 md:grid-cols-3 lg:grid-cols-6">
             @foreach ($categories as $category)
                 <div class="flex flex-col items-center">
-                    <a href="#" class="bg-gray-200 w-full rounded text-gray-600">
+                    <a href="#" class="w-full text-white bg-gray-600 rounded">
                         <p class="text-xl text-center">{{ $category->name }}</p>
                     </a>
                 </div>
             @endforeach
-
         </div>
     </div>
-
-
 
     {{-- Rekomendasi Buku --}}
     <div class="container py-8 mx-auto">
         <h1 class="mt-8 mb-8 text-4xl font-bold">Rekomendasi Buku Novelnest</h1>
-
         <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-
             @foreach ($books as $book)
-                <a href="#"
-                    class="overflow-hidden transition duration-300 bg-white rounded-lg shadow-md hover:shadow-lg">
-                    <img class="object-cover object-center w-full h-48" src="https://source.unsplash.com/800x1200/?book"
-                        alt="Book Image">
-                    <div class="p-4">
-                        <h2 class="mb-2 text-xl font-bold">{{ $book->title }}</h2>
-                        <p class="mb-2 text-gray-700">Penulis: {{ $book->writter->name }} </p>
-                        <p class="mb-2 text-blue-700 text-lg">{{ 'RP.' . number_format($book->price, 2, ',', '.') }}
-                        </p>
-                        <!-- Badges Kategori -->
+                @if ($loop->iteration > 4)
+                @break
+            @endif
+            <a href="/kategori/detailbuku/{{ $book->id }}"
+                class="overflow-hidden transition duration-300 bg-white rounded-lg shadow-md hover:shadow-lg">
+                <img class="object-cover object-center w-full h-48" src="https://source.unsplash.com/800x1200/?book"
+                    alt="Book Image">
+                <div class="p-4">
+                    <h2 class="mb-2 text-xl font-bold">{{ $book->title }}</h2>
+                    <p class="mb-2 text-gray-700">Penulis: {{ $book->writter->name }} </p>
+                    <p class="mb-2 text-lg text-blue-500">{{ 'RP.' . number_format($book->price, 2, ',', '.') }}
+                    </p>
+                    <!-- Badges Kategori -->
+                    <span
+                        class="inline-block px-2 py-1 text-xs font-semibold tracking-wide text-white bg-blue-500 rounded">{{ $category->name }}</span>
+                </div>
+            </a>
+        @endforeach
+    </div>
+</div>
+
+<!-- Tombol "Lihat Semua Buku" -->
+<div class="container mx-auto mt-4 text-end">
+    <a href="{{ url('/kategori') }}"
+        class="px-4 py-2 text-white transition duration-300 bg-blue-500 rounded-md hover:bg-blue-600">Lihat
+        Semua Buku</a>
+</div>
+{{-- Blog NovelNest --}}
+<div class="py-16 mt-8 overflow-hidden bg-gray-100">
+    <div class="container px-6 m-auto space-y-8 text-gray-500 md:px-12">
+        <div>
+            <h2 class="mt-4 text-2xl font-bold text-gray-900 md:text-4xl">Blog Novelnest</h2>
+        </div>
+
+        <div
+            class="grid mt-16 overflow-hidden border divide-x divide-y rounded-xl sm:grid-cols-2 lg:divide-y-0 lg:grid-cols-3 xl:grid-cols-4">
+            <div class="relative group bg-white transition hover:z-[1] hover:shadow-2xl">
+                <div class="relative p-8 space-y-8">
+                    <img src="https://source.unsplash.com/1600x800/?book" class="shadow-md" alt="burger illustration">
+                    <div class="space-y-2">
+                        <h5 class="text-xl font-medium text-gray-800 transition group-hover:text-blue-600">First
+                            feature</h5>
+                        <p class="text-sm text-gray-600">Neque Dolor, fugiat non cum doloribus aperiam voluptates
+                            nostrum.</p>
+                    </div>
+                    <a href="#" class="flex items-center justify-between group-hover:text-blue-600">
+                        <span class="text-sm">Read more</span>
                         <span
-                            class="inline-block px-2 py-1 text-xs font-semibold tracking-wide text-white bg-blue-500 rounded">{{ $category->name }}</span>
-                    </div>
-                </a>
-            @endforeach
-
-        </div>
-    </div>
-
-    <!-- Tombol "Lihat Semua Buku" -->
-    <div class="container mx-auto mt-4 text-end">
-        <a href="{{ url('/kategori') }}"
-            class="px-4 py-2 text-white transition duration-300 bg-blue-500 rounded-md hover:bg-blue-600">Lihat
-            Semua Buku</a>
-    </div>
-
-    {{-- Blog NovelNest --}}
-    <div class="py-16 mt-8 overflow-hidden bg-gray-100">
-        <div class="container px-6 m-auto space-y-8 text-gray-500 md:px-12">
-            <div>
-                <h2 class="mt-4 text-2xl font-bold text-gray-900 md:text-4xl">Blog Novelnest</h2>
+                            class="text-2xl transition duration-300 -translate-x-4 opacity-0 group-hover:opacity-100 group-hover:translate-x-0">&RightArrow;</span>
+                    </a>
+                </div>
             </div>
+            <div class="relative group bg-white transition hover:z-[1] hover:shadow-2xl">
+                <div class="relative p-8 space-y-8">
+                    <img src="https://source.unsplash.com/1600x800/?book" class="shadow-md" alt="burger illustration">
 
-            <div
-                class="grid mt-16 overflow-hidden border divide-x divide-y rounded-xl sm:grid-cols-2 lg:divide-y-0 lg:grid-cols-3 xl:grid-cols-4">
-                <div class="relative group bg-white transition hover:z-[1] hover:shadow-2xl">
-                    <div class="relative p-8 space-y-8">
-                        <img src="https://source.unsplash.com/1600x800/?book" class="shadow-md" alt="burger illustration">
-                        <div class="space-y-2">
-                            <h5 class="text-xl font-medium text-gray-800 transition group-hover:text-blue-600">First
-                                feature</h5>
-                            <p class="text-sm text-gray-600">Neque Dolor, fugiat non cum doloribus aperiam voluptates
-                                nostrum.</p>
-                        </div>
-                        <a href="#" class="flex items-center justify-between group-hover:text-blue-600">
-                            <span class="text-sm">Read more</span>
-                            <span
-                                class="text-2xl transition duration-300 -translate-x-4 opacity-0 group-hover:opacity-100 group-hover:translate-x-0">&RightArrow;</span>
-                        </a>
+                    <div class="space-y-2">
+                        <h5 class="text-xl font-medium text-gray-800 transition group-hover:text-blue-600">Second
+                            feature</h5>
+                        <p class="text-sm text-gray-600">Neque Dolor, fugiat non cum doloribus aperiam voluptates
+                            nostrum.</p>
                     </div>
+                    <a href="#" class="flex items-center justify-between group-hover:text-blue-600">
+                        <span class="text-sm">Read more</span>
+                        <span
+                            class="text-2xl transition duration-300 -translate-x-4 opacity-0 group-hover:opacity-100 group-hover:translate-x-0">&RightArrow;</span>
+                    </a>
                 </div>
-                <div class="relative group bg-white transition hover:z-[1] hover:shadow-2xl">
-                    <div class="relative p-8 space-y-8">
-                        <img src="https://source.unsplash.com/1600x800/?book" class="shadow-md" alt="burger illustration">
+            </div>
+            <div class="relative group bg-white transition hover:z-[1] hover:shadow-2xl">
+                <div class="relative p-8 space-y-8">
+                    <img src="https://source.unsplash.com/1600x800/?book" class="shadow-md" alt="burger illustration">
 
-                        <div class="space-y-2">
-                            <h5 class="text-xl font-medium text-gray-800 transition group-hover:text-blue-600">Second
-                                feature</h5>
-                            <p class="text-sm text-gray-600">Neque Dolor, fugiat non cum doloribus aperiam voluptates
-                                nostrum.</p>
-                        </div>
-                        <a href="#" class="flex items-center justify-between group-hover:text-blue-600">
-                            <span class="text-sm">Read more</span>
-                            <span
-                                class="text-2xl transition duration-300 -translate-x-4 opacity-0 group-hover:opacity-100 group-hover:translate-x-0">&RightArrow;</span>
-                        </a>
+                    <div class="space-y-2">
+                        <h5 class="text-xl font-medium text-gray-800 transition group-hover:text-blue-600">Third
+                            feature</h5>
+                        <p class="text-sm text-gray-600">Neque Dolor, fugiat non cum doloribus aperiam voluptates
+                            nostrum.</p>
                     </div>
+                    <a href="#" class="flex items-center justify-between group-hover:text-blue-600">
+                        <span class="text-sm">Read more</span>
+                        <span
+                            class="text-2xl transition duration-300 -translate-x-4 opacity-0 group-hover:opacity-100 group-hover:translate-x-0">&RightArrow;</span>
+                    </a>
                 </div>
-                <div class="relative group bg-white transition hover:z-[1] hover:shadow-2xl">
-                    <div class="relative p-8 space-y-8">
-                        <img src="https://source.unsplash.com/1600x800/?book" class="shadow-md" alt="burger illustration">
+            </div>
+            <div class="relative group bg-gray-100 transition hover:z-[1] hover:shadow-2xl lg:hidden xl:block">
+                <div
+                    class="flex items-center justify-center p-8 mt-20 space-y-8 transition duration-300 border-dashed rounded-lg group-hover:bg-white group-hover:border group-hover:scale-90">
+                    <a href="{{ url('/blog') }}" class=" group-hover:text-blue-600">
+                        <img src="https://source.unsplash.com/2000x800/?book" class="bg-cover shadow-md"
+                            alt="burger illustration">
 
-                        <div class="space-y-2">
-                            <h5 class="text-xl font-medium text-gray-800 transition group-hover:text-blue-600">Third
-                                feature</h5>
-                            <p class="text-sm text-gray-600">Neque Dolor, fugiat non cum doloribus aperiam voluptates
-                                nostrum.</p>
+                        <div class="flex items-center justify-center mx-auto mt-4">
+                            <h5 class="text-xl font-medium text-gray-800 transition group-hover:text-blue-600">More
+                                Blog Novelnest</h5>
                         </div>
-                        <a href="#" class="flex items-center justify-between group-hover:text-blue-600">
-                            <span class="text-sm">Read more</span>
-                            <span
-                                class="text-2xl transition duration-300 -translate-x-4 opacity-0 group-hover:opacity-100 group-hover:translate-x-0">&RightArrow;</span>
-                        </a>
-                    </div>
-                </div>
-                <div class="relative group bg-gray-100 transition hover:z-[1] hover:shadow-2xl lg:hidden xl:block">
-                    <div
-                        class="flex items-center justify-center p-8 mt-20 space-y-8 transition duration-300 border-dashed rounded-lg group-hover:bg-white group-hover:border group-hover:scale-90">
-                        <a href="{{ url('/blog') }}" class=" group-hover:text-blue-600">
-                            <img src="https://source.unsplash.com/2000x800/?book" class="bg-cover shadow-md"
-                                alt="burger illustration">
-
-                            <div class="flex items-center justify-center mx-auto mt-4">
-                                <h5 class="text-xl font-medium text-gray-800 transition group-hover:text-blue-600">More
-                                    Blog Novelnest</h5>
-                            </div>
-                        </a>
-                    </div>
+                    </a>
                 </div>
             </div>
         </div>
     </div>
+</div>
 @endsection

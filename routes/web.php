@@ -40,6 +40,16 @@ Route::get('/kategori', function () {
         'books' => $books,
     ]);
 });
+
+Route::get('/kategori/detailbuku/{id}', function ($id) {
+    $books = Books::find($id);
+    return view('kategori.detailbuku', [
+        'active' => 'kategori',
+        'books' => $books,
+    ]);
+});
+
+
 Route::get('/blog', function () {
     $blogs = Blogs::all();
     return view('blog.index', [

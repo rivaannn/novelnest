@@ -1,6 +1,8 @@
 <?php
 
 
+use App\Models\Blogs;
+use App\Models\Books;
 use App\Models\Category;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
@@ -8,7 +10,6 @@ use App\Http\Controllers\BlogsController;
 use App\Http\Controllers\BooksController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\WritersController;
 use App\Http\Controllers\SocialiteController;
 
 /*
@@ -32,14 +33,18 @@ Route::get('/about', function () {
 });
 Route::get('/kategori', function () {
     $categories = Category::all();
+    $books = Books::all();
     return view('kategori.index', [
         'active' => 'kategori',
-        'categories' => $categories
+        'categories' => $categories,
+        'books' => $books,
     ]);
 });
 Route::get('/blog', function () {
+    $blogs = Blogs::all();
     return view('blog.index', [
-        'active' => 'blog'
+        'active' => 'blog',
+        'blogs' => $blogs,
     ]);
 });
 

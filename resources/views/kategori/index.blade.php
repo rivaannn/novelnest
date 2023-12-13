@@ -75,64 +75,19 @@
 
             <!-- Product List -->
             <div class="grid grid-cols-1 gap-4 mt-4 md:grid-cols-2 lg:grid-cols-3">
-                @for ($i = 0; $i < 12; $i++)
+                @foreach ($books as $book)
                     <!-- Example Product Card -->
                     <a href="#" class="block p-4 bg-white rounded-md shadow-md hover:shadow-lg">
                         <img class="object-cover object-center w-full h-48 mb-2"
                             src="https://source.unsplash.com/1200x800/?book" alt="Nama Produk">
-                        <h3 class="text-lg font-semibold">Nama Produk</h3>
-                        <p class="text-gray-700">Penulis: Penulis Produk</p>
-                        <p class="text-gray-700">Harga: Rp 100.000</p>
+                        <h3 class="text-lg font-semibold">{{ $book->title }}</h3>
+                        <p class="text-gray-700">Penulis: {{ $book->writter->name }}</p>
+                        <p class="text-blue-700 text-lg">{{ 'RP.' . number_format($book->price, 2, ',', '.') }}</p>
                     </a>
-                @endfor
+                @endforeach
             </div>
             <!-- Pagination -->
-            <nav aria-label="Page navigation example">
-                <ul class="flex items-center justify-center h-10 mt-8 -space-x-px text-base">
-                    <li>
-                        <a href="#"
-                            class="flex items-center justify-center h-10 px-4 leading-tight text-gray-500 bg-white border border-gray-300 ms-0 border-e-0 rounded-s-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
-                            <span class="sr-only">Previous</span>
-                            <svg class="w-3 h-3 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                                fill="none" viewBox="0 0 6 10">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M5 1 1 5l4 4" />
-                            </svg>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#"
-                            class="flex items-center justify-center h-10 px-4 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">1</a>
-                    </li>
-                    <li>
-                        <a href="#"
-                            class="flex items-center justify-center h-10 px-4 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">2</a>
-                    </li>
-                    <li>
-                        <a href="#" aria-current="page"
-                            class="z-10 flex items-center justify-center h-10 px-4 leading-tight text-blue-600 border border-blue-300 bg-blue-50 hover:bg-blue-100 hover:text-blue-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white">3</a>
-                    </li>
-                    <li>
-                        <a href="#"
-                            class="flex items-center justify-center h-10 px-4 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">4</a>
-                    </li>
-                    <li>
-                        <a href="#"
-                            class="flex items-center justify-center h-10 px-4 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">5</a>
-                    </li>
-                    <li>
-                        <a href="#"
-                            class="flex items-center justify-center h-10 px-4 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
-                            <span class="sr-only">Next</span>
-                            <svg class="w-3 h-3 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                                fill="none" viewBox="0 0 6 10">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="m1 9 4-4-4-4" />
-                            </svg>
-                        </a>
-                    </li>
-                </ul>
-            </nav>
+
 
         </div>
     </div>

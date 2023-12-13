@@ -33,7 +33,7 @@ Route::get('/about', function () {
 });
 Route::get('/kategori', function () {
     $categories = Category::all();
-    $books = Books::all();
+    $books = Books::latest()->paginate(5);
     return view('kategori.index', [
         'active' => 'kategori',
         'categories' => $categories,

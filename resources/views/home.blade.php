@@ -23,8 +23,7 @@
 
     {{-- Kategori Buku --}}
     <div class="container mx-auto mt-8">
-        <h1 class="mt-4 mb-8 text-4xl font-bold text-center">Kategori Buku</h1>
-
+        <h1 class="mt-4 mb-8 text-4xl font-bold text-center">Genre Buku</h1>
         <div class="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-6">
             <!-- Kategori 1 -->
             @foreach ($categories as $category)
@@ -45,27 +44,29 @@
         <h1 class="mt-8 mb-8 text-4xl font-bold">Rekomendasi Buku Novelnest</h1>
 
         <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-            @for ($i = 0; $i < 4; $i++)
+
+            @foreach ($books as $book)
                 <a href="#"
                     class="overflow-hidden transition duration-300 bg-white rounded-lg shadow-md hover:shadow-lg">
                     <img class="object-cover object-center w-full h-48" src="https://source.unsplash.com/800x1200/?book"
                         alt="Book Image">
                     <div class="p-4">
-                        <h2 class="mb-2 text-xl font-bold">MELANGKAH</h2>
-                        <p class="mb-2 text-gray-700">Penulis: JS KHAIREN</p>
-                        <p class="mb-2 text-gray-700">Harga: Rp 74.400</p>
+                        <h2 class="mb-2 text-xl font-bold">{{ $book->title }}</h2>
+                        <p class="mb-2 text-gray-700">Penulis: {{ $book->writter->name }} </p>
+                        <p class="mb-2 text-gray-700">Harga: {{ 'RP.' . number_format($book->price, 2, ',', '.') }}</p>
                         <!-- Badges Kategori -->
                         <span
-                            class="inline-block px-2 py-1 text-xs font-semibold tracking-wide text-white bg-blue-500 rounded">Programming</span>
+                            class="inline-block px-2 py-1 text-xs font-semibold tracking-wide text-white bg-blue-500 rounded">{{ $category->name }}</span>
                     </div>
                 </a>
-            @endfor
+            @endforeach
+
         </div>
     </div>
 
     <!-- Tombol "Lihat Semua Buku" -->
     <div class="container mx-auto mt-4 text-end">
-        <a href="#"
+        <a href="{{ url('/kategori') }}"
             class="px-4 py-2 text-white transition duration-300 bg-blue-500 rounded-md hover:bg-blue-600">Lihat
             Semua Buku</a>
     </div>
@@ -76,6 +77,7 @@
             <div>
                 <h2 class="mt-4 text-2xl font-bold text-gray-900 md:text-4xl">Blog Novelnest</h2>
             </div>
+
             <div
                 class="grid mt-16 overflow-hidden border divide-x divide-y rounded-xl sm:grid-cols-2 lg:divide-y-0 lg:grid-cols-3 xl:grid-cols-4">
                 <div class="relative group bg-white transition hover:z-[1] hover:shadow-2xl">

@@ -1,14 +1,15 @@
 <?php
 
 
+use App\Models\Category;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\BlogsController;
 use App\Http\Controllers\BooksController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\SocialiteController;
-use App\Http\Controllers\BlogsController;
 use App\Http\Controllers\WritersController;
+use App\Http\Controllers\SocialiteController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,8 +31,10 @@ Route::get('/about', function () {
     ]);
 });
 Route::get('/kategori', function () {
+    $categories = Category::all();
     return view('kategori.index', [
-        'active' => 'kategori'
+        'active' => 'kategori',
+        'categories' => $categories
     ]);
 });
 Route::get('/blog', function () {

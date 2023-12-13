@@ -33,6 +33,14 @@
                                 class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase dark:text-gray-400">
                                 {{ __('Deskripsi') }}
                             </th>
+                            <th scope="col"
+                                class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase dark:text-gray-400">
+                                {{ __('Penulis') }}
+                            </th>
+                            <th scope="col"
+                                class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase dark:text-gray-400">
+                                {{ __('Harga') }}
+                            </th>
                             <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-right">
                                 {{ __('Actions') }}
                             </th>
@@ -48,7 +56,13 @@
                                     {{ $book->title }}
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap">
-                                    {{ $book->description }}
+                                    {{ mb_strimwidth($book->description, 0, 20, '...') }}
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    {{ $book->writter->name }}
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    {{ 'RP.' . number_format($book->price, 2, ',', '.') }}
                                 </td>
                                 <td class="px-6 py-4 text-sm font-medium text-right whitespace-nowrap">
                                     <a href="{{ route('books.show', $book->id) }}"

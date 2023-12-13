@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Books;
 use App\Models\Category;
+use Database\Seeders\BookSeeder;
 use Illuminate\Routing\Controller;
 
 class HomeController extends Controller
@@ -10,9 +12,11 @@ class HomeController extends Controller
     public function index()
     {
         $categories = Category::all();
+        $books = Books::all();
         return view('home', [
             'active' => 'home',
-            'categories' => $categories
+            'categories' => $categories,
+            'books' => $books,
         ]);
     }
 }

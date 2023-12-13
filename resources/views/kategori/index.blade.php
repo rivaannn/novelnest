@@ -57,7 +57,21 @@
                         <option value="terpopuler">Terpopuler</option>
                     </select>
                 </form>
+
             </nav>
+            {{-- Kategori --}}
+            <div class="container mx-auto mt-8">
+                <div class="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-6">
+                    <!-- Kategori 1 -->
+                    @foreach ($categories as $category)
+                        <div class="flex flex-col items-center">
+                            <a href="#" class="bg-gray-200 w-full rounded text-gray-600">
+                                <p class="text-xl text-center">{{ $category->name }}</p>
+                            </a>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
 
             <!-- Product List -->
             <div class="grid grid-cols-1 gap-4 mt-4 md:grid-cols-2 lg:grid-cols-3">

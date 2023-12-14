@@ -38,22 +38,14 @@
                                 class="w-full px-3 py-2 text-gray-700 border rounded-lg dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-indigo-500 dark:focus:border-indigo-500 focus:outline-none">
                         </div>
                         <div class="mb-4">
-                            <label for="book_number"
-                                class="block mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
-                                {{ __('Book Number') }}
-                            </label>
-                            <input type="text" name="book_number" id="book_number" placeholder="Book Number"
-                                class="w-full px-3 py-2 text-gray-700 border rounded-lg dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-indigo-500 dark:focus:border-indigo-500 focus:outline-none">
-                        </div>
-                        <div class="mb-4">
-                            <label for="writer_id"
+                            <label for="writter_id"
                                 class="block mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
                                 {{ __('Writer') }}
                             </label>
-                            <select name="writer_id" id="writer_id"
+                            <select name="writter_id" id="writter_id"
                                 class="w-full px-3 py-2 text-gray-700 border rounded-lg dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-indigo-500 dark:focus:border-indigo-500 focus:outline-none">
                                 @foreach ($writers as $writer)
-                                    <option value="{{ $writer->id }}">{{ $writer->name }}</option>
+                                    <option value={{ $writer->id }}>{{ $writer->name }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -65,7 +57,7 @@
                             <select name="publisher_id" id="publisher_id"
                                 class="w-full px-3 py-2 text-gray-700 border rounded-lg dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-indigo-500 dark:focus:border-indigo-500 focus:outline-none">
                                 @foreach ($publishers as $publisher)
-                                    <option value="{{ $publisher->id }}">{{ $publisher->name }}</option>
+                                    <option value={{ $publisher->id }}>{{ $publisher->nama }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -77,7 +69,7 @@
                             <select name="category_id" id="category_id"
                                 class="w-full px-3 py-2 text-gray-700 border rounded-lg dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-indigo-500 dark:focus:border-indigo-500 focus:outline-none">
                                 @foreach ($categories as $category)
-                                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                    <option value={{ $category->id }}>{{ $category->name }}</option>
                                 @endforeach
                             </select>
                         </div>

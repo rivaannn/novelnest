@@ -33,17 +33,37 @@ Route::get('/about', function () {
 });
 Route::get('/kategori', function () {
     $categories = Category::all();
-    $books = Books::all();
+    $books = Books::latest()->paginate(6);
     return view('kategori.index', [
         'active' => 'kategori',
         'categories' => $categories,
         'books' => $books,
     ]);
 });
+
+Route::get('/kategori/detailbuku/{id}', function ($id) {
+    $books = Books::find($id);
+    return view('kategori.detailbuku', [
+        'active' => 'kategori',
+        'books' => $books,
+    ]);
+});
+
+
+// Route::get('/blog', function () {
+//     $blogs = Blogs::all();
+//     return view('blog.index', [
+//         'active' => 'blog',
+//         'blogs' => $blogs,
+//     ]);
+// });
+
 Route::get('/blog', function () {
-    $blogs = Blogs::all();
+    $categories = Category::all();
+    $blogs = Blogs::latest()->paginate(8);
     return view('blog.index', [
         'active' => 'blog',
+        'categories' => $categories,
         'blogs' => $blogs,
     ]);
 });

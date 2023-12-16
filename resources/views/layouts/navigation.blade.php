@@ -29,8 +29,28 @@
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link href="">
+                    <x-nav-link :href="route('writters.index')" :active="request()->routeIs(
+                        'writters.index',
+                        'writters.show',
+                        'writters.edit',
+                        'writters.create',
+                    )">
                         {{ __('Penulis') }}
+                    </x-nav-link>
+                </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('publishers.index')" :active="request()->routeIs(
+                        'publishers.index',
+                        'publishers.show',
+                        'publishers.edit',
+                        'publishers.create',
+                    )">
+                        {{ __('Publisher') }}
+                    </x-nav-link>
+                </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link href="#">
+                        {{ __('Order') }}
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">

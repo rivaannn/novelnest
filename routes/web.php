@@ -11,6 +11,8 @@ use App\Http\Controllers\BooksController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SocialiteController;
+use App\Http\Controllers\WritterController;
+use App\Http\Controllers\PublishersController;
 
 /*
 |--------------------------------------------------------------------------
@@ -49,21 +51,20 @@ Route::get('/kategori/detailbuku/{id}', function ($id) {
     ]);
 });
 
-
-// Route::get('/blog', function () {
-//     $blogs = Blogs::all();
-//     return view('blog.index', [
-//         'active' => 'blog',
-//         'blogs' => $blogs,
-//     ]);
-// });
-
 Route::get('/blog', function () {
     $categories = Category::all();
     $blogs = Blogs::latest()->paginate(8);
     return view('blog.index', [
         'active' => 'blog',
         'categories' => $categories,
+        'blogs' => $blogs,
+    ]);
+});
+
+Route::get('/blog/detailblog/{id}', function ($id) {
+    $blogs = Blogs::find($id);
+    return view('blog.detailblog', [
+        'active' => 'blog',
         'blogs' => $blogs,
     ]);
 });
@@ -112,6 +113,14 @@ Route::get('/blogs/create', function () {
     return view('dashboard.blogs.create');
 });
 
+Route::get('/writters/create', function () {
+    return view('dashboard.writters.create');
+});
+
+Route::get('/publishers/create', function () {
+    return view('dashboard.publishers.create');
+});
+
 // Route Untuk Users
 Route::middleware(['auth'])->group(function () {
     Route::get('/users', [UsersController::class, 'index'])->name('users.index');
@@ -143,6 +152,28 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/books/{book}/edit', [BooksController::class, 'edit'])->name('books.edit');
     Route::patch('/books/{book}', [BooksController::class, 'update'])->name('books.update');
     Route::delete('/books/{book}', [BooksController::class, 'destroy'])->name('books.destroy');
+});
+
+// Route untuk Writtes
+Route::middleware(['auth'])->group(function () {
+    Route::get('/writters', [WritterController::class, 'index'])->name('writters.index');
+    Route::get('/writters/{writter}', [WritterController::class, 'show'])->name('writters.show');
+    Route::get('/writters/create', [WritterController::class, 'create'])->name('writters.create');
+    Route::post('/writters', [WritterController::class, 'store'])->name('writters.store');
+    Route::get('/writters/{writter}/edit', [WritterController::class, 'edit'])->name('writters.edit');
+    Route::patch('/writters/{writter}', [WritterController::class, 'update'])->name('writters.update');
+    Route::delete('/writters/{writter}', [WritterController::class, 'destroy'])->name('writters.destroy');
+});
+
+// Route untuk Publishers
+Route::middleware(['auth'])->group(function () {
+    Route::get('/publishers', [PublishersController::class, 'index'])->name('publishers.index');
+    Route::get('/publishers/{publisher}', [PublishersController::class, 'show'])->name('publishers.show');
+    Route::get('/publishers/create', [PublishersController::class, 'create'])->name('publishers.create');
+    Route::post('/publishers', [PublishersController::class, 'store'])->name('publishers.store');
+    Route::get('/publishers/{publisher}/edit', [PublishersController::class, 'edit'])->name('publishers.edit');
+    Route::patch('/publishers/{publisher}', [PublishersController::class, 'update'])->name('publishers.update');
+    Route::delete('/publishers/{publisher}', [PublishersController::class, 'destroy'])->name('publishers.destroy');
 });
 
 

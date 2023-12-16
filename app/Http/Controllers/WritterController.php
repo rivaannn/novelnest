@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreWritterRequest;
 use App\Http\Requests\UpdateWritterRequest;
 use App\Models\Writter;
+use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\Session;
 
 class WritterController extends Controller
 {
@@ -13,7 +15,8 @@ class WritterController extends Controller
      */
     public function index()
     {
-        //
+        $writters = Writter::all();
+        return view('dashboard.writters.index', compact('writters'));
     }
 
     /**
@@ -21,7 +24,7 @@ class WritterController extends Controller
      */
     public function create()
     {
-        //
+        return view('dashboard.writters.create');
     }
 
     /**
@@ -29,7 +32,14 @@ class WritterController extends Controller
      */
     public function store(StoreWritterRequest $request)
     {
-        //
+        // $request->validated([
+        //     'name' => 'required|string|max:255',
+        //     'address' => 'required|string',
+        // ]);
+        Writter::create($request->all());
+
+        Session::flash('success', 'Penulis berhasil ditambahkan!');
+        return redirect()->route('writters.index');
     }
 
     /**
@@ -37,7 +47,7 @@ class WritterController extends Controller
      */
     public function show(Writter $writter)
     {
-        //
+        return view('dashboard.writters.show', compact('writter'));
     }
 
     /**
@@ -45,7 +55,7 @@ class WritterController extends Controller
      */
     public function edit(Writter $writter)
     {
-        //
+        return view('dashboard.writters.edit', compact('writter'));
     }
 
     /**
@@ -53,7 +63,12 @@ class WritterController extends Controller
      */
     public function update(UpdateWritterRequest $request, Writter $writter)
     {
-        //
+        $request->validated([
+            'name' => 'required|string|max:255',
+            'address' => 'required|string',
+        ]);
+        $writter->update($request->all());
+        return redirect()->route('writters.index')->with('success', 'Penulis berhasil diupdate.');
     }
 
     /**
@@ -61,6 +76,7 @@ class WritterController extends Controller
      */
     public function destroy(Writter $writter)
     {
-        //
+        $writter->delete();
+        return redirect()->route('writters.index')->with('success', 'Penulis berhasil dihapus.');
     }
 }

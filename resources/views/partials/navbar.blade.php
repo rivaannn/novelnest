@@ -21,7 +21,7 @@
                         </svg>
                     </button>
                     <div x-show="open" @click.away="open = false"
-                        class="absolute right-0 mt-2 space-y-2 w-52 text-gray-700 bg-white border border-gray-100 rounded-md shadow-md dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400">
+                        class="absolute right-0 mt-2 space-y-2 text-gray-700 bg-white border border-gray-100 rounded-md shadow-md w-52 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400">
                         <a href="/dashboard"
                             class="block px-4 py-2 transition duration-150 ease-in-out hover:bg-gray-100 dark:hover:bg-gray-700">Dashboard</a>
                         <a href="/profile"
@@ -39,11 +39,11 @@
 
             @guest
                 <a href="/login"
-                    class="inline-flex items-center justify-center px-4 py-2 text-sm text-white bg-blue-600 rounded-md hover:bg-blue-700 me-4">
+                    class="inline-flex items-center justify-center px-6 py-2 text-sm text-white bg-blue-600 rounded-full hover:bg-blue-700 me-4">
                     <span>Masuk</span>
                 </a>
                 <a href="/register"
-                    class="inline-flex items-center justify-center px-4 py-2 text-sm text-gray-600 bg-gray-300 rounded-md hover:bg-gray-200 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700">
+                    class="inline-flex items-center justify-center px-6 py-2 text-sm text-gray-600 bg-gray-300 rounded-full hover:bg-gray-200 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700">
                     <span>Daftar</span>
                 </a>
             @endguest

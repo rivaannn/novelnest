@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StorepublishersRequest;
 use App\Http\Requests\UpdatepublishersRequest;
 use App\Models\publishers;
+use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\Session;
 
 class PublishersController extends Controller
 {
@@ -13,7 +15,8 @@ class PublishersController extends Controller
      */
     public function index()
     {
-        //
+        $publishers = publishers::all();
+        return view('dashboard.publishers.index', compact('publishers'));
     }
 
     /**
@@ -21,7 +24,7 @@ class PublishersController extends Controller
      */
     public function create()
     {
-        //
+        return view('dashboard.publishers.create');
     }
 
     /**
@@ -29,7 +32,10 @@ class PublishersController extends Controller
      */
     public function store(StorepublishersRequest $request)
     {
-        //
+        publishers::create($request->all());
+
+        Session::flash('success', 'Publisher berhasil ditambahkan!');
+        return redirect()->route('publishers.index');
     }
 
     /**
@@ -37,30 +43,49 @@ class PublishersController extends Controller
      */
     public function show(publishers $publishers)
     {
-        //
+        return view('dashboard.publishers.show', compact('publishers'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(publishers $publishers)
+    public function edit(publishers $publisher)
     {
-        //
+        return view('dashboard.publishers.edit', [
+            'publisher' => $publisher
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdatepublishersRequest $request, publishers $publishers)
+    public function update(UpdatePublishersRequest $request, Publishers $publisher)
     {
-        //
+        try {
+            $validatedData = $request->validated(); // Mendapatkan data yang telah divalidasi
+
+            $publisher->update($validatedData); // Melakukan update pada model Publishers
+
+            Session::flash('success', 'Publisher berhasil diupdate.');
+        } catch (\Exception $e) {
+            Session::flash('error', 'Gagal mengupdate publisher. Silakan coba lagi.');
+        }
+
+        return redirect()->route('publishers.index');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(publishers $publishers)
+    public function destroy($id)
     {
-        //
+        try {
+            $publisher = publishers::findOrFail($id);
+            $publisher->delete();
+            Session::flash('success', 'Publisher berhasil dihapus.');
+        } catch (\Exception $e) {
+            Session::flash('error', 'Gagal menghapus publisher. Silakan coba lagi.');
+        }
+        return redirect()->route('publishers.index');
     }
 }

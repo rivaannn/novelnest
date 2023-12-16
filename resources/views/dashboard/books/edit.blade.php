@@ -72,8 +72,12 @@
                                 <label for="writer" class="block mb-2 text-sm text-gray-600 dark:text-gray-400">
                                     {{ __('Writer') }}
                                 </label>
-                                <input type="text" name="writer" id="writer" value="{{ $book->writer }}"
-                                    class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 dark:focus:border-indigo-500 focus:border-indigo-500 focus:ring focus:ring-indigo-500 dark:focus:ring-indigo-500 focus:ring-opacity-50" />
+                                <select name="writer_id" id="writer_id"
+                                    class="w-full px-3 py-2 text-gray-700 border rounded-lg dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-indigo-500 dark:focus:border-indigo-500 focus:outline-none">
+                                    @foreach ($writers as $writer)
+                                        <option value={{ $writer->id }}>{{ $writer->name }}</option>
+                                    @endforeach
+                                </select>
                                 @error('writer')
                                     <span class="text-sm text-red-600 dark:text-red-400">
                                         {{ $message }}
@@ -85,9 +89,12 @@
                                 <label for="publisher" class="block mb-2 text-sm text-gray-600 dark:text-gray-400">
                                     {{ __('Publisher') }}
                                 </label>
-                                <input type="text" name="publisher" id="publisher"
-                                    value="{{ $book->publisher->nama }}"
-                                    class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 dark:focus:border-indigo-500 focus:border-indigo-500 focus:ring focus:ring-indigo-500 dark:focus:ring-indigo-500 focus:ring-opacity-50" />
+                                <select name="publisher_id" id="publisher_id"
+                                    class="w-full px-3 py-2 text-gray-700 border rounded-lg dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-indigo-500 dark:focus:border-indigo-500 focus:outline-none">
+                                    @foreach ($publishers as $publisher)
+                                        <option value={{ $publisher->id }}>{{ $publisher->nama }}</option>
+                                    @endforeach
+                                </select>
                                 @error('publisher')
                                     <span class="text-sm text-red-600 dark:text-red-400">
                                         {{ $message }}

@@ -64,9 +64,10 @@
 <!-- Tombol "Lihat Semua Buku" -->
 <div class="container mx-auto mt-4 text-end">
     <a href="{{ url('/kategori') }}"
-        class="px-4 py-2 text-white transition duration-300 bg-blue-500 rounded-md hover:bg-blue-600">Lihat
+        class="px-4 py-2 text-white transition bg-blue-500 rounded-full duration-600 hover:bg-blue-600">Lihat
         Semua Buku</a>
 </div>
+
 {{-- Blog NovelNest --}}
 <div class="py-16 mt-8 overflow-hidden bg-gray-100">
     <div class="container px-6 m-auto space-y-8 text-gray-500 md:px-12">
@@ -76,71 +77,36 @@
 
         <div
             class="grid mt-16 overflow-hidden border divide-x divide-y rounded-xl sm:grid-cols-2 lg:divide-y-0 lg:grid-cols-3 xl:grid-cols-4">
+            @foreach ($blogs as $blog)
+                @if ($loop->iteration > 4)
+                @break
+            @endif
             <div class="relative group bg-white transition hover:z-[1] hover:shadow-2xl">
                 <div class="relative p-8 space-y-8">
-                    <img src="https://source.unsplash.com/1600x800/?book" class="shadow-md" alt="burger illustration">
+                    <img src="https://source.unsplash.com/1600x800/?book" class="shadow-md"
+                        alt="burger illustration">
                     <div class="space-y-2">
-                        <h5 class="text-xl font-medium text-gray-800 transition group-hover:text-blue-600">First
-                            feature</h5>
-                        <p class="text-sm text-gray-600">Neque Dolor, fugiat non cum doloribus aperiam voluptates
-                            nostrum.</p>
+                        <h5 class="text-xl font-medium text-gray-800 transition group-hover:text-blue-600">
+                            {{ $blog->author }}</h5>
+                        <p class="text-sm text-gray-600">{{ $blog->title }}</p>
                     </div>
-                    <a href="#" class="flex items-center justify-between group-hover:text-blue-600">
+                    <a href="/blog/detailblog/{{ $blog->id }}"
+                        class="flex items-center justify-between group-hover:text-blue-600">
                         <span class="text-sm">Read more</span>
                         <span
-                            class="text-2xl transition duration-300 -translate-x-4 opacity-0 group-hover:opacity-100 group-hover:translate-x-0">&RightArrow;</span>
+                            class="text-2xl transition -translate-x-4 opacity-0 duration-600 group-hover:opacity-100 group-hover:translate-x-0">
+                            &RightArrow;</span>
                     </a>
                 </div>
             </div>
-            <div class="relative group bg-white transition hover:z-[1] hover:shadow-2xl">
-                <div class="relative p-8 space-y-8">
-                    <img src="https://source.unsplash.com/1600x800/?book" class="shadow-md" alt="burger illustration">
-
-                    <div class="space-y-2">
-                        <h5 class="text-xl font-medium text-gray-800 transition group-hover:text-blue-600">Second
-                            feature</h5>
-                        <p class="text-sm text-gray-600">Neque Dolor, fugiat non cum doloribus aperiam voluptates
-                            nostrum.</p>
-                    </div>
-                    <a href="#" class="flex items-center justify-between group-hover:text-blue-600">
-                        <span class="text-sm">Read more</span>
-                        <span
-                            class="text-2xl transition duration-300 -translate-x-4 opacity-0 group-hover:opacity-100 group-hover:translate-x-0">&RightArrow;</span>
-                    </a>
-                </div>
-            </div>
-            <div class="relative group bg-white transition hover:z-[1] hover:shadow-2xl">
-                <div class="relative p-8 space-y-8">
-                    <img src="https://source.unsplash.com/1600x800/?book" class="shadow-md" alt="burger illustration">
-
-                    <div class="space-y-2">
-                        <h5 class="text-xl font-medium text-gray-800 transition group-hover:text-blue-600">Third
-                            feature</h5>
-                        <p class="text-sm text-gray-600">Neque Dolor, fugiat non cum doloribus aperiam voluptates
-                            nostrum.</p>
-                    </div>
-                    <a href="#" class="flex items-center justify-between group-hover:text-blue-600">
-                        <span class="text-sm">Read more</span>
-                        <span
-                            class="text-2xl transition duration-300 -translate-x-4 opacity-0 group-hover:opacity-100 group-hover:translate-x-0">&RightArrow;</span>
-                    </a>
-                </div>
-            </div>
-            <div class="relative group bg-gray-100 transition hover:z-[1] hover:shadow-2xl lg:hidden xl:block">
-                <div
-                    class="flex items-center justify-center p-8 mt-20 space-y-8 transition duration-300 border-dashed rounded-lg group-hover:bg-white group-hover:border group-hover:scale-90">
-                    <a href="{{ url('/blog') }}" class=" group-hover:text-blue-600">
-                        <img src="https://source.unsplash.com/2000x800/?book" class="bg-cover shadow-md"
-                            alt="burger illustration">
-
-                        <div class="flex items-center justify-center mx-auto mt-4">
-                            <h5 class="text-xl font-medium text-gray-800 transition group-hover:text-blue-600">More
-                                Blog Novelnest</h5>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </div>
+        @endforeach
     </div>
+</div>
+<!-- Tombol "Lihat Semua Buku" -->
+<div class="container mx-auto mt-8 text-end">
+    <a href="{{ url('/blog') }}"
+        class="px-4 py-2 text-white transition duration-300 bg-blue-500 rounded-full hover:bg-blue-600">Lihat
+        Semua Blog</a>
+</div>
 </div>
 @endsection

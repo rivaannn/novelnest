@@ -73,7 +73,7 @@
         </div>
 
         {{-- Pagination --}}
-        <div class="flex mt-8 justify-beetween items-beetween">
+        <div class="flex mt-8">
             {{ $books->links() }}
         </div>
     </div>

@@ -54,7 +54,7 @@
                     </p>
                     <!-- Badges Kategori -->
                     <span
-                        class="inline-block px-2 py-1 text-xs font-semibold tracking-wide text-white bg-blue-500 rounded">{{ $category->name }}</span>
+                        class="inline-block px-2 py-1 text-xs font-semibold tracking-wide text-white bg-blue-500 rounded">{{ $book->category->name }}</span>
                 </div>
             </a>
         @endforeach

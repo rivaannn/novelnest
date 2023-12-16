@@ -6,6 +6,23 @@
             {{ __('List Data Blog') }}
         </h2>
     </x-slot>
+
+    <!-- Menampilkan pesan notifikasi -->
+    @if (Session::has('success'))
+        <div
+            class="flex items-center justify-center max-w-4xl p-2 mx-auto mt-8 mb-4 text-white bg-green-500 rounded-full ms-auto">
+            {{ Session::get('success') }}
+        </div>
+    @endif
+
+    {{-- Jika Gagal  --}}
+    @if (Session::has('error'))
+        <div
+            class="flex items-center justify-center max-w-4xl p-2 mx-auto mt-8 mb-4 text-white bg-red-500 rounded-full ms-auto">
+            {{ Session::get('error') }}
+        </div>
+    @endif
+
     <div class="py-12">
         <div class="flex items-end justify-end mb-6 me-96">
             <a href="{{ route('blogs.create') }}"
@@ -13,7 +30,7 @@
                 {{ __('Tambah Blog Baru') }}
             </a>
         </div>
-        <div class="flex justify-center items-center mx-auto max-w-full sm:px-6 lg:px-8">
+        <div class="flex items-center justify-center max-w-full mx-auto sm:px-6 lg:px-8">
             @if ($blogs->isEmpty())
                 <p>{{ __('Buku tidak Ditemukan!!!') }}</p>
             @else

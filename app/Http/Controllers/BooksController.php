@@ -24,12 +24,13 @@ class BooksController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create() {
+    public function create()
+    {
         $writter = Writter::all();
         $publishers = Publishers::all();
         return view('dashboard.books.create', [
-            'writers'=> $writter,
-            'publishers'=> $publishers,
+            'writers' => $writter,
+            'publishers' => $publishers,
             'categories' => Category::all()
         ]);
     }
@@ -38,7 +39,8 @@ class BooksController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StorebooksRequest $request) {
+    public function store(StorebooksRequest $request)
+    {
         $request->validated([
             'title' => 'required|string|max:255',
             'description' => 'required|string',
@@ -51,7 +53,8 @@ class BooksController extends Controller
         return redirect()->route('books.index')->with('success', 'Buku berhasil ditambahkan.');
     }
 
-    public function generate_book_number() {
+    public function generate_book_number()
+    {
         // code ..
     }
     /**
@@ -67,7 +70,14 @@ class BooksController extends Controller
      */
     public function edit(Books $book)
     {
-        return view('dashboard.books.edit', compact('book'));
+        $writter = Writter::all();
+        $publishers = Publishers::all();
+        return view('dashboard.books.edit', [
+            'book' => $book,
+            'writers' => $writter,
+            'publishers' => $publishers,
+            'categories' => Category::all()
+        ]);
     }
 
     /**
@@ -86,10 +96,7 @@ class BooksController extends Controller
             'image' => 'required|image',
             'status' => 'required|in:1,0',
         ]);
-        $book->update([
-            'title' => $request->input('title'),
-            'description' => $request->input('description'),
-        ]);
+        $book->update($request->all());
         return redirect()->route('books.index')->with('success', 'Buku berhasil diperbarui.');
     }
 

@@ -8,7 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Publishers extends Model
 {
     use HasFactory;
-    public function books() {
-        return $this->hasMany(Book::class);
+    public function books()
+    {
+        return $this->hasMany(Books::class);
     }
+
+    protected $guarded = ['id'];
+
+    protected $fillable = ['nama', 'code'];
 }

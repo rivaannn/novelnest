@@ -14,9 +14,9 @@
                     <form action="{{ route('publishers.store') }}" method="POST">
                         @csrf
                         <div class="mb-4">
-                            <label for="name"
+                            <label for="nama"
                                 class="block text-sm font-medium text-gray-600 dark:text-gray-300">Nama</label>
-                            <input type="text" name="name" id="name"
+                            <input type="text" name="nama" id="nama"
                                 class="w-full p-2 mt-1 border rounded-md focus:outline-none focus:border-blue-500">
                         </div>
 

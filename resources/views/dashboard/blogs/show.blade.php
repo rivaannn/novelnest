@@ -12,41 +12,42 @@
             {{-- Button  --}}
             <div class="flex justify-end">
                 <a href="{{ route('blogs.index') }}"
-                    class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded-full">
+                    class="px-4 py-2 font-semibold text-blue-700 bg-transparent border border-blue-500 rounded-full hover:bg-blue-500 hover:text-white hover:border-transparent">
                     Kembali
                 </a>
             </div>
             {{-- End Button  --}}
             <main class="mt-10">
-                <div class="mb-4 md:mb-0 w-full max-w-screen-md mx-auto relative" style="height: 24em;">
-                    <div class="absolute left-0 bottom-0 w-full h-full z-10"
+                <div class="relative w-full max-w-screen-md mx-auto mb-4 md:mb-0" style="height: 24em;">
+                    <div class="absolute bottom-0 left-0 z-10 w-full h-full"
                         style="background-image: linear-gradient(180deg,transparent,rgba(0,0,0,.7));"></div>
                     <img src="{{ asset('public/' . $blog->image) }}" alt="blog"
-                        class="absolute
-                        left-0 top-0 w-full h-full z-0 object-cover" />
-                    <div class="p-4 absolute bottom-0 left-0 z-20">
+                        class="absolute top-0 left-0 z-0 object-cover w-full h-full" />
+                    <div class="absolute bottom-0 left-0 z-20 p-4">
                         <a href="#"
-                            class="px-4 py-1 bg-black text-gray-200 inline-flex items-center justify-center mb-2">{{ $blog->category }}</a>
-                        <h2 class="text-4xl font-semibold text-gray-100 leading-tight">
+                            class="inline-flex items-center justify-center px-4 py-1 mb-2 text-gray-200 bg-black">{{ $blog->category }}</a>
+                        <h2 class="text-4xl font-semibold leading-tight text-gray-100">
                             {{ $blog->title }}
                         </h2>
-                        <h2 class="text-xl font-semibold text-gray-100 leading-tight">
+                        <h2 class="text-xl font-semibold leading-tight text-gray-100">
                             {{ $blog->slug }}
                         </h2>
                         <div class="flex mt-3">
                             <img src="https://randomuser.me/api/portraits/men/97.jpg"
-                                class="h-10 w-10 rounded-full mr-2 object-cover" />
+                                class="object-cover w-10 h-10 mr-2 rounded-full" />
                             <div>
-                                <p class="font-semibold text-gray-200 text-sm"> Mike Sullivan </p>
-                                <p class="font-semibold text-gray-400 text-xs"> 14 Aug </p>
+                                <p class="text-sm font-semibold text-gray-200"> {{ $blog->author }} </p>
+                                <p class="text-xs font-semibold text-gray-400"> {{ $blog->created_at->format('d F Y') }}
+                                </p>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="px-4 lg:px-0 mt-12 text-gray-700 max-w-screen-md mx-auto text-lg leading-relaxed">
-                    <p class="pb-6">{{ $blog->body }}</p>
+                <div class="max-w-screen-md px-4 mx-auto mt-12 text-lg leading-relaxed text-gray-700 lg:px-0">
+                    {!! $blog->body !!}
                 </div>
+
             </main>
         </div>
     </div>

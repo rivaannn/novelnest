@@ -50,7 +50,7 @@
                     <div class="p-4">
                         <h2 class="mb-2 text-xl font-bold">{{ $book->title }}</h2>
                         <p class="mb-2 text-gray-700">Penulis: {{ $book->writter->name }} </p>
-                        <p class="mb-2 text-lg text-blue-500">{{ 'RP.' . number_format($book->price, 2, ',', '.') }}
+                        <p class="mb-2 text-lg text-blue-500">{{ 'RP. ' . number_format($book->price, 2, ',', '.') }}
                         </p>
                         <!-- Badges Kategori -->
                         <span

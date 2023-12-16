@@ -43,7 +43,9 @@ class PublishersController extends Controller
      */
     public function show(publishers $publishers)
     {
-        return view('dashboard.publishers.show', compact('publishers'));
+        return view('dashboard.publishers.show', [
+            'publishers' => $publishers
+        ]);
     }
 
     /**
@@ -61,14 +63,13 @@ class PublishersController extends Controller
      */
     public function update(UpdatePublishersRequest $request, Publishers $publisher)
     {
-        try {
-            $validatedData = $request->validated(); // Mendapatkan data yang telah divalidasi
-
-            $publisher->update($validatedData); // Melakukan update pada model Publishers
-
-            Session::flash('success', 'Publisher berhasil diupdate.');
-        } catch (\Exception $e) {
-            Session::flash('error', 'Gagal mengupdate publisher. Silakan coba lagi.');
+        $publisher->update($request->all());
+        if ($publisher) {
+            // redirect ke halaman data dan mengirim pesan success
+            return redirect()->route('publishers.index')->with(['success' => 'Data Berhasil Diubah!']);
+        } else {
+            // redirect ke halaman data dan mengirim pesan error
+            return redirect()->route('publishers.index')->with(['error' => 'Data Gagal Diubah!']);
         }
 
         return redirect()->route('publishers.index');

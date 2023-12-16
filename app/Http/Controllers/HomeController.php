@@ -13,12 +13,15 @@ class HomeController extends Controller
     public function index()
     {
         $categories = Category::all();
-        $books = Books::all();
+
+        // Mengambil buku yang paling baru
+        $latestBooks = Books::latest()->limit(4)->get();
+
         $blogs = Blogs::all();
         return view('home', [
             'active' => 'home',
             'categories' => $categories,
-            'books' => $books,
+            'latestBooks' => $latestBooks,
             'blogs' => $blogs,
         ]);
     }

@@ -21,14 +21,32 @@
             {{ Session::get('error') }}
         </div>
     @endif
-
     <div class="py-12">
-        <div class="flex items-end justify-end mb-6 me-96">
+        <div class="flex items-end justify-between mb-6 me-96">
+            <!-- Tambah Buku Button -->
             <a href="{{ url('books/create') }}"
-                class="inline-block px-4 py-2 text-white bg-green-600 rounded-md hover:bg-green-700 focus:outline-none focus:shadow-outline-green active:bg-green-800">
+                class="inline-block px-4 py-2 text-white bg-green-600 rounded-md ms-96 hover:bg-green-700 focus:outline-none focus:shadow-outline-green active:bg-green-800">
                 {{ __('Tambah Buku') }}
             </a>
+            <!-- Search Form -->
+            <form action="{{ route('books.search') }}" class="max-w-[480px] w-full px-4" method="get">
+                <div class="relative flex items-center">
+                    <input type="text" name="q" class="w-full h-12 p-4 border rounded-full shadow"
+                        placeholder="Search">
+                    <button type="submit" class="ml-2">
+                        <svg class="w-5 h-5 fill-current text-sky-600" xmlns="http://www.w3.org/2000/svg"
+                            xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px"
+                            viewBox="0 0 56.966 56.966" style="enable-background:new 0 0 56.966 56.966;"
+                            xml:space="preserve">
+                            <path
+                                d="M55.146,51.887L41.588,37.786c3.486-4.144,5.396-9.358,5.396-14.786c0-12.682-10.318-23-23-23s-23,10.318-23,23  s10.318,23,23,23c4.761,0,9.298-1.436,13.177-4.162l13.661,14.208c0.571,0.593,1.339,0.92,2.162,0.92  c0.779,0,1.518-0.297,2.079-0.837C56.255,54.982,56.293,53.08,55.146,51.887z M23.984,6c9.374,0,17,7.626,17,17s-7.626,17-17,17  s-17-7.626-17-17S14.61,6,23.984,6z">
+                            </path>
+                        </svg>
+                    </button>
+                </div>
+            </form>
         </div>
+
         <div class="flex items-center justify-center max-w-full mx-auto sm:px-6 lg:px-8">
             @if ($books->isEmpty())
                 <p class="text-xl text-center text-red-500 border-2 outline-dashed">
@@ -91,7 +109,8 @@
                                         {{ __('Edit') }}
                                     </a>
                                     <form action="{{ route('books.destroy', $book->id) }}" method="POST"
-                                        class="inline">
+                                        class="inline"
+                                        onsubmit="return confirm('Apakah Anda yakin ingin menghapus buku ini?');">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit"
@@ -99,6 +118,7 @@
                                             {{ __('Delete') }}
                                         </button>
                                     </form>
+
                                 </td>
                             </tr>
                         @endforeach

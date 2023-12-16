@@ -13,6 +13,8 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SocialiteController;
 use App\Http\Controllers\WritterController;
 use App\Http\Controllers\PublishersController;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,7 +43,7 @@ Route::get('/kategori', function () {
         'categories' => $categories,
         'books' => $books,
     ]);
-});
+})->name('kategori.index');
 
 Route::get('/kategori/detailbuku/{id}', function ($id) {
     $books = Books::find($id);
@@ -49,7 +51,66 @@ Route::get('/kategori/detailbuku/{id}', function ($id) {
         'active' => 'kategori',
         'books' => $books,
     ]);
+})->name('kategori.detailbuku');
+
+Route::get('/kategori/search', function (Request $request) {
+    $categories = Category::all();
+    $books = Books::where('title', 'like', '%' . $request->search . '%')->latest()->paginate(6);
+    return view('kategori.index', [
+        'active' => 'kategori',
+        'categories' => $categories,
+        'books' => $books,
+    ]);
 });
+
+Route::get('/kategori/filter', function (Request $request) {
+    $categories = Category::all();
+
+    $validator = Validator::make($request->all(), [
+        'kategori' => 'exists:categories,id',
+    ]);
+
+    if ($validator->fails()) {
+        return redirect()->route('kategori.index')->withErrors($validator)->withInput();
+    }
+
+    $booksQuery = Books::query();
+
+    // Filter berdasarkan kategori
+    if ($request->has('kategori') && $request->kategori !== '') {
+        $booksQuery->whereHas('category', function ($categoryQuery) use ($request) {
+            $categoryQuery->where('id', $request->kategori);
+        });
+    }
+
+    $books = $booksQuery->latest()->paginate(6);
+
+    // Tampilkan pesan jika tidak ada buku
+    if ($books->isEmpty()) {
+        return redirect()->route('kategori.index')->with('error', 'Tidak ada buku yang sesuai dengan filter.');
+    }
+
+    return view('kategori.index', [
+        'active' => 'kategori',
+        'categories' => $categories,
+        'books' => $books,
+    ]);
+})->name('kategori.filter');
+
+Route::get('/kategori/{category}', function ($category) {
+    $categories = Category::all();
+    $selectedCategory = Category::findOrFail($category);
+    $books = $selectedCategory->books()->latest()->paginate(6);
+
+    return view('kategori.index', [
+        'active' => 'kategori',
+        'categories' => $categories,
+        'books' => $books,
+    ]);
+})->name('kategori.filterByCategory');
+
+
+
 
 Route::get('/blog', function () {
     $categories = Category::all();
@@ -152,6 +213,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/books/{book}/edit', [BooksController::class, 'edit'])->name('books.edit');
     Route::patch('/books/{book}', [BooksController::class, 'update'])->name('books.update');
     Route::delete('/books/{book}', [BooksController::class, 'destroy'])->name('books.destroy');
+    Route::get('/search', [BooksController::class, 'search'])->name('books.search');
 });
 
 // Route untuk Writtes
@@ -168,7 +230,7 @@ Route::middleware(['auth'])->group(function () {
 // Route untuk Publishers
 Route::middleware(['auth'])->group(function () {
     Route::get('/publishers', [PublishersController::class, 'index'])->name('publishers.index');
-    Route::get('/publishers/{publisher}', [PublishersController::class, 'show'])->name('publishers.show');
+    Route::get('/publishers/{publishers}', [PublishersController::class, 'show'])->name('publishers.show');
     Route::get('/publishers/create', [PublishersController::class, 'create'])->name('publishers.create');
     Route::post('/publishers', [PublishersController::class, 'store'])->name('publishers.store');
     Route::get('/publishers/{publisher}/edit', [PublishersController::class, 'edit'])->name('publishers.edit');

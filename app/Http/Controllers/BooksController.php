@@ -9,6 +9,7 @@ use App\Models\Publishers;
 use Illuminate\Routing\Controller;
 use App\Http\Requests\StorebooksRequest;
 use App\Http\Requests\UpdatebooksRequest;
+use Illuminate\Http\Request;
 
 class BooksController extends Controller
 {
@@ -50,7 +51,12 @@ class BooksController extends Controller
         ]);
         self::generate_book_number();
         Books::create($request->all());
-        return redirect()->route('books.index')->with('success', 'Buku berhasil ditambahkan.');
+
+        try {
+            return redirect()->route('books.index')->with('success', 'Buku berhasil ditambahkan.');
+        } catch (\Exception $e) {
+            return redirect()->route('books.index')->with('error', 'Buku gagal ditambahkan.');
+        }
     }
 
     public function generate_book_number()
@@ -70,11 +76,11 @@ class BooksController extends Controller
      */
     public function edit(Books $book)
     {
-        $writter = Writter::all();
+        $writters = Writter::all();
         $publishers = Publishers::all();
         return view('dashboard.books.edit', [
             'book' => $book,
-            'writers' => $writter,
+            'writters' => $writters,
             'publishers' => $publishers,
             'categories' => Category::all()
         ]);
@@ -90,14 +96,16 @@ class BooksController extends Controller
             'description' => 'required|string',
             'price' => 'required|integer',
             'book_number' => 'required|integer',
-            'writer_id' => 'required|integer',
+            'writter_id' => 'required|integer',
             'publisher_id' => 'required|integer',
-            'year' => 'required|integer',
-            'image' => 'required|image',
-            'status' => 'required|in:1,0',
         ]);
-        $book->update($request->all());
-        return redirect()->route('books.index')->with('success', 'Buku berhasil diperbarui.');
+
+        try {
+            $book->update($request->all());
+            return redirect()->route('books.index')->with('success', 'Buku berhasil diupdate.');
+        } catch (\Exception $e) {
+            return redirect()->route('books.index')->with('error', 'Buku gagal diupdate.');
+        }
     }
 
     /**
@@ -105,7 +113,38 @@ class BooksController extends Controller
      */
     public function destroy(Books $book)
     {
-        $book->delete();
-        return redirect()->route('books.index')->with('success', 'Buku berhasil dihapus.');
+        try {
+            $book->delete();
+            return redirect()->route('books.index')->with('success', 'Buku berhasil dihapus.');
+        } catch (\Exception $e) {
+            return redirect()->route('books.index')->with('error', 'Buku gagal dihapus.');
+        }
+    }
+
+    public function search(Request $request)
+    {
+        $query = $request->input('q');
+
+        // Jika query tidak kosong, cari buku sesuai query
+        if ($query) {
+            $books = Books::where('title', 'like', "%$query%")
+                ->orWhere('description', 'like', "%$query%")
+                ->orWhere('book_number', 'like', "%$query%")
+                ->orWhereHas('writter', function ($writterQuery) use ($query) {
+                    $writterQuery->where('name', 'like', "%$query%");
+                })
+                ->orWhereHas('publisher', function ($publisherQuery) use ($query) {
+                    $publisherQuery->where('nama', 'like', "%$query%");
+                })
+                ->orWhereHas('category', function ($categoryQuery) use ($query) {
+                    $categoryQuery->where('name', 'like', "%$query%");
+                })
+                ->get();
+        } else {
+            // Jika query kosong, tampilkan semua buku
+            $books = Books::all();
+        }
+
+        return view('dashboard.books.index', compact('books'));
     }
 }

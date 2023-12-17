@@ -18,7 +18,7 @@
                     src="https://source.unsplash.com/1200x800/?book/{{ $books->id }}">
                 <div class="w-full lg:w-1/2 lg:pl-10 lg:py-6 lg:mt-0">
                     <h2 class="text-sm tracking-widest text-gray-500 title-font">{{ __('Nama Buku : ') }}</h2>
-                    <h1 class="mb-1 text-3xl font-medium text-gray-900 title-font">{{ $books->title }}</h1>
+                    <h1 class="mb-1 text-2xl font-medium text-gray-900 title-font">{{ $books->title }}</h1>
                     <h2 class="mt-2 text-sm tracking-widest text-gray-500 title-font">{{ __('Deskripsi Buku : ') }}</h2>
                     <p class="leading-relaxed">{{ $books->description }}</p>
                     <h2 class="mt-2 text-sm tracking-widest text-gray-500 title-font">{{ __('Buku Number : ') }}</h2>
@@ -35,7 +35,7 @@
                         <h2 class="mt-2 text-sm tracking-widest text-gray-500 title-font me-2">
                             {{ __('Harga Buku : ') }}
                         </h2>
-                        <span class="text-2xl font-medium text-gray-900 title-font">Rp.
+                        <span class="mt-1 text-xl font-medium text-gray-900 title-font">Rp.
                             {{ number_format($books->price, 0, ',', '.') }}</span>
 
                         <button

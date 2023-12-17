@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\Book;
+use App\Models\Books;
 use App\Models\Writter;
 use App\Models\Category;
 use App\Models\Publishers;
@@ -53,13 +53,13 @@ class BookSeeder extends Seeder
             $writter_id     = Writter::all()->random()->id;
             $publisher      = Publishers::all()->random();
             $category       = Category::all()->random();
-            $book_number    = date('Y').$category->code.$publisher->code;
-            Book::create([
+            $book_number    = date('Y') . $category->code . $publisher->code;
+            Books::create([
                 'title' => $book['title'],
                 'description' => $book['description'],
-                'writter_id'=> $writter_id,
+                'writter_id' => $writter_id,
                 'publisher_id' => $publisher->id,
-                'price' => (string)rand(50, 1000)."000",
+                'price' => (string)rand(50, 1000) . "000",
                 'category_id' => $category->id,
                 'book_number' => $book_number
             ]);

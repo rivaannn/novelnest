@@ -9,7 +9,7 @@ class BlogsController extends Controller
 {
     public function index()
     {
-        $blogs = Blogs::all();
+        $blogs = Blogs::paginate(5);
         return view('dashboard.blogs.index', compact('blogs'));
     }
 

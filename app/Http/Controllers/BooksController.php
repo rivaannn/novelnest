@@ -19,7 +19,7 @@ class BooksController extends Controller
      */
     public function index()
     {
-        $books = Books::paginate(10);
+        $books = Books::latest()->paginate(5);
         return view('dashboard.books.index', compact('books'));
     }
 
@@ -168,7 +168,7 @@ class BooksController extends Controller
                 ->get();
         } else {
             // Jika query kosong, tampilkan semua buku
-            $books = Books::all();
+            $books = Books::paginate(5);
         }
 
         return view('dashboard.books.index', compact('books'));

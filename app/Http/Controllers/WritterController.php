@@ -15,7 +15,7 @@ class WritterController extends Controller
      */
     public function index()
     {
-        $writters = Writter::all();
+        $writters = Writter::latest()->paginate(5);
         return view('dashboard.writters.index', compact('writters'));
     }
 

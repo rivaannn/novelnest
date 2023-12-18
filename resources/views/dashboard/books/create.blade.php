@@ -74,10 +74,13 @@
                             </select>
                         </div>
 
-
                         <div class="flex items-center justify-end mt-4">
+                            <a href="{{ route('books.index') }}"
+                                class="inline-block px-4 py-2 text-gray-200 bg-gray-500 rounded-md me-2 hover:bg-gray-700 focus:outline-none focus:shadow-outline-gray active:bg-gray-700">
+                                {{ __('Cancel') }}
+                            </a>
                             <button type="submit"
-                                class="inline-block px-4 py-2 text-white bg-indigo-600 rounded-md hover:bg-indigo-700 focus:outline-none focus:shadow-outline-indigo active:bg-indigo-800">
+                                class="inline-block px-4 py-2 text-white bg-blue-600 rounded-md hover:bg-blue-700 focus:outline-none focus:shadow-outline-blue active:bg-blue-800">
                                 {{ __('Buat Buku Baru') }}
                             </button>
                         </div>

@@ -1,4 +1,3 @@
-<!-- resources/views/dashboard/users/index.blade.php -->
 <x-app-layout>
     <x-slot name="header">
         <h2 class="text-xl font-semibold leading-tight text-gray-800 dark:text-gray-200">
@@ -125,6 +124,9 @@
                     </tbody>
                 </table>
             @endif
+        </div>
+        <div class="flex items-center justify-center mt-8">
+            {{ $books->links() }}
         </div>
     </div>
     </div>

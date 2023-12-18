@@ -13,8 +13,17 @@ class BlogsSeeder extends Seeder
      */
     public function run(): void
     {
-        Blogs::factory()
-            ->count(10)
-            ->create();
+        $faker = \Faker\Factory::create('id_ID');
+        for ($i = 0; $i < 10; $i++) {
+            Blogs::create([
+                'title' => $faker->sentence(),
+                'slug' => $faker->slug(),
+                'category' => $faker->sentence(),
+                'author' => $faker->name(),
+                'body' => '<p>' . implode('</p><p>', $faker->paragraphs(10)) . '</p>', // Tambahkan tag <p> di sini
+                'image' => $faker->imageUrl(),
+                'status' => $faker->randomElement(['draft', 'published'])
+            ]);
+        }
     }
 }

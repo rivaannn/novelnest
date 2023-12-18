@@ -43,11 +43,11 @@
                             </th>
                             <th scope="col"
                                 class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase dark:text-gray-400">
-                                {{ __('Title') }}
+                                {{ __('Author') }}
                             </th>
                             <th scope="col"
                                 class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase dark:text-gray-400">
-                                {{ __('Slug') }}
+                                {{ __('Title') }}
                             </th>
                             <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-right">
                                 {{ __('Actions') }}
@@ -61,10 +61,10 @@
                                     {{ $key + 1 }}
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap">
-                                    {{ $blog->title }}
+                                    {{ $blog->author }}
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap">
-                                    {{ $blog->slug }}
+                                    {{ $blog->title }}
                                 </td>
                                 <td class="px-6 py-4 text-sm font-medium text-right whitespace-nowrap">
                                     <a href="{{ route('blogs.show', $blog->id) }}"

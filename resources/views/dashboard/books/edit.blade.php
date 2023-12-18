@@ -106,19 +106,24 @@
                                 @enderror
                             </div>
 
-                            {{-- <div class="mt-4">
+                            <div class="mt-4">
                                 <label for="category" class="block mb-2 text-sm text-gray-600 dark:text-gray-400">
-                                    {{ __('Category') }}
+                                    {{ __('Kategori') }}
                                 </label>
-                                <input type="text" name="category" id="category"
-                                    value="{{ $book->category->name }}"
-                                    class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 dark:focus:border-indigo-500 focus:border-indigo-500 focus:ring focus:ring-indigo-500 dark:focus:ring-indigo-500 focus:ring-opacity-50" />
+                                <select name="category" id="category"
+                                    class="w-full px-3 py-2 text-gray-700 border rounded-lg dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-indigo-500 dark:focus:border-indigo-500 focus:outline-none">
+                                    @foreach ($categories as $category)
+                                        <option value={{ $category->id }}
+                                            @if ($category->id == $book->category->id) selected @endif>
+                                            {{ $category->name }}</option>
+                                    @endforeach
+                                </select>
                                 @error('category')
                                     <span class="text-sm text-red-600 dark:text-red-400">
                                         {{ $message }}
                                     </span>
                                 @enderror
-                            </div> --}}
+                            </div>
 
                             <div class="flex items-center justify-end mt-4">
                                 <a href="{{ route('books.index') }}"

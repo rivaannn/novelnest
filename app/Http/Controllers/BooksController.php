@@ -10,6 +10,7 @@ use Illuminate\Routing\Controller;
 use App\Http\Requests\StorebooksRequest;
 use App\Http\Requests\UpdatebooksRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class BooksController extends Controller
 {
@@ -18,7 +19,7 @@ class BooksController extends Controller
      */
     public function index()
     {
-        $books = Books::all();
+        $books = Books::paginate(10);
         return view('dashboard.books.index', compact('books'));
     }
 
@@ -47,22 +48,45 @@ class BooksController extends Controller
             'description' => 'required|string',
             'price' => 'required|integer',
             'writter_id' => 'required|integer',
-            'publisher_id' => 'required|integer'
+            'publisher_id' => 'required|integer',
+            'category_id' => 'required|integer',
         ]);
-        self::generate_book_number();
-        Books::create($request->all());
+
+        // Menggunakan transaksi database untuk memastikan konsistensi
+        DB::beginTransaction();
 
         try {
+            // Menyimpan buku
+            $book = Books::create($request->all());
+
+            // Mengenerate nomor buku
+            $book->update([
+                'book_number' => $this->generate_book_number($book->id)
+            ]);
+
+            // Commit transaksi jika semua langkah berhasil
+            DB::commit();
+
             return redirect()->route('books.index')->with('success', 'Buku berhasil ditambahkan.');
         } catch (\Exception $e) {
+            // Rollback transaksi jika ada kesalahan
+            DB::rollBack();
+
             return redirect()->route('books.index')->with('error', 'Buku gagal ditambahkan.');
         }
     }
 
-    public function generate_book_number()
+    // Fungsi untuk menggenerate nomor buku
+    public function generate_book_number($bookId)
     {
-        // code ..
+        $year = now()->year;
+        $bookId = str_pad($bookId, 4, '0', STR_PAD_LEFT);
+        $publisherCode = 'BK';
+
+        return "{$year}SJ{$bookId}{$publisherCode}";
     }
+
+
     /**
      * Display the specified resource.
      */
@@ -78,11 +102,12 @@ class BooksController extends Controller
     {
         $writters = Writter::all();
         $publishers = Publishers::all();
+        $categories = Category::all();
         return view('dashboard.books.edit', [
             'book' => $book,
             'writters' => $writters,
             'publishers' => $publishers,
-            'categories' => Category::all()
+            'categories' => $categories,
         ]);
     }
 
@@ -98,6 +123,7 @@ class BooksController extends Controller
             'book_number' => 'required|integer',
             'writter_id' => 'required|integer',
             'publisher_id' => 'required|integer',
+            'category_id' => 'required|integer',
         ]);
 
         try {

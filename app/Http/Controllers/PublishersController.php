@@ -15,7 +15,7 @@ class PublishersController extends Controller
      */
     public function index()
     {
-        $publishers = publishers::all();
+        $publishers = publishers::latest()->paginate(5);
         return view('dashboard.publishers.index', compact('publishers'));
     }
 

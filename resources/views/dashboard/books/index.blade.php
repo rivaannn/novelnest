@@ -126,7 +126,9 @@
             @endif
         </div>
         <div class="flex items-center justify-center mt-8">
-            {{ $books->links() }}
+            @if ($books instanceof \Illuminate\Pagination\LengthAwarePaginator)
+                {{ $books->links() }}
+            @endif
         </div>
     </div>
     </div>

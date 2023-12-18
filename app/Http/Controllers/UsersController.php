@@ -9,7 +9,7 @@ class UsersController extends Controller
 {
     public function index()
     {
-        $users = User::all();
+        $users = User::latest()->paginate(5);
         return view('dashboard.users.index', compact('users'));
     }
 

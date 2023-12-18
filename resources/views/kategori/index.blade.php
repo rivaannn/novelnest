@@ -59,7 +59,7 @@
             <nav class="flex items-center justify-center p-4">
                 <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
                     <div
-                        class="relative px-6 py-20 overflow-hidden text-center bg-white isolate sm:px-16 sm:shadow-sm dark:bg-transparent">
+                        class="relative px-6 py-8 overflow-hidden text-center bg-white isolate sm:px-16 sm:shadow-sm dark:bg-transparent">
                         <p
                             class="max-w-2xl mx-auto text-3xl font-bold tracking-tight text-gray-900 dark:text-gray-200 sm:text-4xl">
                             Cari buku menarik hanya di NovelNest ...
@@ -98,7 +98,9 @@
                         src="https://source.unsplash.com/1200x800/?book/{{ $book->id }}" alt="Nama Produk">
                     <h3 class="text-lg font-semibold">{{ $book->title }}</h3>
                     <p class="text-gray-700">Penulis: {{ $book->writter->name }}</p>
-                    <p class="text-lg text-blue-700">{{ 'RP.' . number_format($book->price, 2, ',', '.') }}</p>
+                    <p class="text-lg pt-2 text-blue-700">{{ 'RP.' . number_format($book->price, 2, ',', '.') }} <span
+                            class="inline-block float-right px-2 py-1 text-xs tracking-wide text-white bg-blue-500 rounded">{{ $book->category->name }}</span>
+                    </p>
                 </a>
             @endforeach
         </div>
@@ -112,7 +114,7 @@
         @endif
 
         {{-- Pagination --}}
-        <div class="flex justify-between mt-8 items-between">
+        <div class="flex justify-between mt-8 items-between pb-36">
             {{ $books->links() }}
         </div>
     </div>

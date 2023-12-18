@@ -7,29 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\Publishers;
 use App\Models\Writter;
 use App\Models\Category;
+use App\Models\BookOrder;
+use App\Models\User;
 
 class Books extends Model
 {
     use HasFactory;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
-    // protected $fillable = [
-    //     'name',
-    //     'username',
-    //     'email',
-    //     'password',
-    // ];
     protected $guarded = ['id'];
-
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
 
     // protected $fillable = [
     //     'title',
@@ -38,6 +23,7 @@ class Books extends Model
     //     'book_number',
     //     'writter_id',
     //     'publisher_id',
+    //     'category_id',
     //     'year',
     //     'image',
     //     'status',
@@ -63,7 +49,7 @@ class Books extends Model
         return $this->hasMany(BookOrder::class);
     }
 
-    public function user()
+    public function users()
     {
         return $this->belongsToMany(User::class, 'book_orders');
     }

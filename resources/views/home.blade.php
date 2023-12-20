@@ -22,14 +22,16 @@
     </header>
 
     {{-- Kategori Buku --}}
-    <div class="container mx-auto mt-8">
+    <div class="container mx-auto mt-8 dark:bg-gray-900">
         <h1 class="mt-4 mb-8 text-4xl font-bold text-center">Kategori Buku</h1>
         <div class="grid grid-cols-4 gap-4 md:grid-cols-3 lg:grid-cols-6">
             @foreach ($categories as $category)
                 <div class="flex flex-col items-center">
                     <a href="{{ route('kategori.filterByCategory', ['category' => $category->id]) }}"
-                        class="w-full text-white bg-gray-600 rounded">
-                        <p class="text-xl text-center">{{ $category->name }}</p>
+                        class="w-full relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800">
+                        <p
+                            class="w-full text-center relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
+                            {{ $category->name }}</p>
                     </a>
                 </div>
             @endforeach
@@ -39,7 +41,7 @@
 
 
     {{-- Rekomendasi Buku --}}
-    <div class="container py-8 mx-auto">
+    <div class="container py-8 mx-auto dark:bg-gray-900">
         <h1 class="mt-8 mb-8 text-4xl font-bold">Rekomendasi Buku Novelnest</h1>
         <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
             @foreach ($latestBooks as $book)
@@ -50,7 +52,7 @@
                     <div class="p-4">
                         <h2 class="mb-2 text-xl font-bold">{{ $book->title }}</h2>
                         <p class="mb-2 text-gray-700">Penulis: {{ $book->writter->name }} </p>
-                        <p class="mb-2 text-lg text-blue-500">{{ 'RP. ' . number_format($book->price, 2, ',', '.') }}
+                        <p class="mb-2 text-lg text-blue-500">{{ 'RP.' . number_format($book->price, 2, ',', '.') }}
                         </p>
                         <!-- Badges Kategori -->
                         <span
@@ -62,14 +64,14 @@
     </div>
 
     <!-- Tombol "Lihat Semua Buku" -->
-    <div class="container mx-auto mt-4 text-end">
+    <div class="container mx-auto mt-4 text-end dark:bg-gray-900">
         <a href="{{ url('/kategori') }}"
             class="px-4 py-2 text-white transition bg-blue-500 rounded-full duration-600 hover:bg-blue-600">Lihat
             Semua Buku</a>
     </div>
 
     {{-- Blog NovelNest --}}
-    <div class="py-16 mt-8 overflow-hidden bg-gray-100">
+    <div class="py-16 mt-8 overflow-hidden bg-gray-100 dark:bg-gray-900">
         <div class="container px-6 m-auto space-y-8 text-gray-500 md:px-12">
             <div>
                 <h2 class="mt-4 text-2xl font-bold text-gray-900 md:text-4xl">Blog Novelnest</h2>
@@ -86,7 +88,8 @@
                         <img src="https://source.unsplash.com/1600x800/?book" class="shadow-md"
                             alt="burger illustration">
                         <div class="space-y-2">
-                            <h5 class="text-xl font-medium text-gray-800 transition group-hover:text-blue-600">
+                            <h5
+                                class="text-xl font-medium text-gray-800 transition group-hover:text-blue-600 dark:text-white-100">
                                 {{ $blog->author }}</h5>
                             <p class="text-sm text-gray-600">{{ $blog->title }}</p>
                         </div>
@@ -103,7 +106,7 @@
         </div>
     </div>
     <!-- Tombol "Lihat Semua Buku" -->
-    <div class="container mx-auto mt-8 text-end">
+    <div class="container mx-auto mt-8 text-end dark:bg-gray-900">
         <a href="{{ url('/blog') }}"
             class="px-4 py-2 text-white transition duration-300 bg-blue-500 rounded-full hover:bg-blue-600">Lihat
             Semua Blog</a>

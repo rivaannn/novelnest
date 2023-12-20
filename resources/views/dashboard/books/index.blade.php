@@ -30,7 +30,7 @@
             <!-- Search Form -->
             <form action="{{ route('books.search') }}" class="max-w-[480px] w-full px-4" method="get">
                 <div class="relative flex items-center">
-                    <input type="text" name="q" class="w-full h-12 p-4 border rounded-full shadow"
+                    <input type="text" name="q" class=" w-full h-12 p-4 rounded-full border-none"
                         placeholder="Search">
                     <button type="submit" class="ml-2">
                         <svg class="w-5 h-5 fill-current text-sky-600" xmlns="http://www.w3.org/2000/svg"

@@ -15,9 +15,9 @@
                 </div>
 
                 <div class="lg:py-16">
-                    <article class="space-y-4 text-gray-600">
-                        <p class="mb-4 text-3xl font-bold">Awal Mula
-                        <p class="space-x-2 text-md">Website ini didirikan untuk meningkatkan kesadaran betapa
+                    <article class="space-y-4">
+                        <p class="mb-4 text-3xl font-bold sm:text-4xl">Awal Mula
+                        <p class="space-x-2 text-md leading-relaxed sm:text-xl">Website ini didirikan untuk meningkatkan kesadaran betapa
                             pentingnya memaksimalkan potensi
                             internet melalui sebuah website. Website ini diciptakan sebagai platform daring yang inovatif
                             bagi para pembaca buku agar dapat mengakses buku dengan mudah, dan penulis buku dapat dengan
@@ -38,7 +38,7 @@
                 <div class="xl:w-1/2 xl:mx-4">
                     <h2 class="text-3xl font-bold sm:text-4xl">
                         Tim Pengembang </h2>
-                    <p class="max-w-2xl mt-4 text-gray-500 dark:text-gray-300">
+                    <p class="max-w-2xl mt-4 space-x-2 text-md leading-relaxed sm:text-xl">
                         Kami adalah kelompok yang berdedikasi untuk menyelesaikan tugas besar dengan kreatif. Dengan
                         beragam keahlian dalam pengembangan perangkat lunak, desain, dan manajemen project, kami bekerja
                         sama untuk merancang dan mengimplementasikan pelajaran yang sudah kami pelajari untuk memenuhi

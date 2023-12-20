@@ -21,12 +21,13 @@
         </div>
     @endif
     <div class="py-12">
-        <div class="flex items-end justify-between mb-6 me-96">
-            <!-- Tambah Buku Button -->
+        <div class="flex items-center justify-center p-2.5">
+            <!-- Tombol Tambah Buku -->
             <a href="{{ url('books/create') }}"
-                class="inline-block px-4 py-2 text-white bg-green-600 rounded-md ms-96 hover:bg-green-700 focus:outline-none focus:shadow-outline-green active:bg-green-800">
+                class="inline-block px-4 py-2 text-white bg-green-600 rounded-md hover:bg-green-700 focus:outline-none focus:shadow-outline-green active:bg-green-800">
                 {{ __('Tambah Buku') }}
             </a>
+
             <!-- Search Form -->
             <form action="{{ route('books.search') }}" class="max-w-[480px] w-full px-4" method="get">
                 <div class="relative flex items-center">
@@ -44,93 +45,98 @@
                     </button>
                 </div>
             </form>
-        </div>
 
-        <div class="flex items-center justify-center max-w-full mx-auto sm:px-6 lg:px-8">
-            @if ($books->isEmpty())
-                <p class="text-xl text-center text-red-500 border-2 outline-dashed">
-                    {{ __('Tidak Ada buku yang ditemukan.') }}
-                </p>
-            @else
-                <table class="max-w-full divide-y divide-gray-200 dark:divide-gray-700">
-                    <thead class="bg-gray-50 dark:bg-gray-800">
-                        <tr>
-                            <th scope="col"
-                                class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase dark:text-gray-400">
-                                {{ __('No') }}
-                            </th>
-                            <th scope="col"
-                                class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase dark:text-gray-400">
-                                {{ __('Title') }}
-                            </th>
-                            <th scope="col"
-                                class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase dark:text-gray-400">
-                                {{ __('Deskripsi') }}
-                            </th>
-                            <th scope="col"
-                                class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase dark:text-gray-400">
-                                {{ __('Penulis') }}
-                            </th>
-                            <th scope="col"
-                                class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase dark:text-gray-400">
-                                {{ __('Harga') }}
-                            </th>
-                            <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-right">
-                                {{ __('Actions') }}
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody class="bg-white divide-y divide-gray-200 dark:bg-gray-900 dark:divide-gray-700">
-                        @foreach ($books as $key => $book)
-                            <tr>
-                                <td class="px-6 py-4 whitespace-nowrap">
-                                    {{ $key + 1 }}
-                                </td>
-                                <td class="px-6 py-4 whitespace-nowrap">
-                                    {{ $book->title }}
-                                </td>
-                                <td class="px-6 py-4 whitespace-nowrap">
-                                    {{ mb_strimwidth($book->description, 0, 20, '...') }}
-                                </td>
-                                <td class="px-6 py-4 whitespace-nowrap">
-                                    {{ $book->writter->name }}
-                                </td>
-                                <td class="px-6 py-4 whitespace-nowrap">
-                                    {{ 'RP.' . number_format($book->price, 2, ',', '.') }}
-                                </td>
-                                <td class="px-6 py-4 text-sm font-medium text-right whitespace-nowrap">
-                                    <a href="{{ route('books.show', $book->id) }}"
-                                        class="inline-block px-4 py-2 ml-2 text-yellow-600 bg-yellow-100 rounded-md hover:bg-yellow-300 focus:outline-none focus:shadow-outline-yellow active:bg-yellow-300">
-                                        {{ __('View') }}
-                                    </a>
-                                    <a href="{{ route('books.edit', $book->id) }}"
-                                        class="inline-block px-4 py-2 ml-2 text-blue-600 bg-blue-100 rounded-md hover:bg-blue-200 focus:outline-none focus:shadow-outline-blue active:bg-blue-300">
-                                        {{ __('Edit') }}
-                                    </a>
-                                    <form action="{{ route('books.destroy', $book->id) }}" method="POST"
-                                        class="inline"
-                                        onsubmit="return confirm('Apakah Anda yakin ingin menghapus buku ini?');">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit"
-                                            class="inline-block px-4 py-2 ml-2 text-red-600 bg-red-100 rounded-md hover:bg-red-200 focus:outline-none focus:shadow-outline-red active:bg-red-300">
-                                            {{ __('Delete') }}
-                                        </button>
-                                    </form>
-
-                                </td>
-                            </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-            @endif
-        </div>
-        <div class="flex items-center justify-center mt-8">
-            @if ($books instanceof \Illuminate\Pagination\LengthAwarePaginator)
-                {{ $books->links() }}
-            @endif
+            <!-- Tombol Export PDF -->
+            <a href="#"
+                class="inline-block px-4 py-2 text-white bg-red-600 rounded-md hover:bg-red-700 focus:outline-none focus:shadow-outline-red active:bg-red-800">
+                {{ __('Export PDF') }}
+            </a>
         </div>
     </div>
+
+
+    <div class="flex items-center justify-center max-w-full mx-auto sm:px-6 lg:px-8">
+        @if ($books->isEmpty())
+            <p class="text-xl text-center text-red-500 border-2 outline-dashed">
+                {{ __('Tidak Ada buku yang ditemukan.') }}
+            </p>
+        @else
+            <table class="max-w-full divide-y divide-gray-200 dark:divide-gray-700">
+                <thead class="bg-gray-50 dark:bg-gray-800">
+                    <tr>
+                        <th scope="col"
+                            class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase dark:text-gray-400">
+                            {{ __('No') }}
+                        </th>
+                        <th scope="col"
+                            class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase dark:text-gray-400">
+                            {{ __('Title') }}
+                        </th>
+                        <th scope="col"
+                            class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase dark:text-gray-400">
+                            {{ __('Deskripsi') }}
+                        </th>
+                        <th scope="col"
+                            class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase dark:text-gray-400">
+                            {{ __('Penulis') }}
+                        </th>
+                        <th scope="col"
+                            class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase dark:text-gray-400">
+                            {{ __('Harga') }}
+                        </th>
+                        <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-right">
+                            {{ __('Actions') }}
+                        </th>
+                    </tr>
+                </thead>
+                <tbody class="bg-white divide-y divide-gray-200 dark:bg-gray-900 dark:divide-gray-700">
+                    @foreach ($books as $key => $book)
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                {{ $key + 1 }}
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                {{ $book->title }}
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                {{ mb_strimwidth($book->description, 0, 20, '...') }}
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                {{ $book->writter->name }}
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                {{ 'RP.' . number_format($book->price, 2, ',', '.') }}
+                            </td>
+                            <td class="px-6 py-4 text-sm font-medium text-right whitespace-nowrap">
+                                <a href="{{ route('books.show', $book->id) }}"
+                                    class="inline-block px-4 py-2 ml-2 text-yellow-600 bg-yellow-100 rounded-md hover:bg-yellow-300 focus:outline-none focus:shadow-outline-yellow active:bg-yellow-300">
+                                    {{ __('View') }}
+                                </a>
+                                <a href="{{ route('books.edit', $book->id) }}"
+                                    class="inline-block px-4 py-2 ml-2 text-blue-600 bg-blue-100 rounded-md hover:bg-blue-200 focus:outline-none focus:shadow-outline-blue active:bg-blue-300">
+                                    {{ __('Edit') }}
+                                </a>
+                                <form action="{{ route('books.destroy', $book->id) }}" method="POST" class="inline"
+                                    onsubmit="return confirm('Apakah Anda yakin ingin menghapus buku ini?');">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit"
+                                        class="inline-block px-4 py-2 ml-2 text-red-600 bg-red-100 rounded-md hover:bg-red-200 focus:outline-none focus:shadow-outline-red active:bg-red-300">
+                                        {{ __('Delete') }}
+                                    </button>
+                                </form>
+
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        @endif
+    </div>
+    <div class="flex items-center justify-center mt-8">
+        @if ($books instanceof \Illuminate\Pagination\LengthAwarePaginator)
+            {{ $books->links() }}
+        @endif
     </div>
     </div>
     @include('partials.footer')

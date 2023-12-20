@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StorepublishersRequest;
 use App\Http\Requests\UpdatepublishersRequest;
-use App\Models\publishers;
+use App\Models\Publishers;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Session;
 
@@ -15,7 +15,7 @@ class PublishersController extends Controller
      */
     public function index()
     {
-        $publishers = publishers::latest()->paginate(5);
+        $publishers = Publishers::latest()->paginate(5);
         return view('dashboard.publishers.index', compact('publishers'));
     }
 

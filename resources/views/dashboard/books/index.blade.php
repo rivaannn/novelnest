@@ -47,7 +47,7 @@
             </form>
 
             <!-- Tombol Export PDF -->
-            <a href="#"
+            <a href="{{ url('books/book-report-pdf') }}"
                 class="inline-block px-4 py-2 text-white bg-red-600 rounded-md hover:bg-red-700 focus:outline-none focus:shadow-outline-red active:bg-red-800">
                 {{ __('Export PDF') }}
             </a>

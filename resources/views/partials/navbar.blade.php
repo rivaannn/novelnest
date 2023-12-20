@@ -1,6 +1,6 @@
 <nav class="fixed top-0 z-20 w-full bg-white border-b border-gray-200 dark:bg-gray-900 start-0 dark:border-gray-600">
     <div class="flex flex-wrap items-center justify-between max-w-screen-xl p-4 mx-auto">
-        <a href="https://flowbite.com/" class="flex items-center space-x-3 rtl:space-x-reverse">
+        <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
             <img class="h-10" src="/img/logo.png" class="h-8 " alt="Novelnest">
             <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">NovelNest</span>
         </a>

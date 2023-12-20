@@ -5,9 +5,11 @@
         <div class="container flex flex-col px-6 py-10 mx-auto space-y-6 lg:h-[32rem] lg:py-16 lg:flex-row lg:items-center">
             <div class="w-full lg:w-1/2">
                 <div class="lg:max-w-lg">
-                    <h1 class="mb-4 text-3xl font-extrabold text-gray-900 dark:text-white md:text-5xl lg:text-6xl"><span
-                            class="text-transparent bg-clip-text bg-gradient-to-r to-blue-600 from-sky-400">Novel</span>
-                        Nest.</h1>
+                    <h1
+                        class="mt-8 mb-4 text-3xl font-extrabold text-gray-900 dark:text-white md:text-5xl lg:text-6xl sm:text-xl">
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r to-blue-600 from-sky-400">Novel</span>
+                        Nest.
+                    </h1>
                     <p class="text-lg font-normal text-gray-600 lg:text-xl dark:text-gray-400"> Menemukan Petualangan dan
                         Kisah Penuh Makna di Setiap Halaman dengan Telusuri Dunia Penuh Imajinasi bareng Novelnest Tempat
                         di Mana Cerita Tak Terbatas.</p>

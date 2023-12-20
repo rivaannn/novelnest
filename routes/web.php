@@ -4,17 +4,18 @@
 use App\Models\Blogs;
 use App\Models\Books;
 use App\Models\Category;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PDFController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\BlogsController;
 use App\Http\Controllers\BooksController;
 use App\Http\Controllers\UsersController;
-use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\SocialiteController;
-use App\Http\Controllers\WritterController;
-use App\Http\Controllers\PublishersController;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\WritterController;
+use App\Http\Controllers\SocialiteController;
+use App\Http\Controllers\PublishersController;
 
 /*
 |--------------------------------------------------------------------------
@@ -206,6 +207,7 @@ Route::middleware(['auth'])->group(function () {
 
 // Route Untuk Books
 Route::middleware(['auth'])->group(function () {
+    Route::get('/books/book-report-pdf', [PDFController::class, 'generateBookPdfReport']);
     Route::get('/books', [BooksController::class, 'index'])->name('books.index');
     Route::get('/books/{book}', [BooksController::class, 'show'])->name('books.show');
     Route::get('/books/create', [BooksController::class, 'create'])->name('books.create');

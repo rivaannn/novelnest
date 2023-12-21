@@ -20,7 +20,7 @@
             {{ Session::get('error') }}
         </div>
     @endif
-    <div class="py-12">
+    <div class="relative py-12"> <!-- Tambahkan class relative pada div utama -->
         <div class="flex items-center justify-center p-2.5">
             <!-- Tombol Tambah Buku -->
             <a href="{{ url('books/create') }}"
@@ -31,16 +31,16 @@
             <!-- Search Form -->
             <form action="{{ route('books.search') }}" class="max-w-[480px] w-full px-4" method="get">
                 <div class="relative flex items-center">
-                    <input type="text" name="q" class=" w-full h-12 p-4 rounded-full border-none"
-                        placeholder="Search">
+                    <input type="text" id="searchInput" name="q"
+                        class="w-full h-12 p-4 border-none rounded-full" placeholder="Search">
                     <button type="submit" class="ml-2">
                         <svg class="w-5 h-5 fill-current text-sky-600" xmlns="http://www.w3.org/2000/svg"
                             xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px"
                             viewBox="0 0 56.966 56.966" style="enable-background:new 0 0 56.966 56.966;"
                             xml:space="preserve">
                             <path
-                                d="M55.146,51.887L41.588,37.786c3.486-4.144,5.396-9.358,5.396-14.786c0-12.682-10.318-23-23-23s-23,10.318-23,23  s10.318,23,23,23c4.761,0,9.298-1.436,13.177-4.162l13.661,14.208c0.571,0.593,1.339,0.92,2.162,0.92  c0.779,0,1.518-0.297,2.079-0.837C56.255,54.982,56.293,53.08,55.146,51.887z M23.984,6c9.374,0,17,7.626,17,17s-7.626,17-17,17  s-17-7.626-17-17S14.61,6,23.984,6z">
-                            </path>
+                                d="M55.146,51.401l-9.799-9.799c3.396-4.711,5.419-10.499,5.419-16.802C50.766,11.431,39.335,0,25.383,0   C11.431,0,0,11.431,0,25.383s11.431,25.383,25.383,25.383c6.303,0,12.091-2.023,16.802-5.419l9.799,9.799   c0.781,0.781,2.047,0.781,2.828,0l2.828-2.828C55.927,53.448,55.927,52.182,55.146,51.401z M25.383,44.966   c-9.374,0-16.966-7.592-16.966-16.966c0-9.374,7.592-16.966,16.966-16.966c9.374,0,16.966,7.592,16.966,16.966   C42.348,37.374,34.756,44.966,25.383,44.966z" />
+
                         </svg>
                     </button>
                 </div>
@@ -53,6 +53,9 @@
             </a>
         </div>
     </div>
+
+
+
 
 
     <div class="flex items-center justify-center max-w-full mx-auto sm:px-6 lg:px-8">

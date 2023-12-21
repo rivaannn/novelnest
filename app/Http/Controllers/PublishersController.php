@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StorepublishersRequest;
 use App\Http\Requests\UpdatepublishersRequest;
-use App\Models\publishers;
+use App\Models\Publishers;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Session;
 
@@ -15,7 +15,7 @@ class PublishersController extends Controller
      */
     public function index()
     {
-        $publishers = publishers::latest()->paginate(5);
+        $publishers = Publishers::latest()->paginate(5);
         return view('dashboard.publishers.index', compact('publishers'));
     }
 
@@ -32,7 +32,7 @@ class PublishersController extends Controller
      */
     public function store(StorepublishersRequest $request)
     {
-        publishers::create($request->all());
+        Publishers::create($request->all());
 
         Session::flash('success', 'Publisher berhasil ditambahkan!');
         return redirect()->route('publishers.index');
@@ -41,7 +41,7 @@ class PublishersController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(publishers $publishers)
+    public function show(Publishers $publishers)
     {
         return view('dashboard.publishers.show', [
             'publishers' => $publishers
@@ -51,7 +51,7 @@ class PublishersController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(publishers $publisher)
+    public function edit(Publishers $publisher)
     {
         return view('dashboard.publishers.edit', [
             'publisher' => $publisher
@@ -81,7 +81,7 @@ class PublishersController extends Controller
     public function destroy($id)
     {
         try {
-            $publisher = publishers::findOrFail($id);
+            $publisher = Publishers::findOrFail($id);
             $publisher->delete();
             Session::flash('success', 'Publisher berhasil dihapus.');
         } catch (\Exception $e) {

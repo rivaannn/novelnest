@@ -20,12 +20,12 @@
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link href="#">
-                        {{ __('Keranjang') }}
+                        {{ __('Order') }}
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link href="#">
-                        {{ __('Order') }}
+                        <img class="h-20" src="/img/keranjang.png" class="m-8" alt="Flowbite Logo">
                     </x-nav-link>
                 </div>
             </div>

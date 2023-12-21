@@ -36,7 +36,7 @@
         {{-- Login with Google --}}
         <div class="flex items-center justify-center mt-4 mb-4">
             <a href="{{ route('redirect') }}"
-                class="flex items-start justify-start px-4 py-2 text-sm font-medium text-white bg-gray-500 border border-transparent rounded-full hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 dark:focus:ring-offset-gray-800">
+                class="flex items-start justify-start px-4 py-2 text-sm font-medium text-gray-900 bg-gray-300 border border-transparent rounded-full hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-300 dark:focus:ring-offset-gray-800">
                 <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="25" height="25"
                     viewBox="0 0 48 48">
                     <path fill="#fbc02d"
@@ -52,7 +52,7 @@
                         d="M43.611,20.083L43.595,20L42,20H24v8h11.303c-0.792,2.237-2.231,4.166-4.087,5.571	c0.001-0.001,0.002-0.001,0.003-0.002l6.19,5.238C36.971,39.205,44,34,44,24C44,22.659,43.862,21.35,43.611,20.083z">
                     </path>
                 </svg>
-                Login with Google
+                &nbsp; Continue with Google
             </a>
         </div>
         <div class="flex items-center justify-end mt-4">

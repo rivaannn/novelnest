@@ -19,9 +19,11 @@
     <title>NovelNest</title>
 </head>
 
-<body>
+<body class="dark:bg-gray-800">
 
     @include('partials.navbar')
+
+    {{-- content custom --}}
 
     @yield('content')
 

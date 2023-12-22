@@ -48,7 +48,7 @@
             @if ($loop->iteration > 8)
             @break
         @endif
-        <div class="p-2 bg-white shadow-md dark:bg-gray-800 border dark:border-white rounded-lg hover:shadow-xl ">
+        <div class="p-2 bg-white border rounded-lg shadow-md dark:bg-gray-800 dark:border-white hover:shadow-xl ">
             <a href="#">
                 <img class="rounded-t-lg" src="https://source.unsplash.com/1200x800/?book" alt="" />
             </a>
@@ -73,7 +73,7 @@
 </div>
 
 
-<div class="flex items-center justify-center mt-12 bg-white shadow-sm dark:bg-gray-800 sm:rounded-lg">
+<div class="flex items-center justify-center mt-12 mb-12 bg-white shadow-sm dark:bg-gray-800 sm:rounded-lg">
     {{ $blogs->links() }}
 </div>
 @endsection

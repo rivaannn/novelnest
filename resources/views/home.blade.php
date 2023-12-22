@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('content')
-    <header class="bg-gray-100 dark:bg-gray-800">
+    <header class="bg-gray-100 dark:bg-gray-900">
         <div class="container flex flex-col px-6 py-10 mx-auto space-y-6 lg:h-[32rem] lg:py-16 lg:flex-row lg:items-center">
             <div class="w-full lg:w-1/2">
                 <div class="lg:max-w-lg">

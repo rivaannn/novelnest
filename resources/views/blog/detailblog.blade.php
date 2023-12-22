@@ -36,8 +36,8 @@
                         </div>
                     </div>
                 </div>
-
-                <div class="max-w-screen-md px-4 mx-auto mt-12 text-lg leading-relaxed text-gray-700 lg:px-0">
+                <div
+                    class="max-w-screen-md px-4 mx-auto mt-12 text-lg leading-relaxed text-gray-700 dark:text-gray-200 lg:px-0">
                     <p class="pb-6">{{ $blogs->body }}</p>
                 </div>
             </main>

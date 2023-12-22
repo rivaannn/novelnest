@@ -1,6 +1,6 @@
 @extends('layouts.main')
 @section('content')
-    <section class="bg-gray-100 dark:bg-gray-800">
+    <section class="bg-gray-100 dark:bg-gray-900">
         <div class="max-w-screen-xl px-4 py-16 mx-auto sm:px-6 sm:py-24 lg:px-8">
             <div class="max-w-3xl">
                 <h2 class="text-3xl font-bold sm:text-4xl dark:text-white">
@@ -17,7 +17,7 @@
                 <div class="lg:py-16">
                     <article class="space-y-4">
                         <p class="mb-4 text-3xl font-bold sm:text-4xl dark:text-white">Awal Mula
-                        <p class="space-x-2 text-md leading-relaxed sm:text-xl dark:text-white">Website ini didirikan untuk
+                        <p class="space-x-2 leading-relaxed text-md sm:text-xl dark:text-white">Website ini didirikan untuk
                             meningkatkan
                             kesadaran betapa
                             pentingnya memaksimalkan potensi
@@ -40,7 +40,7 @@
                 <div class="xl:w-1/2 xl:mx-4">
                     <h2 class="text-3xl font-bold sm:text-4xl dark:text-white">
                         Tim Pengembang </h2>
-                    <p class="max-w-2xl mt-4 space-x-2 text-md leading-relaxed sm:text-xl dark:text-white">
+                    <p class="max-w-2xl mt-4 space-x-2 leading-relaxed text-md sm:text-xl dark:text-white">
                         Kami adalah kelompok yang berdedikasi untuk menyelesaikan tugas besar dengan kreatif. Dengan
                         beragam keahlian dalam pengembangan perangkat lunak, desain, dan manajemen project, kami bekerja
                         sama untuk merancang dan mengimplementasikan pelajaran yang sudah kami pelajari untuk memenuhi

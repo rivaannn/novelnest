@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('content')
-    <header class="bg-gray-100 dark:bg-gray-900">
+    <header class="bg-gray-100 dark:bg-gray-800">
         <div class="container flex flex-col px-6 py-10 mx-auto space-y-6 lg:h-[32rem] lg:py-16 lg:flex-row lg:items-center">
             <div class="w-full lg:w-1/2">
                 <div class="lg:max-w-lg">
@@ -24,13 +24,13 @@
     </header>
 
     {{-- Kategori Buku --}}
-    <div class="container mx-auto mt-8 dark:bg-gray-900">
-        <h1 class="mt-4 mb-8 text-4xl font-bold text-center">Kategori Buku</h1>
+    <div class="container mx-auto mt-8 dark:bg-gray-800">
+        <h1 class="mt-4 mb-8 text-4xl font-bold text-center dark:text-white">Kategori Buku</h1>
         <div class="grid grid-cols-4 gap-4 md:grid-cols-3 lg:grid-cols-6">
             @foreach ($categories as $category)
                 <div class="flex flex-col items-center">
                     <a href="{{ route('kategori.filterByCategory', ['category' => $category->id]) }}"
-                        class="w-full relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800">
+                        class="w-full relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-cyan-500 to-blue-500 group-hover:from-cyan-600 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800">
                         <p
                             class="w-full text-center relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
                             {{ $category->name }}</p>
@@ -43,8 +43,8 @@
 
 
     {{-- Rekomendasi Buku --}}
-    <div class="container py-8 mx-auto dark:bg-gray-900">
-        <h1 class="mt-8 mb-8 text-4xl font-bold">Rekomendasi Buku Novelnest</h1>
+    <div class="container py-8 mx-auto dark:bg-gray-800">
+        <h1 class="mt-8 mb-8 text-4xl font-bold dark:text-white">Rekomendasi Buku Novelnest</h1>
         <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
             @foreach ($latestBooks as $book)
                 <a href="{{ route('kategori.detailbuku', $book->id) }}"
@@ -66,17 +66,17 @@
     </div>
 
     <!-- Tombol "Lihat Semua Buku" -->
-    <div class="container mx-auto mt-4 text-end dark:bg-gray-900">
+    <div class="container mx-auto mt-4 text-end dark:bg-gray-800">
         <a href="{{ url('/kategori') }}"
             class="px-4 py-2 text-white transition bg-blue-500 rounded-full duration-600 hover:bg-blue-600">Lihat
             Semua Buku</a>
     </div>
 
     {{-- Blog NovelNest --}}
-    <div class="py-16 mt-8 overflow-hidden bg-gray-100 dark:bg-gray-900">
+    <div class="py-16 mt-8 overflow-hidden bg-gray-100 dark:bg-gray-800">
         <div class="container px-6 m-auto space-y-8 text-gray-500 md:px-12">
             <div>
-                <h2 class="mt-4 text-2xl font-bold text-gray-900 md:text-4xl">Blog Novelnest</h2>
+                <h2 class="mt-4 text-2xl font-bold text-gray-900 md:text-4xl dark:text-white">Blog Novelnest</h2>
             </div>
 
             <div
@@ -93,7 +93,7 @@
                             <h5
                                 class="text-xl font-medium text-gray-800 transition group-hover:text-blue-600 dark:text-white-100">
                                 {{ $blog->author }}</h5>
-                            <p class="text-sm text-gray-600">{{ $blog->title }}</p>
+                            <p class="text-sm text-gray-600 ">{{ $blog->title }}</p>
                         </div>
                         <a href="/blog/detailblog/{{ $blog->id }}"
                             class="flex items-center justify-between group-hover:text-blue-600">
@@ -108,7 +108,7 @@
         </div>
     </div>
     <!-- Tombol "Lihat Semua Buku" -->
-    <div class="container mx-auto mt-8 text-end dark:bg-gray-900">
+    <div class="container mx-auto mt-8 text-end dark:bg-gray-800">
         <a href="{{ url('/blog') }}"
             class="px-4 py-2 text-white transition duration-300 bg-blue-500 rounded-full hover:bg-blue-600">Lihat
             Semua Blog</a>

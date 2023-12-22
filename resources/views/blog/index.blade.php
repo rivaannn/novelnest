@@ -48,7 +48,7 @@
             @if ($loop->iteration > 8)
             @break
         @endif
-        <div class="p-2 bg-white shadow-md dark:bg-gray-800 hover:shadow-xl ">
+        <div class="p-2 bg-white shadow-md dark:bg-gray-800 border dark:border-white rounded-lg hover:shadow-xl ">
             <a href="#">
                 <img class="rounded-t-lg" src="https://source.unsplash.com/1200x800/?book" alt="" />
             </a>

@@ -2,11 +2,11 @@
 
 @section('content')
     <!-- Filter Section -->
-    <div class="container flex flex-wrap py-12 mx-auto mt-8">
+    <div class="container flex flex-wrap py-12 mx-auto mt-8 dark:bg-gray-800">
         <div class="w-full pr-4 mb-8 md:w-1/4 md:mb-0">
             <!-- Filter Options -->
-            <div class="mb-4">
-                <h2 class="mb-2 text-2xl font-semibold">Filter Kategori</h2>
+            <div class="mb-4 ">
+                <h2 class="mb-2 text-2xl font-semibold dark:text-white">Filter Kategori</h2>
 
                 <form class="grid grid-flow-row-dense" action="{{ route('kategori.filter') }}" method="get">
                     @csrf
@@ -67,7 +67,7 @@
 
                         <form action="/kategori/search" method="get">
                             <label
-                                class="relative flex flex-col items-center justify-center max-w-2xl gap-2 px-2 py-2 mx-auto mt-8 bg-white border shadow-2xl min-w-sm md:flex-row rounded-2xl focus-within:border-gray-300"
+                                class="relative flex flex-col items-center justify-center max-w-2xl gap-2 px-2 py-2 mx-auto mt-8 bg-white border shadow-2xl min-w-sm md:flex-row rounded-2xl focus-within:border-gray-300 dark:bg-gray-800"
                                 for="search-bar">
 
                                 <input id="search-bar" placeholder="cari buku disini" name="search"
@@ -93,11 +93,11 @@
                     @break
                 @endif
                 <a href="/kategori/detailbuku/{{ $book->id }}"
-                    class="block p-4 bg-white rounded-md shadow-md hover:shadow-lg">
+                    class="block p-4 bg-white rounded-md shadow-md hover:shadow-lg  dark:bg-gray-700">
                     <img class="object-cover object-center w-full h-48 mb-2"
                         src="https://source.unsplash.com/1200x800/?book/{{ $book->id }}" alt="Nama Produk">
-                    <h3 class="text-lg font-semibold">{{ $book->title }}</h3>
-                    <p class="text-gray-700">Penulis: {{ $book->writter->name }}</p>
+                    <h3 class="text-lg font-semibold dark:text-white">{{ $book->title }}</h3>
+                    <p class="text-gray-700 dark:text-white">Penulis: {{ $book->writter->name }}</p>
                     <p class="text-lg pt-2 text-blue-700">{{ 'RP.' . number_format($book->price, 2, ',', '.') }} <span
                             class="inline-block float-right px-2 py-1 text-xs tracking-wide text-white bg-blue-500 rounded">{{ $book->category->name }}</span>
                     </p>
@@ -114,7 +114,7 @@
         @endif
 
         {{-- Pagination --}}
-        <div class="flex justify-between mt-8 items-between pb-36">
+        <div class="flex justify-between mt-8 items-between pb-36 ">
             {{ $books->links() }}
         </div>
     </div>

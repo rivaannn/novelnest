@@ -1,4 +1,4 @@
-<footer class="p-4 bg-white md:p-8 lg:p-10 dark:bg-gray-800">
+<footer class="p-4 bg-white md:p-8 lg:p-10 dark:bg-gray-900">
     <div class="max-w-screen-xl mx-auto text-center">
         <a href="#" class="flex items-center justify-center text-2xl font-semibold text-gray-900 dark:text-white">
             <x-application-logo class="w-auto h-8 text-gray-800 fill-current" />

@@ -7,7 +7,7 @@
         <div class="flex space-x-3 md:order-2 md:space-x-0 rtl:space-x-reverse">
             {{-- Validasi ketika sudah ada yang login atau belum --}}
             @auth
-                <div x-data="{ open: false }" class="relative">
+                <div x-data="{ open: false }" class="relative me-4">
                     <button @click="open = !open"
                         class="flex items-center space-x-2 text-sm font-medium text-gray-700 transition duration-150 ease-in-out hover:text-gray-900 dark:text-gray-200 dark:hover:text-white focus:outline-none">
                         <img class="w-8 h-8 rounded-full"
@@ -40,21 +40,24 @@
                 </div>
             @endauth
 
-            @guest
-                <a href="/login"
-                    class="inline-flex items-center justify-center px-6 py-2 text-sm text-white bg-blue-600 rounded-full hover:bg-blue-700 me-4">
-                    <span>Masuk</span>
-                </a>
-                <a href="/register"
-                    class="inline-flex items-center justify-center px-6 py-2 text-sm text-gray-600 bg-gray-300 rounded-full hover:bg-gray-200 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700">
-                    <span>Daftar</span>
-                </a>
-                <div class="py-3 pl-10">
-                    <img class="w-5 cursor-pointer sun " src="../img/sun.png" alt="">
-                    <img class="w-5 cursor-pointer moon " src="../img/moon.png" alt="">
-                </div>
+            <div class="relative items-center justify-center mx-auto mt-2 me-4">
+                <img class="w-5 cursor-pointer sun " src="../img/sun.png" alt="">
+                <img class="w-5 cursor-pointer moon " src="../img/moon.png" alt="">
+            </div>
 
+            @guest
+                <div class="inline mx-auto">
+                    <a href="/login"
+                        class="inline-flex items-center justify-center px-6 py-2 text-sm text-white bg-blue-600 rounded-full hover:bg-blue-700">
+                        <span>Masuk</span>
+                    </a>
+                    <a href="/register"
+                        class="inline-flex items-center justify-center px-6 py-2 text-sm text-gray-600 bg-gray-300 rounded-full hover:bg-gray-200 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700">
+                        <span>Daftar</span>
+                    </a>
+                </div>
             @endguest
+
             <button data-collapse-toggle="navbar-sticky" type="button"
                 class="inline-flex items-center justify-center w-10 h-10 p-2 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
                 aria-controls="navbar-sticky" aria-expanded="false">
@@ -66,7 +69,6 @@
                 </svg>
             </button>
         </div>
-
 
         <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
             <ul

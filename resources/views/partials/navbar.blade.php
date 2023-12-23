@@ -5,7 +5,7 @@
             <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">NovelNest</span>
         </a>
         <div class="flex space-x-3 md:order-2 md:space-x-0 rtl:space-x-reverse">
-            {{-- Validasi ketika sudah ada yang login atau belum --}}
+            {{-- Validasi ketika sudah ada yang login atau belum dan berikan pesan notifkasi --}}
             @auth
                 <div x-data="{ open: false }" class="relative me-4">
                     <button @click="open = !open"
@@ -40,7 +40,10 @@
                 </div>
             @endauth
 
-
+            <div class="relative items-center justify-center mx-auto mt-2 me-4">
+                <img class="w-5 cursor-pointer sun " src="../img/sun.png" alt="">
+                <img class="w-5 cursor-pointer moon " src="../img/moon.png" alt="">
+            </div>
 
             @guest
                 <div class="inline mx-auto">

@@ -1,8 +1,9 @@
 @extends('layouts.main')
 
 @section('content')
+
     <button
-        class="flex items-start px-3 py-2 mt-16 mb-4 ml-56 text-gray-600 bg-gray-300 border-0 rounded-full focus:outline-none hover:bg-gray-200 dark:bg-gray-900 dark:text-gray-400 dark:hover:bg-gray-900"><svg
+        class="flex items-start px-3 py-2 mt-16 mb-4 ml-56 text-gray-600 bg-gray-300 border-0 rounded-full focus:outline-none hover:bg-gray-200 dark:bg-gray-900 dark:text-gray-400 dark:hover:bg-gray-700"><svg
             class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
             viewBox="0 0 16 10">
             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -10,7 +11,7 @@
         </svg> <a href="{{ url('/kategori') }}" class="ms-auto"> &nbsp;Kembali
     </button>
     </a>
-    <section class="overflow-hidden text-gray-700 bg-white body-font dark:bg-gray-900 dark:text-white">
+    <section class="overflow-hidden text-gray-700 bg-white body-font dark:bg-gray-800 dark:text-white">
         <div class="container px-5 py-4 mx-auto mb-48">
             <div class="flex flex-wrap mx-auto lg:w-4/5">
                 <img alt="ecommerce" class="object-cover object-center w-full border border-gray-200 rounded lg:w-1/2"

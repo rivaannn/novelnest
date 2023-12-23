@@ -40,7 +40,6 @@
                 </div>
             @endauth
 
-
             <div class="relative items-center justify-center mx-auto mt-2 me-4">
                 <img class="w-5 cursor-pointer sun " src="../img/sun.png" alt="">
                 <img class="w-5 cursor-pointer moon " src="../img/moon.png" alt="">
@@ -58,6 +57,15 @@
                     </a>
                 </div>
             @endguest
+
+            <div class="pl-7 py-2">
+                <img class="w-5 cursor-pointer sun " src="../img/sun.png" alt="DarkMode light">
+                <img class="w-5 cursor-pointer moon " src="../img/moon.png" alt="DarkMode dark">
+            </div>
+
+            <a href="" class="pl-8 py-2">
+                <img class="h-6 w-6 cursor-pointer cart" src="/img/keranjang.png" alt="">
+            </a>
 
             <button data-collapse-toggle="navbar-sticky" type="button"
                 class="inline-flex items-center justify-center w-10 h-10 p-2 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"

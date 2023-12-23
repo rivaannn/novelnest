@@ -49,8 +49,8 @@
             @foreach ($latestBooks as $book)
                 <a href="{{ route('kategori.detailbuku', $book->id) }}"
                     class="overflow-hidden transition duration-300 bg-white rounded-lg shadow-md hover:shadow-lg">
-                    <img class="object-cover object-center w-full h-48" src="https://source.unsplash.com/800x1200/?book"
-                        alt="Book Image">
+                    <img class="object-cover object-center w-full h-48 dark:shadow-lg"
+                        src="https://source.unsplash.com/800x1200/?book" alt="Book Image">
                     <div class="p-4">
                         <h2 class="mb-2 text-xl font-bold">{{ $book->title }}</h2>
                         <p class="mb-2 text-gray-700">Penulis: {{ $book->writter->name }} </p>

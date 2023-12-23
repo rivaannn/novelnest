@@ -40,11 +40,6 @@
                 </div>
             @endauth
 
-            <div class="relative items-center justify-center mx-auto mt-2 me-4">
-                <img class="w-5 cursor-pointer sun " src="../img/sun.png" alt="">
-                <img class="w-5 cursor-pointer moon " src="../img/moon.png" alt="">
-            </div>
-
             @guest
                 <div class="inline mx-auto">
                     <a href="/login"
@@ -58,13 +53,13 @@
                 </div>
             @endguest
 
-            <div class="pl-7 py-2">
-                <img class="w-5 cursor-pointer sun " src="../img/sun.png" alt="DarkMode light">
-                <img class="w-5 cursor-pointer moon " src="../img/moon.png" alt="DarkMode dark">
+            <div class="py-2 pl-7">
+                <img class="w-5 cursor-pointer sun " src="{{ asset('img/sun.png') }}" alt="DarkMode light">
+                <img class="w-5 cursor-pointer moon " src="{{ asset('img/moon.png') }}" alt="DarkMode dark">
             </div>
 
-            <a href="" class="pl-8 py-2">
-                <img class="h-6 w-6 cursor-pointer cart" src="/img/keranjang.png" alt="">
+            <a href="" class="py-2 pl-8">
+                <img class="w-6 h-6 cursor-pointer cart" src="{{ asset('img/keranjang.png') }}" alt="Icon Keranjang">
             </a>
 
             <button data-collapse-toggle="navbar-sticky" type="button"

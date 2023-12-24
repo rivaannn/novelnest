@@ -59,7 +59,7 @@
             </div>
 
             <a href="" class="py-2 pl-8">
-                <img class="w-6 h-6 cursor-pointer cart" src="{{ asset('img/keranjang.png') }}" alt="Icon Keranjang">
+                <img class="w-6 h-6 cursor-pointer" src="{{ asset('img/keranjang.png') }}" alt="Icon Keranjang">
             </a>
 
             <button data-collapse-toggle="navbar-sticky" type="button"

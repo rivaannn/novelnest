@@ -51,9 +51,7 @@
 
                 <div class="grid grid-cols-1 gap-8 mt-8 xl:mt-0 xl:mx-4 xl:w-1/2 md:grid-cols-2">
                     <div>
-                        <img class="object-cover w-full h-64 rounded-xl"
-                            src="/img/rivan.jpg"
-                            alt="">
+                        <img class="object-cover w-full h-64 rounded-xl" src="{{ asset('/img/rivan') }}.jpg" alt="">
 
                         <h1 class="mt-4 text-2xl font-semibold text-gray-700 capitalize dark:text-white">Muhamad Rivan
                             Sahronie</h1>
@@ -61,9 +59,7 @@
                     </div>
 
                     <div>
-                        <img class="object-cover w-full h-64 rounded-xl"
-                            src="/img/angga.jpg"
-                            alt="">
+                        <img class="object-cover w-full h-64 rounded-xl" src="{{ asset('/img/angga') }}.jpg" alt="">
 
                         <h1 class="mt-4 text-2xl font-semibold text-gray-700 capitalize dark:text-white">Muhammad Angga
                             Kusuma</h1>
@@ -71,9 +67,7 @@
                         <p class="mt-2 text-gray-500 capitalize dark:text-gray-300">Front End Developer</p>
                     </div>
                     <div>
-                        <img class="object-cover w-full h-64 rounded-xl"
-                            src="/img/rejka.jpg"
-                            alt="">
+                        <img class="object-cover w-full h-64 rounded-xl" src="{{ asset('/img/rejka') }}.jpg" alt="">
 
                         <h1 class="mt-4 text-2xl font-semibold text-gray-700 capitalize dark:text-white">Muhammad Rejka
                             Permana </h1>
@@ -81,9 +75,7 @@
                         <p class="mt-2 text-gray-500 capitalize dark:text-gray-300">Back End Developer</p>
                     </div>
                     <div>
-                        <img class="object-cover w-full h-64 rounded-xl"
-                            src="img/yudha.jpg"
-                            alt="">
+                        <img class="object-cover w-full h-64 rounded-xl" src="{{ asset('/img/yudha') }}.jpg" alt="">
 
                         <h1 class="mt-4 text-2xl font-semibold text-gray-700 capitalize dark:text-white">Yudha Prasetya</h1>
 

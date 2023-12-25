@@ -1,4 +1,4 @@
-<x-dashboard-user>
+<x-appuser>
     <x-slot name="header">
         <h2 class="text-xl font-semibold leading-tight text-gray-800 dark:text-gray-200">
             {{ __('Dashboard User') }}
@@ -37,4 +37,4 @@
     </div>
 
     @include('partials.footer')
-</x-dashboard-user>
+</x-appuser>

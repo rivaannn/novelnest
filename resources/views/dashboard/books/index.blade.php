@@ -24,10 +24,12 @@
         <div class="flex items-center justify-center p-2.5">
             <!-- Tombol Tambah Buku -->
             <a href="{{ url('books/create') }}"
-                class="inline-block px-4 py-2 text-white bg-green-600 rounded-md hover:bg-green-700 focus:outline-none focus:shadow-outline-green active:bg-green-800">
-                {{ __('Tambah Buku') }}
+                class="inline-block px-4 py-2 text-white bg-green-600 rounded-md hover:bg-green-700 focus:outline-none focus:shadow-outline-green active:bg-green-800"><svg
+                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                    stroke="currentColor" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                </svg>
             </a>
-
             <!-- Search Form -->
             <form action="{{ route('books.search') }}" class="max-w-[480px] w-full px-4" method="get">
                 <div class="relative flex items-center">
@@ -51,8 +53,12 @@
 
             <!-- Tombol Export PDF -->
             <a href="{{ url('books/book-report-pdf') }}"
-                class="inline-block px-4 py-2 text-white bg-red-600 rounded-md hover:bg-red-700 focus:outline-none focus:shadow-outline-red active:bg-red-800">
-                {{ __('Export PDF') }}
+                class="inline-block px-4 py-2 text-white bg-red-700 rounded-md hover:bg-red-800 focus:outline-none focus:shadow-outline-red active:bg-red-800"><svg
+                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                    stroke="currentColor" data-slot="icon" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
+                </svg>
             </a>
         </div>
     </div>
@@ -87,12 +93,14 @@
                             class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase dark:text-gray-400">
                             {{ __('Harga') }}
                         </th>
-                        <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-right">
+                        <th scope="col"
+                            class="px-6 py-3 text-xs font-medium tracking-wider text-right dark:text-white">
                             {{ __('Actions') }}
                         </th>
                     </tr>
                 </thead>
-                <tbody id="booksTable" class="bg-white divide-y divide-gray-200 dark:bg-gray-900 dark:divide-gray-700">
+                <tbody id="booksTable"
+                    class="bg-white divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700 dark:text-gray-200">
                     @foreach ($books as $key => $book)
                         <tr>
                             <td class="px-6 py-4 whitespace-nowrap">

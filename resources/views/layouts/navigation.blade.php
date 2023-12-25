@@ -1,13 +1,12 @@
-<nav x-data="{ open: false }" class="bg-white border-b border-gray-100 dark:bg-gray-800 dark:border-gray-700">
+<nav x-data="{ open: false }" class="bg-white border-b border-gray-100 dark:bg-gray-900 dark:border-gray-700">
     <!-- Primary Navigation Menu -->
     <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
             <div class="flex">
                 <!-- Logo -->
-                <div class="flex items-center shrink-0">
+                <div class="flex items-center shrink-0 dark:text-gray-200">
                     <a href="{{ route('dashboard') }}">
-                        <x-application-logo
-                            class="inline-block w-auto mx-auto text-gray-800 fill-current h-9 dark:text-gray-200 me-2" />
+                        <x-application-logo class="inline-block w-auto mx-auto text-gray-800 h-9 me-2" />
                         {{ __('NovelNest') }}
                     </a>
                 </div>
@@ -71,7 +70,7 @@
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
                         <button
-                            class="inline-flex items-center px-3 py-2 text-sm font-medium leading-4 text-gray-500 transition duration-150 ease-in-out bg-white border border-transparent rounded-md dark:text-gray-400 dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none">
+                            class="inline-flex items-center px-3 py-2 text-sm font-medium leading-4 text-gray-500 transition duration-150 ease-in-out bg-white border border-transparent rounded-md dark:text-gray-400 dark:bg-gray-900 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none">
                             <img class="w-8 h-8 -mt-1 rounded-full me-2"
                                 src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"
                                 alt="{{ Auth::user()->name }}" />
@@ -114,6 +113,10 @@
                 </x-dropdown>
             </div>
 
+            <x-darkmode>
+
+            </x-darkmode>
+
             <!-- Hamburger -->
             <div class="flex items-center -me-2 sm:hidden">
                 <button @click="open = ! open"
@@ -149,7 +152,6 @@
                 {{ __('User') }}
             </x-responsive-nav-link>
         </div>
-
 
         <!-- Responsive Settings Options -->
         <div class="pt-4 pb-1 border-t border-gray-200 dark:border-gray-600">

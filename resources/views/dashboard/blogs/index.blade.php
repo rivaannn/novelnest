@@ -24,10 +24,14 @@
     @endif
 
     <div class="py-12">
-        <div class="flex items-end justify-between mb-6 me-96">
+        <div class="flex items-center justify-center mb-6 me-96">
             <a href="{{ route('blogs.create') }}"
                 class="inline-block px-4 py-2 text-white bg-green-600 rounded-md ms-96 hover:bg-green-700 focus:outline-none focus:shadow-outline-green active:bg-green-800">
-                {{ __('Tambah Blog Baru') }}
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                    stroke="currentColor" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                </svg>
+
             </a>
 
             <!-- Search Form -->
@@ -68,12 +72,14 @@
                                 class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase dark:text-gray-400">
                                 {{ __('Title') }}
                             </th>
-                            <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-right">
+                            <th scope="col"
+                                class="px-6 py-3 text-xs font-medium tracking-wider text-right dark:text-white">
                                 {{ __('Actions') }}
                             </th>
                         </tr>
                     </thead>
-                    <tbody class="bg-white divide-y divide-gray-200 dark:bg-gray-900 dark:divide-gray-700">
+                    <tbody
+                        class="bg-white divide-y divide-gray-200 dark:bg-gray-700 dark:divide-gray-700 dark:text-gray-200">
                         @foreach ($blogs as $key => $blog)
                             <tr>
                                 <td class="px-6 py-4 whitespace-nowrap">

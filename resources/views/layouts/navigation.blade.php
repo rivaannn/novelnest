@@ -113,9 +113,11 @@
                 </x-dropdown>
             </div>
 
-            <x-darkmode>
-
-            </x-darkmode>
+            {{-- Darkmode --}}
+            <div class="hidden sm:flex sm:items-center sm:ms-6">
+                <x-darkmode>
+                </x-darkmode>
+            </div>
 
             <!-- Hamburger -->
             <div class="flex items-center -me-2 sm:hidden">
@@ -163,6 +165,14 @@
             <div class="mt-3 space-y-1">
                 <x-responsive-nav-link :href="route('profile.edit')">
                     {{ __('Profile') }}
+                </x-responsive-nav-link>
+
+                <x-responsive-nav-link :href="route('home')">
+                    {{ __('Home') }}
+                </x-responsive-nav-link>
+
+                <x-responsive-nav-link :href="route('dashboarduser')">
+                    {{ __('Dashboard User') }}
                 </x-responsive-nav-link>
 
                 <!-- Authentication -->

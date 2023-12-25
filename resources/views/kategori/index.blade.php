@@ -7,12 +7,11 @@
             <!-- Filter Options -->
             <div class="mb-4 ">
                 <h2 class="mb-2 text-2xl font-semibold dark:text-white">Filter Kategori</h2>
-
                 <form class="grid grid-flow-row-dense" action="{{ route('kategori.filter') }}" method="get">
                     @csrf
                     <label for="kategori" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kategori
                         Buku</label>
-                    <select id="kategori" name="kategori"
+                    <select id="kategori" name="category"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                         <option value="">Semua Kategori</option>
                         @foreach ($categories as $category)
@@ -20,23 +19,36 @@
                         @endforeach
                     </select>
 
-                    <!-- Price Range -->
-                    <div class="mt-4 mb-5">
-                        <label for="harga-minimum"
-                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Harga
-                            Minimum</label>
-                        <!-- Tambahkan elemen input untuk harga minimum -->
-                        <input type="text" id="harga-minimum" name="harga_minimum"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                            placeholder="Rp.">
-
-                        <label for="harga-maksimum"
-                            class="block mt-2 mb-2 text-sm font-medium text-gray-900 dark:text-white">Harga Maksimum</label>
-                        <!-- Tambahkan elemen input untuk harga maksimum -->
-                        <input type="text" id="harga-maksimum" name="harga_maksimum"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                            placeholder="Rp.">
+                    {{-- Penulis --}}
+                    <div class="mt-4">
+                        <label for="penulis" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Penulis
+                            Buku</label>
+                        <select id="penulis" name="writter"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                            <option value="">Semua Penulis</option>
+                            @foreach ($writters as $writter)
+                                <option value="{{ $writter->id }}">{{ $writter->name }}</option>
+                            @endforeach
+                        </select>
                     </div>
+
+                    <div class="mt-2 mb-4">
+                        <!-- Harga Minimum -->
+                        <label for="harga_min"
+                            class="block mt-2 mb-2 text-sm font-medium text-gray-900 dark:text-white">Harga Minimum
+                            Buku</label>
+                        <input type="number" id="harga_min" name="harga_min" placeholder="Masukkan Harga Minimum (Rp.)"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                            autocomplete="off">
+                        <!-- Harga Minimum -->
+                        <label for="harga_max"
+                            class="block mt-2 mb-2 text-sm font-medium text-gray-900 dark:text-white">Harga Minimum
+                            Buku</label>
+                        <input type="number" id="harga_max" name="harga_max" placeholder="Masukkan Harga Minimum (Rp.)"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                            autocomplete="off">
+                    </div>
+
 
                     <!-- Submit Button -->
                     <button type="submit"
@@ -44,9 +56,8 @@
                         Filter</button>
                 </form>
 
-
                 <!-- Reset Filter Button -->
-                <form class="grid grid-flow-row-dense" action="{{ url('/kategori') }}" method="get">
+                <form class="grid grid-flow-row-dense" action="{{ route('kategori.index') }}" method="get">
                     @csrf
                     <button type="submit"
                         class="text-blue-700 hover:text-white border border-blue-600 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-500 dark:focus:ring-blue-800">Reset
@@ -122,8 +133,10 @@
         @endif
 
         {{-- Pagination --}}
-        <div class="flex justify-between mt-8 items-between pb-36 ">
-            {{ $books->links() }}
+        <div class="flex items-center justify-center mt-8 mb-36">
+            @if ($books instanceof \Illuminate\Pagination\LengthAwarePaginator)
+                {{ $books->links() }}
+            @endif
         </div>
     </div>
 </div>

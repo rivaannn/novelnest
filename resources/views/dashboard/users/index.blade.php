@@ -47,8 +47,11 @@
                     </button>
                 </div>
             </form>
+            <!-- Tombol Export PDF -->
+            <a href="{{ url('users/book-report-pdf') }}" class="inline-block px-4 py-2 text-white bg-red-600 rounded-md hover:bg-red-700 focus:outline-none focus:shadow-outline-red active:bg-red-800">
+                 {{ __('Export PDF') }}
+            </a>
         </div>
-
         <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
             @if ($users->isEmpty())
                 <p>{{ __('No users found.') }}</p>

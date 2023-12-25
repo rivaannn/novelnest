@@ -37,9 +37,18 @@
                         <span class="mt-1 text-xl font-medium text-blue-500 title-font">Rp.
                             {{ number_format($books->price, 0, ',', '.') }}</span>
 
-                        <button
-                            class="flex px-6 py-2 ml-16 text-white bg-blue-500 border-0 rounded-full ms-2 focus:outline-none hover:bg-blue-600">Beli
-                            Buku </button>
+                        <div class="flex pl-28">
+                            <button
+                                class="px-6 text-white bg-white border border-blue-500 dark:bg-white rounded-full ms-2  hover:bg-gray-200 dark:hover:bg-gray-300 dark:border-none">
+                                <img class="h-6 w-6 cursor-pointer cart" src="{{ asset('/img/keranjang') }}.png"
+                                    alt="Keranjang icon">
+                            </button>
+
+                            <button
+                                class="px-6 py-2 text-white bg-blue-500 border-0 rounded-full ms-2 focus:outline-none hover:bg-blue-600">Beli
+                                Buku
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>

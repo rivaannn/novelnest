@@ -23,10 +23,14 @@
     @endif
 
     <div class="py-12">
-        <div class="flex items-end justify-between mb-6 me-96">
+        <div class="flex items-center justify-center mb-6 me-96">
             <a href="{{ route('writters.create') }}"
                 class="inline-block px-4 py-2 text-white bg-green-600 rounded-md ms-96 hover:bg-green-700 focus:outline-none focus:shadow-outline-green active:bg-green-800">
-                {{ __('Tambah Penulis') }}
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                    stroke="currentColor" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                </svg>
+
             </a>
 
             <!-- Search Form -->

@@ -113,9 +113,11 @@
                 </x-dropdown>
             </div>
 
-            <x-darkmode>
-
-            </x-darkmode>
+            {{-- Darkmode --}}
+            <div class="hidden sm:flex sm:items-center sm:ms-6">
+                <x-darkmode>
+                </x-darkmode>
+            </div>
 
             <!-- Hamburger -->
             <div class="flex items-center -me-2 sm:hidden">

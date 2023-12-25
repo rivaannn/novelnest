@@ -4,7 +4,7 @@
         <div class="flex justify-between h-16">
             <div class="flex">
                 <!-- Logo -->
-                <div class="flex items-center shrink-0">
+                <div class="flex items-center shrink-0 dark:text-gray-200">
                     <a href="{{ route('dashboarduser') }}">
                         <x-application-logo
                             class="inline-block w-auto mx-auto text-gray-800 fill-current h-9 dark:text-white me-2" />
@@ -31,7 +31,7 @@
             </div>
 
             <!-- Settings Dropdown -->
-            <div class="hidden sm:flex sm:items-center sm:ms-6">
+            <div class="hidden ps-96 sm:flex sm:items-center sm:ms-6">
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
                         <button
@@ -77,10 +77,11 @@
                     </x-slot>
                 </x-dropdown>
             </div>
-            
-            <div class="py-2 pl-7">
-                <img class="w-5 cursor-pointer sun " src="{{ asset('img/sun.png') }}" alt="DarkMode light">
-                <img class="w-5 cursor-pointer moon " src="{{ asset('img/moon.png') }}" alt="DarkMode dark">
+
+            {{-- Darkmode --}}
+            <div class="hidden sm:flex sm:items-center sm:ms-6">
+                <x-darkmode>
+                </x-darkmode>
             </div>
 
             <!-- Hamburger -->

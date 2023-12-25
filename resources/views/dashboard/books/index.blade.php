@@ -32,7 +32,11 @@
             <form action="{{ route('books.search') }}" class="max-w-[480px] w-full px-4" method="get">
                 <div class="relative flex items-center">
                     <input type="text" id="searchInput" name="q"
-                        class="w-full h-12 p-4 border-none rounded-full" placeholder="Search">
+                        class="w-full h-12 p-4 border-none rounded-full" placeholder="Search" autocomplete="off">
+                    <div id="searchResults"
+                        class="absolute z-10 hidden w-full mt-1 bg-white border border-t-0 rounded-b-lg shadow">
+                        <!-- Hasil live search akan ditampilkan di sini -->
+                    </div>
                     <button type="submit" class="ml-2">
                         <svg class="w-5 h-5 fill-current text-sky-600" xmlns="http://www.w3.org/2000/svg"
                             xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px"
@@ -40,7 +44,6 @@
                             xml:space="preserve">
                             <path
                                 d="M55.146,51.401l-9.799-9.799c3.396-4.711,5.419-10.499,5.419-16.802C50.766,11.431,39.335,0,25.383,0   C11.431,0,0,11.431,0,25.383s11.431,25.383,25.383,25.383c6.303,0,12.091-2.023,16.802-5.419l9.799,9.799   c0.781,0.781,2.047,0.781,2.828,0l2.828-2.828C55.927,53.448,55.927,52.182,55.146,51.401z M25.383,44.966   c-9.374,0-16.966-7.592-16.966-16.966c0-9.374,7.592-16.966,16.966-16.966c9.374,0,16.966,7.592,16.966,16.966   C42.348,37.374,34.756,44.966,25.383,44.966z" />
-
                         </svg>
                     </button>
                 </div>
@@ -53,9 +56,6 @@
             </a>
         </div>
     </div>
-
-
-
 
 
     <div class="flex items-center justify-center max-w-full mx-auto sm:px-6 lg:px-8">
@@ -92,7 +92,7 @@
                         </th>
                     </tr>
                 </thead>
-                <tbody class="bg-white divide-y divide-gray-200 dark:bg-gray-900 dark:divide-gray-700">
+                <tbody id="booksTable" class="bg-white divide-y divide-gray-200 dark:bg-gray-900 dark:divide-gray-700">
                     @foreach ($books as $key => $book)
                         <tr>
                             <td class="px-6 py-4 whitespace-nowrap">
@@ -135,6 +135,7 @@
                 </tbody>
             </table>
         @endif
+        <div id="searchResults"></div>
     </div>
     <div class="flex items-center justify-center mt-8">
         @if ($books instanceof \Illuminate\Pagination\LengthAwarePaginator)

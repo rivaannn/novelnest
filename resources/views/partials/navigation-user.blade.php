@@ -25,7 +25,7 @@
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link href="#">
-                        <img class="h-20" src="/img/keranjang.png" class="m-8" alt="Flowbite Logo">
+                        <img class="w-7 h-7" src="{{ asset('img/keranjang.png') }}" class="m-8" alt="Keranjang Logo">
                     </x-nav-link>
                 </div>
             </div>

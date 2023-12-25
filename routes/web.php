@@ -16,6 +16,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\WritterController;
 use App\Http\Controllers\SocialiteController;
 use App\Http\Controllers\PublishersController;
+use Illuminate\Support\Facades\Response;
 
 /*
 |--------------------------------------------------------------------------
@@ -56,13 +57,44 @@ Route::get('/kategori/detailbuku/{id}', function ($id) {
 
 Route::get('/kategori/search', function (Request $request) {
     $categories = Category::all();
-    $books = Books::where('title', 'like', '%' . $request->search . '%')->latest()->paginate(6);
+
+    $searchTerm = $request->get('search');
+    $books = Books::with('writter', 'category')
+        ->where('title', 'like', '%' . $searchTerm . '%')
+        ->latest()
+        ->paginate(6);
+
+    if ($request->ajax()) {
+        return Response::json($books);
+    }
+
     return view('kategori.index', [
         'active' => 'kategori',
         'categories' => $categories,
         'books' => $books,
     ]);
-});
+})->name('kategori.search');
+
+Route::get('/kategori/livesearch', function (Request $request) {
+    $categories = Category::all();
+
+    $searchQuery = $request->get('search');
+    $books = Books::with('writter', 'category')
+        ->where('title', 'like', '%' . $searchQuery . '%')
+        ->latest()
+        ->paginate(6);
+
+    if ($request->ajax()) {
+        return response()->json($books);
+    }
+
+    return view('kategori.index', [
+        'active' => 'kategori',
+        'categories' => $categories,
+        'books' => $books,
+    ]);
+})->name('kategori.livesearch');
+
 
 Route::get('/kategori/filter', function (Request $request) {
     $categories = Category::all();
@@ -107,11 +139,10 @@ Route::get('/kategori/{category}', function ($category) {
         'active' => 'kategori',
         'categories' => $categories,
         'books' => $books,
-    ]);
+    ]); { {
+        }
+    }
 })->name('kategori.filterByCategory');
-
-
-
 
 Route::get('/blog', function () {
     $categories = Category::all();

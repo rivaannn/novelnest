@@ -5,7 +5,7 @@
             <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">NovelNest</span>
         </a>
         <div class="flex space-x-3 md:order-2 md:space-x-0 rtl:space-x-reverse">
-            {{-- Validasi ketika sudah ada yang login atau belum --}}
+            {{-- Validasi ketika sudah ada yang login atau belum dan berikan pesan notifkasi --}}
             @auth
                 <div x-data="{ open: false }" class="relative me-4">
                     <button @click="open = !open"
@@ -40,11 +40,6 @@
                 </div>
             @endauth
 
-            <div class="relative items-center justify-center mx-auto mt-2 me-4">
-                <img class="w-5 cursor-pointer sun " src="../img/sun.png" alt="">
-                <img class="w-5 cursor-pointer moon " src="../img/moon.png" alt="">
-            </div>
-
             @guest
                 <div class="inline mx-auto">
                     <a href="/login"
@@ -57,6 +52,15 @@
                     </a>
                 </div>
             @endguest
+
+            <div class="py-2 pl-7">
+                <img class="w-5 cursor-pointer sun " src="{{ asset('img/sun.png') }}" alt="DarkMode light">
+                <img class="w-5 cursor-pointer moon " src="{{ asset('img/moon.png') }}" alt="DarkMode dark">
+            </div>
+
+            <a href="" class="py-2 pl-8">
+                <img class="w-6 h-6 cursor-pointer cart" src="{{ asset('img/keranjang.png') }}" alt="Icon Keranjang">
+            </a>
 
             <button data-collapse-toggle="navbar-sticky" type="button"
                 class="inline-flex items-center justify-center w-10 h-10 p-2 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"

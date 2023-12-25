@@ -5,7 +5,7 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="flex items-center shrink-0">
-                    <a href="{{ route('dashboard') }}">
+                    <a href="{{ route('dashboarduser') }}">
                         <x-application-logo
                             class="inline-block w-auto mx-auto text-gray-800 fill-current h-9 dark:text-gray-200 me-2" />
                         {{ __('NovelNest') }}

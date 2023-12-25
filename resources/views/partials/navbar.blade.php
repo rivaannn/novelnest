@@ -58,7 +58,7 @@
                 <img class="w-5 cursor-pointer moon " src="{{ asset('img/moon.png') }}" alt="DarkMode dark">
             </div>
 
-            <a href="" class="py-2 pl-8">
+            <a href="/keranjang" class="py-2 pl-8">
                 <img class="w-6 h-6 cursor-pointer" src="{{ asset('img/keranjang.png') }}" alt="Icon Keranjang">
             </a>
 

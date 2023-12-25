@@ -87,12 +87,14 @@
                             class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase dark:text-gray-400">
                             {{ __('Harga') }}
                         </th>
-                        <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-right">
+                        <th scope="col"
+                            class="px-6 py-3 text-xs font-medium tracking-wider text-right dark:text-white">
                             {{ __('Actions') }}
                         </th>
                     </tr>
                 </thead>
-                <tbody id="booksTable" class="bg-white divide-y divide-gray-200 dark:bg-gray-900 dark:divide-gray-700">
+                <tbody id="booksTable"
+                    class="bg-white divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700 dark:text-gray-200">
                     @foreach ($books as $key => $book)
                         <tr>
                             <td class="px-6 py-4 whitespace-nowrap">

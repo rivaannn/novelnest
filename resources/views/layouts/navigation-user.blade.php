@@ -77,6 +77,11 @@
                     </x-slot>
                 </x-dropdown>
             </div>
+            
+            <div class="py-2 pl-7">
+                <img class="w-5 cursor-pointer sun " src="{{ asset('img/sun.png') }}" alt="DarkMode light">
+                <img class="w-5 cursor-pointer moon " src="{{ asset('img/moon.png') }}" alt="DarkMode dark">
+            </div>
 
             <!-- Hamburger -->
             <div class="flex items-center -me-2 sm:hidden">

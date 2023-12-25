@@ -4,5 +4,8 @@
             {{ __('Daftar Keranjang') }}
         </h2>
     </x-slot>
+    
+    
+
     @include('partials.footer')
 </x-appuser>

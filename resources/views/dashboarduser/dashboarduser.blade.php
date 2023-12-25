@@ -30,7 +30,7 @@
                 <div class="p-6 transition-transform transform bg-white rounded-lg shadow-md hover:scale-105">
                     <h3 class="text-xl font-semibold text-center text-gray-800 dark:text-gray-200">Jumlah Order</h3>
                     <p class="text-2xl font-bold text-center text-blue-600">10</p>
-                    <x-elongated-button href="#">Detail</x-elongated-button>
+                    <x-elongated-button href="/order">Detail</x-elongated-button>
                 </div>
             </div>
         </div>

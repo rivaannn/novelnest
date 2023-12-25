@@ -196,6 +196,10 @@ Route::get('/keranjang', function () {
     return view('dashboarduser.keranjang');
 })->middleware(['auth', 'verified'])->name('keranjang');
 
+Route::get('/order', function () {
+    return view('dashboarduser.order');
+})->middleware(['auth', 'verified'])->name('order');
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

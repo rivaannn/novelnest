@@ -4,10 +4,9 @@
         <div class="flex justify-between h-16">
             <div class="flex">
                 <!-- Logo -->
-                <div class="flex items-center shrink-0">
+                <div class="flex items-center shrink-0 dark:text-gray-200">
                     <a href="{{ route('dashboard') }}">
-                        <x-application-logo
-                            class="inline-block w-auto mx-auto text-gray-800 fill-current h-9 dark:text-gray-200 me-2" />
+                        <x-application-logo class="inline-block w-auto mx-auto text-gray-800 h-9 me-2" />
                         {{ __('NovelNest') }}
                     </a>
                 </div>
@@ -114,6 +113,10 @@
                 </x-dropdown>
             </div>
 
+            <x-darkmode>
+
+            </x-darkmode>
+
             <!-- Hamburger -->
             <div class="flex items-center -me-2 sm:hidden">
                 <button @click="open = ! open"
@@ -149,9 +152,6 @@
                 {{ __('User') }}
             </x-responsive-nav-link>
         </div>
-        <x-darkmode>
-
-        </x-darkmode>
 
         <!-- Responsive Settings Options -->
         <div class="pt-4 pb-1 border-t border-gray-200 dark:border-gray-600">

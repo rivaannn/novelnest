@@ -11,13 +11,14 @@
             <div class="grid grid-cols-1 gap-8 mt-8 lg:grid-cols-2 lg:gap-16">
                 <div class="relative h-64 overflow-hidden sm:h-80 lg:h-full">
                     <img alt="Party" src="https://source.unsplash.com/1200x800/?book"
-                        class="absolute inset-0 object-cover w-full h-full" />
+                        class="absolute inset-0 object-cover w-full h-full rounded-sm" />
                 </div>
 
                 <div class="lg:py-16">
                     <article class="space-y-4">
                         <p class="mb-4 text-3xl font-bold sm:text-4xl dark:text-white">Awal Mula
-                        <p class="space-x-2 leading-relaxed text-md sm:text-md text-justify dark:text-white">Website ini
+                        <p class="space-x-2 leading-6 text-justify text-balance text-md sm:text-md dark:text-white">Website
+                            ini
                             didirikan untuk
                             meningkatkan
                             kesadaran betapa
@@ -41,7 +42,7 @@
                 <div class="xl:w-1/2 xl:mx-4">
                     <h2 class="text-3xl font-bold sm:text-4xl dark:text-white">
                         Tim Pengembang </h2>
-                    <p class="max-w-2xl mt-4 space-x-2 leading-relaxed text-md sm:text-md text-justify dark:text-white">
+                    <p class="max-w-2xl mt-4 space-x-2 leading-6 text-justify text-md sm:text-md dark:text-white">
                         Kami adalah kelompok yang berdedikasi untuk menyelesaikan tugas besar dengan kreatif. Dengan
                         beragam keahlian dalam pengembangan perangkat lunak, desain, dan manajemen project, kami bekerja
                         sama untuk merancang dan mengimplementasikan pelajaran yang sudah kami pelajari untuk memenuhi

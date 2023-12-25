@@ -116,7 +116,7 @@ Route::get('/kategori/filter', function (Request $request) {
         });
     }
 
-    $books = $booksQuery->latest()->paginate(6);
+    $books = $booksQuery->latest();
 
     // Tampilkan pesan jika tidak ada buku
     if ($books->isEmpty()) {

@@ -5,7 +5,7 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="flex items-center shrink-0">
-                    <a href="{{ route('dashboard') }}">
+                    <a href="{{ route('dashboarduser') }}">
                         <x-application-logo
                             class="inline-block w-auto mx-auto text-gray-800 fill-current h-9 dark:text-white me-2" />
                         {{ __('NovelNest') }}
@@ -19,12 +19,12 @@
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link href="/order">
+                    <x-nav-link :href="route('order')" :active="request()->routeIs('order')">
                         {{ __('Order') }}
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link href="/keranjang">
+                    <x-nav-link :href="route('keranjang')" :active="request()->routeIs('keranjang')">
                         <img class="w-7 h-7" src="{{ asset('img/keranjang.png') }}" class="m-8" alt="Keranjang Logo">
                     </x-nav-link>
                 </div>

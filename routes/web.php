@@ -192,6 +192,14 @@ Route::get('/dashboarduser', function () {
     return view('dashboarduser.dashboarduser');
 })->middleware(['auth', 'verified'])->name('dashboarduser');
 
+Route::get('/keranjang', function () {
+    return view('dashboarduser.keranjang');
+})->middleware(['auth', 'verified'])->name('keranjang');
+
+Route::get('/order', function () {
+    return view('dashboarduser.order');
+})->middleware(['auth', 'verified'])->name('order');
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -220,6 +228,7 @@ Route::get('/publishers/create', function () {
 
 // Route Untuk Users
 Route::middleware(['auth'])->group(function () {
+    Route::get('/users/book-report-pdf', [PDFController::class, 'generateUserPdfReport']);
     Route::get('/users', [UsersController::class, 'index'])->name('users.index');
     Route::get('/users/{user}', [UsersController::class, 'show'])->name('users.show');
     Route::get('/users/create', [UsersController::class, 'create'])->name('users.create');

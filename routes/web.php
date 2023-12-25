@@ -220,6 +220,7 @@ Route::get('/publishers/create', function () {
 
 // Route Untuk Users
 Route::middleware(['auth'])->group(function () {
+    Route::get('/users/book-report-pdf', [PDFController::class, 'generateUserPdfReport']);
     Route::get('/users', [UsersController::class, 'index'])->name('users.index');
     Route::get('/users/{user}', [UsersController::class, 'show'])->name('users.show');
     Route::get('/users/create', [UsersController::class, 'create'])->name('users.create');

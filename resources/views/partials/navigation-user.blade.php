@@ -19,12 +19,12 @@
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link href="#">
+                    <x-nav-link href="/order">
                         {{ __('Order') }}
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link href="#">
+                    <x-nav-link href="/keranjang">
                         <img class="w-7 h-7" src="{{ asset('img/keranjang.png') }}" class="m-8" alt="Keranjang Logo">
                     </x-nav-link>
                 </div>
@@ -59,6 +59,9 @@
                         </x-dropdown-link>
                         <x-dropdown-link :href="route('profile.edit')">
                             {{ __('Profile') }}
+                        </x-dropdown-link>
+                        <x-dropdown-link :href="route('dashboard')">
+                            {{ __('Dashboard') }}
                         </x-dropdown-link>
 
                         <!-- Authentication -->

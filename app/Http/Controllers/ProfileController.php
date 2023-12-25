@@ -32,6 +32,7 @@ class ProfileController extends Controller
         }
         if ($request->file('image')) {
             $request->file('image')->store('user-images');
+            $request->user()->image = $request->file('image')->getFilename();
         }
         $request->user()->save();
 

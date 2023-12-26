@@ -113,5 +113,6 @@
             class="px-4 py-2 text-white transition duration-300 bg-blue-500 rounded-full hover:bg-blue-600">Lihat
             Semua Blog</a>
     </div>
+
 </div>
 @endsection

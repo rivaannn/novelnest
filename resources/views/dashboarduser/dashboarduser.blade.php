@@ -19,7 +19,8 @@
         <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
             <div class="grid items-center justify-center grid-cols-2 gap-4 md:grid-cols-3">
                 <!-- Card Buku -->
-                <div class="p-6 transition-transform transform bg-white rounded-lg shadow-md hover:scale-105">
+                <div
+                    class="p-6 transition-transform transform bg-white rounded-lg shadow-md hover:scale-105 dark:bg-gray-800">
                     <h3 class="text-xl font-semibold text-center text-gray-800 dark:text-gray-200">Jumlah Pesanan</h3>
                     <p class="text-2xl font-bold text-center text-blue-600">10</p>
                     <x-elongated-button href="/keranjang">
@@ -27,7 +28,8 @@
                 </div>
 
                 <!-- Card Order -->
-                <div class="p-6 transition-transform transform bg-white rounded-lg shadow-md hover:scale-105">
+                <div
+                    class="p-6 transition-transform transform bg-white rounded-lg shadow-md hover:scale-105 dark:bg-gray-800">
                     <h3 class="text-xl font-semibold text-center text-gray-800 dark:text-gray-200">Jumlah Order</h3>
                     <p class="text-2xl font-bold text-center text-blue-600">10</p>
                     <x-elongated-button href="/order">Detail</x-elongated-button>

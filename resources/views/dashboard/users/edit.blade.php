@@ -29,20 +29,28 @@
                                 class="w-full p-2 mt-1 border rounded-md focus:outline-none focus:border-blue-500">
                         </div>
 
-                        <div class="mb-4">
-                            <label for="image"
-                                class="block text-sm font-medium text-gray-600 dark:text-gray-300">Image</label>
-                            <input type="file" name="image" id="image"
-                                class="w-full p-2 mt-1 border rounded-md focus:outline-none focus:border-blue-500"
-                                accept="image/*" id="imageInput">
-                            <div id="imagePreview" class="flex items-end justify-end w-20 h-20 mt-2 rounded-xl"></div>
-                            @if (substr($user->image, 0, 4) == 'http')
-                                <img src="{{ $user->image }}" alt="Foto Profile"
-                                    class="object-cover w-20 h-20 mt-2 rounded-xl">
-                            @else
-                                <img src="{{ asset('storage/' . $user->image) }}" alt="Foto Profile"
-                                    class="object-cover w-20 h-20 mt-2 rounded-xl">
-                            @endif
+                        <div class="mb-3">
+                            <label for="image" class="form-label"></label>
+                            <input type="hidden" name="oldImage" value="{{ $user->image }}">
+
+                            <div class="img-preview-container">
+                                @if ($user->image)
+                                    <img src="{{ asset('storage/' . $user->image) }}"
+                                        class="object-cover w-full h-full mt-2 mb-3 img-preview rounded-xl">
+                                @else
+                                    <img class="object-cover w-full h-full mt-2 mb-3 img-preview rounded-xl"
+                                        style="display: none;">
+                                @endif
+                            </div>
+
+                            <input class="form-control @error('image') is-invalid @enderror" type="file"
+                                id="image" name="image" onchange="previewImage()">
+
+                            @error('image')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
                         </div>
 
                         <div class="flex items-center justify-end mt-4">
@@ -61,5 +69,22 @@
         </div>
     </div>
     @include('partials.footer')
+
+    {{-- Sripct Js --}}
+    <script>
+        function previewImage() {
+            const image = document.querySelector('#image');
+            const imgPreview = document.querySelector('.img-preview');
+
+            imgPreview.style.display = 'block';
+
+            const oFReader = new FileReader();
+            oFReader.readAsDataURL(image.files[0]);
+
+            oFReader.onload = function(oFREvent) {
+                imgPreview.src = oFREvent.target.result;
+            }
+        }
+    </script>
 
 </x-app-layout>

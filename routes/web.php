@@ -4,6 +4,7 @@
 use App\Models\Blogs;
 use App\Models\Books;
 use App\Models\Category;
+use App\Models\Writter;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PDFController;
@@ -17,6 +18,7 @@ use App\Http\Controllers\WritterController;
 use App\Http\Controllers\SocialiteController;
 use App\Http\Controllers\PublishersController;
 use Illuminate\Support\Facades\Response;
+use Illuminate\Support\Str;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,11 +41,13 @@ Route::get('/about', function () {
 });
 Route::get('/kategori', function () {
     $categories = Category::all();
+    $writters = Writter::all();
     $books = Books::latest()->paginate(6);
     return view('kategori.index', [
         'active' => 'kategori',
         'categories' => $categories,
         'books' => $books,
+        'writters' => $writters,
     ]);
 })->name('kategori.index');
 
@@ -75,60 +79,68 @@ Route::get('/kategori/search', function (Request $request) {
     ]);
 })->name('kategori.search');
 
-Route::get('/kategori/livesearch', function (Request $request) {
-    $categories = Category::all();
-
-    $searchQuery = $request->get('search');
-    $books = Books::with('writter', 'category')
-        ->where('title', 'like', '%' . $searchQuery . '%')
-        ->latest()
-        ->paginate(6);
-
-    if ($request->ajax()) {
-        return response()->json($books);
-    }
-
-    return view('kategori.index', [
-        'active' => 'kategori',
-        'categories' => $categories,
-        'books' => $books,
-    ]);
-})->name('kategori.livesearch');
-
 
 Route::get('/kategori/filter', function (Request $request) {
+    // Mengambil semua kategori
     $categories = Category::all();
 
-    $validator = Validator::make($request->all(), [
-        'kategori' => 'exists:categories,id',
-    ]);
+    // Mengambil semua penulis
+    $writters = Writter::all();
 
-    if ($validator->fails()) {
-        return redirect()->route('kategori.index')->withErrors($validator)->withInput();
-    }
+    // Filter Berdasarkan Category
+    $selectedCategoryId = $request->get('category');
+    $selectedCategory = Category::find($selectedCategoryId);
 
+    // Filter Berdasarkan Penulis
+    $selectedWritterId = $request->get('writter');
+    $selectedWritter = Writter::find($selectedWritterId);
+
+    // Mengambil semua buku
     $booksQuery = Books::query();
 
-    // Filter berdasarkan kategori
-    if ($request->has('kategori') && $request->kategori !== '') {
-        $booksQuery->whereHas('category', function ($categoryQuery) use ($request) {
-            $categoryQuery->where('id', $request->kategori);
-        });
+    if ($selectedCategory) {
+        // Jika kategori dipilih, filter berdasarkan kategori
+        $booksQuery->where('category_id', $selectedCategoryId);
     }
 
-    $books = $booksQuery->latest();
+    if ($selectedWritter) {
+        // Jika penulis dipilih, filter berdasarkan penulis
+        $booksQuery->where('writter_id', $selectedWritterId);
+    }
 
-    // Tampilkan pesan jika tidak ada buku
+    // Filter Berdasarkan Harga
+    $minPrice = $request->get('harga_min');
+    $maxPrice = $request->get('harga_max');
+
+    if ($minPrice && $maxPrice) {
+        // Jika harga_min dan harga_max terisi, filter berdasarkan harga
+        $booksQuery->whereBetween('price', [$minPrice, $maxPrice]);
+    } elseif ($minPrice) {
+        // Jika hanya harga_min saja yang terisi, filter berdasarkan harga
+        $booksQuery->where('price', '>=', $minPrice);
+    } elseif ($maxPrice) {
+        // Jika hanya harga_max saja yang terisi, filter berdasarkan harga
+        $booksQuery->where('price', '<=', $maxPrice);
+    }
+
+    // Mengambil data buku setelah dilakukan filter
+    $books = $booksQuery->latest()->paginate(10);
+
+    // Notifikasi Ketika Buku tidak ada
     if ($books->isEmpty()) {
-        return redirect()->route('kategori.index')->with('error', 'Tidak ada buku yang sesuai dengan filter.');
+        session()->flash('error', 'Tidak ada buku yang ditemukan');
     }
 
     return view('kategori.index', [
         'active' => 'kategori',
         'categories' => $categories,
+        'writters' => $writters,
         'books' => $books,
     ]);
 })->name('kategori.filter');
+
+
+
 
 Route::get('/kategori/{category}', function ($category) {
     $categories = Category::all();

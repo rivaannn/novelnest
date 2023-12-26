@@ -4,7 +4,7 @@
         <div class="flex justify-between h-16">
             <div class="flex">
                 <!-- Logo -->
-                <div class="flex items-center shrink-0">
+                <div class="flex items-center shrink-0 dark:text-gray-200">
                     <a href="{{ route('dashboarduser') }}">
                         <x-application-logo
                             class="inline-block w-auto mx-auto text-gray-800 fill-current h-9 dark:text-white me-2" />
@@ -31,7 +31,7 @@
             </div>
 
             <!-- Settings Dropdown -->
-            <div class="hidden sm:flex sm:items-center sm:ms-6">
+            <div class="hidden ps-96 sm:flex sm:items-center sm:ms-6">
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
                         <button
@@ -76,6 +76,12 @@
                         </form>
                     </x-slot>
                 </x-dropdown>
+            </div>
+
+            {{-- Darkmode --}}
+            <div class="hidden sm:flex sm:items-center sm:ms-6">
+                <x-darkmode>
+                </x-darkmode>
             </div>
 
             <!-- Hamburger -->

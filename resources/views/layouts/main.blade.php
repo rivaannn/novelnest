@@ -26,7 +26,7 @@
     {{-- content custom --}}
 
     @yield('content')
-
+    @include('partials.backtoTop')
     @include('partials.footer')
 
 

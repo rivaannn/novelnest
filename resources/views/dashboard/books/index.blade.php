@@ -71,7 +71,7 @@
             </p>
         @else
             <table class="max-w-full divide-y divide-gray-200 dark:divide-gray-700">
-                <thead class="bg-gray-50 dark:bg-gray-800">
+                <thead class="bg-gray-50 dark:bg-gray-700">
                     <tr>
                         <th scope="col"
                             class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase dark:text-gray-400">
@@ -100,7 +100,7 @@
                     </tr>
                 </thead>
                 <tbody id="booksTable"
-                    class="bg-white divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700 dark:text-gray-200">
+                    class="bg-white divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700 dark:text-gray-200 border border-gray-700">
                     @foreach ($books as $key => $book)
                         <tr>
                             <td class="px-6 py-4 whitespace-nowrap">
@@ -162,14 +162,14 @@
                                                     </svg>
                                                     <h3
                                                         class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">
-                                                        Apakah kamu yakin ingin menghapus buku ?</h3>
+                                                        Apakah kamu yakin ingin menghapus buku ini ?</h3>
                                                     <button data-modal-hide="popup-modal" type="submit"
                                                         class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center me-2">
-                                                        IYA BANGET
+                                                        IYA
                                                     </button>
                                                     <button data-modal-hide="popup-modal" type="button"
-                                                        class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">ENGGA
-                                                        BANGET</button>
+                                                        class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">TIDAK
+                                                        </button>
                                                 </div>
                                             </div>
                                         </div>

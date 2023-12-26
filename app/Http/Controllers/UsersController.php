@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class UsersController extends Controller
 {
@@ -70,6 +71,7 @@ class UsersController extends Controller
     public function destroy(User $user)
     {
         $user->delete();
+
         return redirect()->route('users.index')->with('success', 'Pengguna berhasil dihapus.');
     }
 }

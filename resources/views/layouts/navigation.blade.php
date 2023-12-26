@@ -75,11 +75,11 @@
                                 <img src="{{ Auth::user()->image }}" alt="Foto Profile"
                                     class="w-8 h-8 -mt-1 rounded-full">
                             @else
-                                <img class="w-8 h-8 -mt-1 rounded-full me-2"
+                                <img class="w-8 h-8 -mt-1 rounded-full"
                                     src=" {{ asset('storage/' . Auth::user()->image) }}"
                                     alt="{{ Auth::user()->name }}" />
                             @endif
-                            <div>{{ Auth::user()->name }}</div>
+                            <div class="ms-2">{{ Auth::user()->name }}</div>
                             <div class="ms-1">
                                 <svg class="w-4 h-4 fill-current" xmlns="http://www.w3.org/2000/svg"
                                     viewBox="0 0 20 20">

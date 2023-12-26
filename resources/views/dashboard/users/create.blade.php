@@ -42,12 +42,16 @@
                                 class="w-full p-2 mt-1 border rounded-md focus:outline-none focus:border-blue-500">
                         </div>
 
-                        <div class="mb-12">
-                            <label for="image"
-                                class="block text-sm font-medium text-gray-600 dark:text-gray-300">Gambar</label>
-                            <input type="file" name="image" id="image"
-                                class="w-full p-2 mt-1 border rounded-md focus:outline-none focus:border-blue-500"
-                                accept="image/*">
+                        <div class="mb-3">
+                            <label for="image" class="form-label">Gambar</label>
+                            <img class="object-cover w-full h-full mt-2 mb-3 img-preview rounded-xl">
+                            <input class="form-control @error('image') is-invalid @enderror" type="file"
+                                id="image" name="image" onchange="previewImage()">
+                            @error('image')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
                         </div>
 
                         <div class="flex items-center justify-end mt-4">
@@ -66,4 +70,21 @@
         </div>
     </div>
     @include('partials.footer')
+
+    {{-- Sripct Js --}}
+    <script>
+        function previewImage() {
+            const image = document.querySelector('#image');
+            const imgPreview = document.querySelector('.img-preview');
+
+            imgPreview.style.display = 'block';
+
+            const oFReader = new FileReader();
+            oFReader.readAsDataURL(image.files[0]);
+
+            oFReader.onload = function(oFREvent) {
+                imgPreview.src = oFREvent.target.result;
+            }
+        }
+    </script>
 </x-app-layout>

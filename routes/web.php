@@ -61,6 +61,7 @@ Route::get('/kategori/detailbuku/{id}', function ($id) {
 
 Route::get('/kategori/search', function (Request $request) {
     $categories = Category::all();
+    $writters = Writter::all();
 
     $searchTerm = $request->get('search');
     $books = Books::with('writter', 'category')
@@ -76,6 +77,7 @@ Route::get('/kategori/search', function (Request $request) {
         'active' => 'kategori',
         'categories' => $categories,
         'books' => $books,
+        'writters' => $writters,
     ]);
 })->name('kategori.search');
 
@@ -109,8 +111,11 @@ Route::get('/kategori/filter', function (Request $request) {
     }
 
     // Filter Berdasarkan Harga
-    $minPrice = $request->get('harga_min');
-    $maxPrice = $request->get('harga_max');
+    $minPrice = substr($request->get('harga_min'), 4, 20);
+    $maxPrice = substr($request->get('harga_max'), 4, 20);
+
+    $minPrice = (int) str_replace('.', '', $minPrice);
+    $maxPrice = (int) str_replace('.', '', $maxPrice);
 
     if ($minPrice && $maxPrice) {
         // Jika harga_min dan harga_max terisi, filter berdasarkan harga
@@ -122,6 +127,7 @@ Route::get('/kategori/filter', function (Request $request) {
         // Jika hanya harga_max saja yang terisi, filter berdasarkan harga
         $booksQuery->where('price', '<=', $maxPrice);
     }
+
 
     // Mengambil data buku setelah dilakukan filter
     $books = $booksQuery->latest()->paginate(10);

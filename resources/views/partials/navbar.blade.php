@@ -10,9 +10,12 @@
                 <div x-data="{ open: false }" class="relative me-4">
                     <button @click="open = !open"
                         class="flex items-center space-x-2 text-sm font-medium text-gray-700 transition duration-150 ease-in-out hover:text-gray-900 dark:text-gray-200 dark:hover:text-white focus:outline-none">
-                        <img class="w-8 h-8 rounded-full"
-                            src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"
-                            alt="{{ Auth::user()->name }}" />
+                        @if (substr(Auth::user()->image, 0, 4) == 'http')
+                            <img src="{{ Auth::user()->image }}" alt="Foto Profile" class="w-8 h-8 -mt-1 rounded-full">
+                        @else
+                            <img class="w-8 h-8 -mt-1 rounded-full me-2"
+                                src=" {{ asset('storage/' . Auth::user()->image) }}" alt="{{ Auth::user()->name }}" />
+                        @endif
                         <span>{{ Auth::user()->name }}</span>
                         <svg class="w-4 h-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
                             <path fill-rule="evenodd"

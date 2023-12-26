@@ -11,7 +11,7 @@
         <div class="max-w-2xl mx-auto sm:px-6 lg:px-8">
             <div class="overflow-hidden bg-white shadow-sm dark:bg-gray-800 sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
-                    <form action="{{ route('users.update', $user->id) }}" method="POST">
+                    <form action="{{ route('users.update', $user->id) }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('PATCH')
 
@@ -27,6 +27,22 @@
                                 class="block text-sm font-medium text-gray-600 dark:text-gray-300">Email</label>
                             <input type="email" name="email" id="email" value="{{ old('email', $user->email) }}"
                                 class="w-full p-2 mt-1 border rounded-md focus:outline-none focus:border-blue-500">
+                        </div>
+
+                        <div class="mb-4">
+                            <label for="image"
+                                class="block text-sm font-medium text-gray-600 dark:text-gray-300">Image</label>
+                            <input type="file" name="image" id="image"
+                                class="w-full p-2 mt-1 border rounded-md focus:outline-none focus:border-blue-500"
+                                accept="image/*" id="imageInput">
+                            <div id="imagePreview" class="flex items-end justify-end w-20 h-20 mt-2 rounded-xl"></div>
+                            @if (substr($user->image, 0, 4) == 'http')
+                                <img src="{{ $user->image }}" alt="Foto Profile"
+                                    class="object-cover w-20 h-20 mt-2 rounded-xl">
+                            @else
+                                <img src="{{ asset('storage/' . $user->image) }}" alt="Foto Profile"
+                                    class="object-cover w-20 h-20 mt-2 rounded-xl">
+                            @endif
                         </div>
 
                         <div class="flex items-center justify-end mt-4">
@@ -45,4 +61,5 @@
         </div>
     </div>
     @include('partials.footer')
+
 </x-app-layout>

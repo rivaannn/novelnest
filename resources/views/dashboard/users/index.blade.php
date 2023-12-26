@@ -82,6 +82,10 @@
                             </th>
                             <th scope="col"
                                 class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase dark:text-gray-400">
+                                {{ __('Gambar') }}
+                            </th>
+                            <th scope="col"
+                                class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase dark:text-gray-400">
                                 {{ __('Dibuat Pada') }}
                             </th>
                             <th scope="col"
@@ -102,6 +106,14 @@
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap">
                                     {{ $user->email }}
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    @if (substr($user->image, 0, 4) == 'http')
+                                        <img src="{{ $user->image }}" alt="Foto Profile" class="w-20 h-20 mt-2">
+                                    @else
+                                        <img src="{{ asset('storage/' . $user->image) }}" alt="Foto Profile"
+                                            class="w-20 h-20 mt-2">
+                                    @endif
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap">
                                     {{ $user->created_at->format('d F Y') }}

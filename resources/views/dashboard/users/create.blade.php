@@ -11,9 +11,8 @@
         <div class="max-w-2xl mx-auto sm:px-6 lg:px-8">
             <div class="overflow-hidden bg-white shadow-sm dark:bg-gray-800 sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
-                    <form action="{{ route('users.store') }}" method="POST">
+                    <form action="{{ route('users.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
-
                         <div class="mb-4">
                             <label for="name"
                                 class="block text-sm font-medium text-gray-600 dark:text-gray-300">Nama</label>
@@ -41,6 +40,14 @@
                                 Sandi</label>
                             <input type="password" name="password_confirmation" id="password_confirmation"
                                 class="w-full p-2 mt-1 border rounded-md focus:outline-none focus:border-blue-500">
+                        </div>
+
+                        <div class="mb-12">
+                            <label for="image"
+                                class="block text-sm font-medium text-gray-600 dark:text-gray-300">Gambar</label>
+                            <input type="file" name="image" id="image"
+                                class="w-full p-2 mt-1 border rounded-md focus:outline-none focus:border-blue-500"
+                                accept="image/*">
                         </div>
 
                         <div class="flex items-center justify-end mt-4">

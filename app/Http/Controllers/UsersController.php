@@ -24,16 +24,21 @@ class UsersController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:users|max:255',
             'password' => 'required|string|min:8|confirmed',
+            'image' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
         ]);
+
+        $imagePath = $request->file('image') ? $request->file('image')->store('images/users', 'public') : 'images/users/default.png';
 
         User::create([
             'name' => $request->input('name'),
             'email' => $request->input('email'),
             'password' => bcrypt($request->input('password')),
+            'image' => $imagePath,
         ]);
 
-        return redirect()->route('users.index')->with('success', 'Pengguna berhasil ditambahkan.');
+        return redirect()->route('users.index')->with('success', 'Pengguna Berhasil Dibuat.');
     }
+
 
     public function show(User $user)
     {
@@ -50,11 +55,13 @@ class UsersController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email,' . $user->id . '|max:255',
+            'image' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
         ]);
 
         $user->update([
             'name' => $request->input('name'),
             'email' => $request->input('email'),
+            'image' => $request->file('image') ? $request->file('image')->store('images/users', 'public') : $user->image,
         ]);
 
         return redirect()->route('users.index')->with('success', 'Pengguna berhasil diperbarui.');

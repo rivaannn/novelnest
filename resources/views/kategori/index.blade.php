@@ -37,18 +37,19 @@
                         <label for="harga_min"
                             class="block mt-2 mb-2 text-sm font-medium text-gray-900 dark:text-white">Harga Minimum
                             Buku</label>
-                        <input type="number" id="harga_min" name="harga_min" placeholder="Masukkan Harga Minimum (Rp.)"
+                        <input wire:model="harga_min" type="text" id="harga_min" name="harga_min"
+                            placeholder="Masukkan Harga Minimum (Rp.)"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                            autocomplete="off">
-                        <!-- Harga Minimum -->
+                            autocomplete="off" type-currency="IDR">
+                        <!-- Harga Maksimum -->
                         <label for="harga_max"
-                            class="block mt-2 mb-2 text-sm font-medium text-gray-900 dark:text-white">Harga Minimum
+                            class="block mt-2 mb-2 text-sm font-medium text-gray-900 dark:text-white">Harga Maksimum
                             Buku</label>
-                        <input type="number" id="harga_max" name="harga_max" placeholder="Masukkan Harga Minimum (Rp.)"
+                        <input wire:model="harga_max" type="text" id="harga_max" name="harga_max"
+                            placeholder="Masukkan Harga Maksimum (Rp.)"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                            autocomplete="off">
+                            autocomplete="off" type-currency="IDR">
                     </div>
-
 
                     <!-- Submit Button -->
                     <button type="submit"
@@ -190,8 +191,6 @@
         <p class="text-gray-300 dark:text-gray-300">Buku yang anda cari tidak ditemukan, silahkan cari buku lainnya.</p>
     </div>
 </div>
-
-
     `;
             return;
         }
@@ -214,5 +213,27 @@
     `;
         }).join('');
     }
+</script>
+
+{{-- Script untuk Format Rupiah --}}
+<script>
+    document.querySelectorAll('input[type-currency="IDR"]').forEach((element) => {
+        element.addEventListener('keyup', function(e) {
+            let cursorPostion = this.selectionStart;
+            let value = parseInt(this.value.replace(/[^,\d]/g, ''));
+            let originalLenght = this.value.length;
+            if (isNaN(value)) {
+                this.value = "";
+            } else {
+                this.value = value.toLocaleString('id-ID', {
+                    currency: 'IDR',
+                    style: 'currency',
+                    minimumFractionDigits: 0
+                });
+                cursorPostion = this.value.length - originalLenght + cursorPostion;
+                this.setSelectionRange(cursorPostion, cursorPostion);
+            }
+        })
+    });
 </script>
 @endsection

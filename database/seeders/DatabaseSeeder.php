@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
         User::factory()->create([
             'name' => 'rivan',
             'email' => 'rivan@gmail.com',
+            'image' => 'images/users/default.png',
         ]);
 
         $this->call([

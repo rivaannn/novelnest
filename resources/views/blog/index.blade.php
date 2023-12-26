@@ -23,7 +23,7 @@
             </p>
             <form action="/search">
                 <label
-                    class="relative flex flex-col items-center justify-center max-w-2xl gap-2 px-2 py-2 mx-auto mt-8 bg-white dark:bg-gray-800 border shadow-2xl min-w-sm md:flex-row rounded-2xl focus-within:border-gray-300"
+                    class="relative flex flex-col items-center justify-center max-w-2xl gap-2 px-2 py-2 mx-auto mt-8 bg-white dark:bg-gray-800 shadow-2xl min-w-sm md:flex-row rounded-2xl focus-within:border-gray-300"
                     for="search-bar">
 
                     <input id="search-bar" placeholder="cari postingan disini" name="q"

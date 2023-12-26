@@ -71,7 +71,7 @@
             </p>
         @else
             <table class="max-w-full divide-y divide-gray-200 dark:divide-gray-700">
-                <thead class="bg-gray-50 dark:bg-gray-800">
+                <thead class="bg-gray-50 dark:bg-gray-700">
                     <tr>
                         <th scope="col"
                             class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase dark:text-gray-400">
@@ -100,7 +100,7 @@
                     </tr>
                 </thead>
                 <tbody id="booksTable"
-                    class="bg-white divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700 dark:text-gray-200">
+                    class="bg-white divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700 dark:text-gray-200 border border-gray-700">
                     @foreach ($books as $key => $book)
                         <tr>
                             <td class="px-6 py-4 whitespace-nowrap">

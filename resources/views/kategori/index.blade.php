@@ -79,11 +79,11 @@
 
                         <form action="{{ route('kategori.search') }}" method="get">
                             <label for="search-bar"
-                                class="relative flex flex-col items-center justify-center max-w-2xl gap-2 px-2 py-2 mx-auto mt-8 bg-white border shadow-2xl min-w-sm md:flex-row rounded-2xl focus-within:border-gray-300 dark:bg-gray-800">
+                                class="relative flex flex-col items-center justify-center max-w-2xl gap-2 px-2 py-2 mx-auto mt-8 bg-white shadow-2xl min-w-sm md:flex-row rounded-2xl focus-within:border-gray-300 dark:bg-gray-800">
                                 <input id="search-bar" placeholder="cari buku disini" name="search"
                                     class="flex-1 w-full px-6 py-2 bg-white rounded-md outline-none" autocomplete="off">
                                 <button type="submit"
-                                    class="relative w-full px-6 py-3 overflow-hidden text-white transition-all duration-100 bg-black border border-black md:w-auto fill-white active:scale-95 will-change-transform rounded-xl">
+                                    class="relative w-full px-6 py-3 overflow-hidden text-white transition-all duration-100 bg-blue-700 hover:bg-blue-600 border border-black md:w-auto fill-white active:scale-95 will-change-transform rounded-xl">
                                     <div class="flex items-center transition-all opacity-1">
                                         <span class="mx-auto text-sm font-semibold truncate whitespace-nowrap">
                                             Search

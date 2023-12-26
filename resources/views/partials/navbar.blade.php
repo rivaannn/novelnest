@@ -23,12 +23,12 @@
                     <div x-show="open" @click.away="open = false"
                         class="absolute right-0 mt-2 space-y-2 text-gray-700 bg-white border border-gray-100 rounded-md shadow-md w-52 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400">
                         <a href="/dashboard"
-                            class="block px-4 py-2 transition duration-150 ease-in-out hover:bg-gray-100 dark:hover:bg-gray-700">Dashboard</a>
+                            class="inline-block px-4 py-2 transition duration-150 ease-in-out hover:bg-gray-100 dark:hover:bg-gray-700">Dashboard</a>
                         <a href="/dashboarduser"
-                            class="block px-4 py-2 transition duration-150 ease-in-out hover:bg-gray-100 dark:hover:bg-gray-700">Dashboard
+                            class="inline-block px-4 py-2 transition duration-150 ease-in-out hover:bg-gray-100 dark:hover:bg-gray-700">Dashboard
                             User</a>
                         <a href="/profile"
-                            class="block px-4 py-2 transition duration-150 ease-in-out hover:bg-gray-100 dark:hover:bg-gray-700">Profile</a>
+                            class="inline-block px-4 py-2 transition duration-150 ease-in-out hover:bg-gray-100 dark:hover:bg-gray-700">Profile</a>
                         <form action="{{ route('logout') }}" method="POST">
                             @csrf
                             <button type="submit"
@@ -53,14 +53,15 @@
                 </div>
             @endguest
 
-            <div class="py-2 pl-7">
-                <img class="w-5 cursor-pointer sun " src="{{ asset('img/sun.png') }}" alt="DarkMode light">
-                <img class="w-5 cursor-pointer moon " src="{{ asset('img/moon.png') }}" alt="DarkMode dark">
+            <div class="flex items-center">
+                <img class="w-5 h-5 cursor-pointer sun ml-4" src="{{ asset('img/sun.png') }}" alt="DarkMode light">
+                <img class="w-5 h-5 cursor-pointer moon ml-4" src="{{ asset('img/moon.png') }}" alt="DarkMode dark">
+                <a href="/keranjang">
+                    <img class="w-7 h-7 cursor-pointer ml-3" src="{{ asset('img/keranjang.png') }}"
+                        alt="Icon Keranjang">
+                </a>
             </div>
 
-            <a href="/keranjang" class="py-2 pl-8">
-                <img class="w-6 h-6 cursor-pointer" src="{{ asset('img/keranjang.png') }}" alt="Icon Keranjang">
-            </a>
 
             <button data-collapse-toggle="navbar-sticky" type="button"
                 class="inline-flex items-center justify-center w-10 h-10 p-2 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"

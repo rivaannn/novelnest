@@ -99,10 +99,11 @@
                         <x-dropdown-link :href="route('profile.edit')">
                             {{ __('Profile') }}
                         </x-dropdown-link>
-                        <x-dropdown-link :href="route('dashboarduser')">
-                            {{ __('Dashboard User') }}
-                        </x-dropdown-link>
-
+                        @can('guest')
+                            <x-dropdown-link :href="route('dashboarduser')">
+                                {{ __('Dashboard User') }}
+                            </x-dropdown-link>
+                        @endcan
                         <!-- Authentication -->
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf

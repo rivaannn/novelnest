@@ -4,6 +4,7 @@
             {{ __('Dashboard User') }}
         </h2>
     </x-slot>
+
     <div class="py-12">
         <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
             <div class="overflow-hidden bg-white shadow-sm dark:bg-gray-800 sm:rounded-lg">
@@ -14,6 +15,8 @@
             </div>
         </div>
     </div>
+
+    
 
     <div class="py-12 pb-64 mx-auto">
         <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
@@ -39,4 +42,19 @@
     </div>
 
     @include('partials.footer')
-</x-appuser>
+</x-dashboard-user>
+
+<script>
+    // JavaScript to handle button clicks and show/hide sidebar
+    const showKeranjangBtn = document.getElementById('showKeranjangBtn');
+    const keranjangSidebar = document.getElementById('keranjangSidebar');
+    const hideKeranjangBtn = document.getElementById('hideKeranjangBtn');
+
+    showKeranjangBtn.addEventListener('click', () => {
+        keranjangSidebar.classList.remove('translate-x-full');
+    });
+
+    hideKeranjangBtn.addEventListener('click', () => {
+        keranjangSidebar.classList.add('translate-x-full');
+    });
+</script>

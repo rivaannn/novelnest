@@ -20,8 +20,7 @@ class BlogsSeeder extends Seeder
                 'slug' => $faker->slug(),
                 'category' => $faker->sentence(),
                 'author' => $faker->name(),
-                'body' => '<p>' . implode('</p><p>', $faker->paragraphs(10)) . '</p>', // Tambahkan tag <p> di sini
-                'image' => $faker->imageUrl(),
+                'body' => '<p>' . implode('</p><p>', $faker->paragraphs(20)) . '</p>',
                 'status' => $faker->randomElement(['draft', 'published'])
             ]);
         }

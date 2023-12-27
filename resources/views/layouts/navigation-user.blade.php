@@ -50,21 +50,20 @@
             </div>
 
             <!-- Settings Dropdown -->
-            <div class="hidden ps-96 sm:flex sm:items-center sm:ms-6">
+            <div class="hidden ps-48 sm:flex sm:items-center sm:ms-6">
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
                         <button
-                            class="inline-flex items-center px-3 py-2 text-sm font-medium leading-4 text-gray-500 transition duration-150 ease-in-out bg-white border border-transparent rounded-md dark:text-gray-400 dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none">
+                            class="inline-flex items-center px-3 py-2 text-sm font-medium leading-4 text-gray-500 transition duration-150 ease-in-out bg-white border border-transparent rounded-md dark:text-gray-400 dark:bg-gray-900 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none">
                             @if (substr(Auth::user()->image, 0, 4) == 'http')
                                 <img src="{{ Auth::user()->image }}" alt="Foto Profile"
                                     class="w-8 h-8 -mt-1 rounded-full">
                             @else
-                                <img class="w-8 h-8 -mt-1 rounded-full me-2"
+                                <img class="w-8 h-8 -mt-1 rounded-full"
                                     src=" {{ asset('storage/' . Auth::user()->image) }}"
                                     alt="{{ Auth::user()->name }}" />
                             @endif
-                            <div>{{ Auth::user()->name }}</div>
-
+                            <div class="ms-2">{{ Auth::user()->name }}</div>
                             <div class="ms-1">
                                 <svg class="w-4 h-4 fill-current" xmlns="http://www.w3.org/2000/svg"
                                     viewBox="0 0 20 20">
@@ -81,7 +80,7 @@
                         <x-dropdown-link :href="route('home')">
                             {{ __('Home') }}
                         </x-dropdown-link>
-                        <x-dropdown-link :href="route('profile-user.edit')">
+                        <x-dropdown-link :href="route('profileUser.edit')">
                             {{ __('Profile') }}
                         </x-dropdown-link>
                         @can('admin')

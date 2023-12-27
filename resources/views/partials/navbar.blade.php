@@ -25,13 +25,14 @@
                     </button>
                     <div x-show="open" @click.away="open = false"
                         class="absolute right-0 mt-2 space-y-2 text-gray-700 bg-white border border-gray-100 rounded-md shadow-md w-52 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400">
-                        @can('admin')
+                        @if (Auth::user()->is_admin == 1)
                             <a href="/dashboard"
                                 class="inline-block px-4 py-2 transition duration-150 ease-in-out hover:bg-gray-100 dark:hover:bg-gray-700">Dashboard</a>
-                        @endcan
-                        <a href="/dashboarduser"
-                            class="inline-block px-4 py-2 transition duration-150 ease-in-out hover:bg-gray-100 dark:hover:bg-gray-700">Dashboard
-                            User</a>
+                        @elseif (Auth::user()->is_admin == 0)
+                            <a href="/dashboarduser"
+                                class="inline-block px-4 py-2 transition duration-150 ease-in-out hover:bg-gray-100 dark:hover:bg-gray-700">Dashboard
+                                User</a>
+                        @endif
                         <a href="/profile"
                             class="inline-block px-4 py-2 transition duration-150 ease-in-out hover:bg-gray-100 dark:hover:bg-gray-700">Profile</a>
                         <form action="{{ route('logout') }}" method="POST">
@@ -59,10 +60,10 @@
             @endguest
 
             <div class="flex items-center">
-                <img class="w-5 h-5 cursor-pointer sun ml-4" src="{{ asset('img/sun.png') }}" alt="DarkMode light">
-                <img class="w-5 h-5 cursor-pointer moon ml-4" src="{{ asset('img/moon.png') }}" alt="DarkMode dark">
+                <img class="w-5 h-5 ml-4 cursor-pointer sun" src="{{ asset('img/sun.png') }}" alt="DarkMode light">
+                <img class="w-5 h-5 ml-4 cursor-pointer moon" src="{{ asset('img/moon.png') }}" alt="DarkMode dark">
                 <a href="/keranjang">
-                    <img class="w-7 h-7 cursor-pointer ml-3" src="{{ asset('img/keranjang.png') }}"
+                    <img class="ml-3 cursor-pointer w-7 h-7" src="{{ asset('img/keranjang.png') }}"
                         alt="Icon Keranjang">
                 </a>
             </div>

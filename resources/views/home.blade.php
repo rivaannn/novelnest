@@ -4,8 +4,8 @@
     <header class="bg-gray-100 dark:bg-gray-900">
         <div class="py-12 sm:py-24">
             <div class="px-6 mx-auto max-w-7xl lg:px-8">
-                <div class="max-w-2xl mx-auto text-center">
-                    <h1 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl dark:text-white">
+                <div class="max-w-4xl mx-auto text-center">
+                    <h1 class="mt-8 text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl dark:text-white">
                         <span class="text-transparent bg-clip-text bg-gradient-to-r to-blue-600 from-sky-400">Novel</span>
                         Nest.
                     </h1>
@@ -23,9 +23,9 @@
                     </div>
                 </div>
 
-                <div class="mt-10 flow-root sm:mt-20">
+                <div class="flow-root mt-10 sm:mt-20">
                     <div id="gallery"
-                        class="relative w-full -m-2 rounded-xl bg-gray-900/5 dark:bg-gray-800/70 p-2 ring-1 ring-inset ring-gray-900/10 lg:-m-4 lg:rounded-2xl lg:p-4"
+                        class="relative w-full p-2 -m-2 rounded-xl bg-gray-900/5 dark:bg-gray-800/70 ring-1 ring-inset ring-gray-900/10 lg:-m-4 lg:rounded-2xl lg:p-4"
                         data-carousel="slide">
                         <!-- Carousel wrapper -->
                         <div class="relative overflow-hidden rounded-lg md:h-96 ">
@@ -36,7 +36,7 @@
                             </div>
                             <!-- Item 2 -->
                             <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                                <img class="absolute rounded-lg max-w-full h-auto -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
+                                <img class="absolute h-auto max-w-full -translate-x-1/2 -translate-y-1/2 rounded-lg top-1/2 left-1/2"
                                     src="https://source.unsplash.com/1200x800/?study" alt="">
                             </div>
                             <!-- Item 3 -->

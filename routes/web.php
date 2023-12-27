@@ -217,10 +217,11 @@ Route::get('/order', function () {
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit')->middleware(['admin']);
-    Route::get('/profile-user', [ProfileController::class, 'editUser'])->name('profile-user.edit');
+    Route::get('/profile-user', [ProfileController::class, 'editUser'])->name('profileUser.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::patch('/profile-user', [ProfileController::class, 'update'])->name('profile-user.update');
+    Route::patch('/profile-user', [ProfileController::class, 'updateUser'])->name('profileUser.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::delete('/profile-user', [ProfileController::class, 'destroyUser'])->name('profileUser.destroy');
 });
 
 Route::get('/users/create', function () {

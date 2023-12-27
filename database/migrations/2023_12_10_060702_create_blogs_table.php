@@ -18,7 +18,6 @@ return new class extends Migration
             $table->string('category');
             $table->string('author');
             $table->text('body');
-            $table->string('image');
             $table->enum('status', ['draft', 'published']);
             $table->timestamps();
         });

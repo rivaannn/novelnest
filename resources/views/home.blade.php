@@ -22,18 +22,21 @@
                         </a>
                     </div>
                 </div>
-                <div class="flow-root sm:mt-20">
-                    <div id="gallery" class="relative w-full" data-carousel="slide">
+
+                <div class="mt-10 flow-root sm:mt-20">
+                    <div id="gallery"
+                        class="relative w-full -m-2 rounded-xl bg-gray-900/5 dark:bg-gray-800/70 p-2 ring-1 ring-inset ring-gray-900/10 lg:-m-4 lg:rounded-2xl lg:p-4"
+                        data-carousel="slide">
                         <!-- Carousel wrapper -->
-                        <div class="relative overflow-hidden rounded-lg md:h-96">
+                        <div class="relative overflow-hidden rounded-lg md:h-96 ">
                             <!-- Item 1 -->
                             <div class="hidden duration-700 ease-in-out" data-carousel-item>
                                 <img class="absolute h-auto max-w-full -translate-x-1/2 -translate-y-1/2 rounded-lg top-1/2 left-1/2"
                                     src="https://source.unsplash.com/1200x800/?book" alt="">
                             </div>
                             <!-- Item 2 -->
-                            <div class="hidden duration-700 ease-in-out" data-carousel-item="active">
-                                <img class="absolute h-auto max-w-full -translate-x-1/2 -translate-y-1/2 rounded-lg top-1/2 left-1/2"
+                            <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                                <img class="absolute rounded-lg max-w-full h-auto -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
                                     src="https://source.unsplash.com/1200x800/?study" alt="">
                             </div>
                             <!-- Item 3 -->

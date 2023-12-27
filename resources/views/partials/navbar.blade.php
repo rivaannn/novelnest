@@ -1,4 +1,4 @@
-<nav class="fixed top-0 z-20 w-full bg-white border-b border-gray-200 dark:bg-gray-900 start-0 dark:border-gray-600">
+<nav class="fixed top-0 z-40 w-full bg-white border-b border-gray-200 dark:bg-gray-900 start-0 dark:border-gray-600">
     <div class="flex flex-wrap items-center justify-between p-4 mx-auto max-w-screen-2xl">
         <a href="/" class="flex items-center ml-10 space-x-3 rtl:space-x-reverse">
             <img class="h-10" src="/img/logo.png" class="h-8 " alt="Novelnest">
@@ -26,10 +26,10 @@
                     <div x-show="open" @click.away="open = false"
                         class="absolute right-0 mt-2 space-y-2 text-gray-700 bg-white border border-gray-100 rounded-md shadow-md w-52 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400">
                         @can('admin')
-                        <a href="/dashboard"
-                            class="inline-block px-4 py-2 transition duration-150 ease-in-out hover:bg-gray-100 dark:hover:bg-gray-700">Dashboard</a>
+                            <a href="/dashboard"
+                                class="inline-block px-4 py-2 transition duration-150 ease-in-out hover:bg-gray-100 dark:hover:bg-gray-700">Dashboard</a>
                         @endcan
-                            <a href="/dashboarduser"
+                        <a href="/dashboarduser"
                             class="inline-block px-4 py-2 transition duration-150 ease-in-out hover:bg-gray-100 dark:hover:bg-gray-700">Dashboard
                             User</a>
                         <a href="/profile"

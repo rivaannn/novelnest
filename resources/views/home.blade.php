@@ -4,8 +4,8 @@
     <header class="bg-gray-100 dark:bg-gray-900">
         <div class="py-12 sm:py-24">
             <div class="px-6 mx-auto max-w-7xl lg:px-8">
-                <div class="max-w-2xl mx-auto text-center">
-                    <h1 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl dark:text-white">
+                <div class="max-w-4xl mx-auto text-center">
+                    <h1 class="mt-8 text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl dark:text-white">
                         <span class="text-transparent bg-clip-text bg-gradient-to-r to-blue-600 from-sky-400">Novel</span>
                         Nest.
                     </h1>

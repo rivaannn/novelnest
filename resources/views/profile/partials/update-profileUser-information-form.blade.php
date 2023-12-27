@@ -13,7 +13,7 @@
         @csrf
     </form>
 
-    <form method="post" action="{{ route('profile-user.update') }}" enctype="multipart/form-data" class="mt-6 space-y-6">
+    <form method="post" action="{{ route('profileUser.update') }}" enctype="multipart/form-data" class="mt-6 space-y-6">
         @csrf
         @method('patch')
 
@@ -50,35 +50,21 @@
             @endif
         </div>
 
-        <div class="mb-3">
-            <label for="image" class="form-label"></label>
-            <input type="hidden" name="oldImage" value="{{ $user->image }}">
+        <div>
+            <x-input-label for="image" :value="__('Profile Picture')" />
+            <x-input-file id="image" name="image" onchange="previewImage()" class="block w-full mt-1" />
+            <x-input-error class="mt-2" :messages="$errors->get('image')" />
 
-            <div class="img-preview-container">
-                @if ($user->image)
-                    <img src="{{ asset('storage/' . $user->image) }}"
-                        class="object-cover w-full h-full mt-2 mb-3 img-preview rounded-xl">
-                @else
-                    <img class="object-cover w-full h-full mt-2 mb-3 img-preview rounded-xl" style="display: none;">
-                @endif
+            <div class="mt-2">
+                <img src="{{ asset('storage/' . $user->image) }}" alt="Profile Picture" class="w-40 h-40 img-preview">
             </div>
-
-            <input class="form-control @error('image') is-invalid @enderror" type="file" id="image"
-                name="image" onchange="previewImage()">
-
-            @error('image')
-                <div class="invalid-feedback">
-                    {{ $message }}
-                </div>
-            @enderror
         </div>
 
         <div class="flex items-center gap-4">
             <x-primary-button>{{ __('Save') }}</x-primary-button>
-
-            @if (session('status') === 'profile-updated')
+            @if (session('status') === 'profile-information-updated')
                 <p x-data="{ show: true }" x-show="show" x-transition x-init="setTimeout(() => show = false, 2000)"
-                    class="text-sm text-gray-600 dark:text-gray-400">{{ __('Saved.') }}</p>
+                    class="text-sm text-green-600 dark:text-green-400">{{ __('Saved.') }}</p>
             @endif
         </div>
     </form>

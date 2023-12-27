@@ -51,19 +51,39 @@
         </div>
 
         <div>
-            <x-input-label for="image" :value="__('image')" />
-            <input id="image" name="image" type="file" class="block w-full mt-1"
-                :value="old('image', $user - > image)" required autofocus autocomplete="image" />
+            <x-input-label for="image" :value="__('Profile Picture')" />
+            <x-input-file id="image" name="image" onchange="previewImage()" class="block w-full mt-1" />
             <x-input-error class="mt-2" :messages="$errors->get('image')" />
+
+            <div class="mt-2">
+                <img src="{{ asset('storage/' . $user->image) }}" alt="Profile Picture" class="w-40 h-40 img-preview">
+            </div>
         </div>
+
 
         <div class="flex items-center gap-4">
             <x-primary-button>{{ __('Save') }}</x-primary-button>
-
-            @if (session('status') === 'profile-updated')
+            @if (session('status') === 'profile-information-updated')
                 <p x-data="{ show: true }" x-show="show" x-transition x-init="setTimeout(() => show = false, 2000)"
-                    class="text-sm text-gray-600 dark:text-gray-400">{{ __('Saved.') }}</p>
+                    class="text-sm text-green-600 dark:text-green-400">{{ __('Saved.') }}</p>
             @endif
         </div>
     </form>
 </section>
+
+{{-- Sripct Js --}}
+<script>
+    function previewImage() {
+        const image = document.querySelector('#image');
+        const imgPreview = document.querySelector('.img-preview');
+
+        imgPreview.style.display = 'block';
+
+        const oFReader = new FileReader();
+        oFReader.readAsDataURL(image.files[0]);
+
+        oFReader.onload = function(oFREvent) {
+            imgPreview.src = oFREvent.target.result;
+        }
+    }
+</script>

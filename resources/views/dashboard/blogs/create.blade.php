@@ -13,7 +13,6 @@
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     <form action="{{ route('blogs.store') }}" method="POST">
                         @csrf
-
                         <div class="mb-4">
                             <label for="title"
                                 class="block text-sm font-medium text-gray-600 dark:text-gray-300">Judul</label>
@@ -29,16 +28,17 @@
                         </div>
 
                         <div class="mb-4">
-                            <label for="category"
-                                class="block text-sm font-medium text-gray-600 dark:text-gray-300">Kategori</label>
-                            <input type="text" name="category" id="category"
-                                class="w-full p-2 mt-1 border rounded-md focus:outline-none focus:border-indigo-500">
+                            <label for="author"
+                                class="block text-sm font-medium text-gray-600 dark:text-gray-300">Author</label>
+                            <input type="text" name="author" id="author"
+                                class="w-full p-2 mt-1 border rounded-md focus:outline-none focus:border-indigo-500"
+                                required>
                         </div>
 
                         <div class="mb-4">
-                            <label for="image"
-                                class="block text-sm font-medium text-gray-600 dark:text-gray-300">Gambar</label>
-                            <input type="text" name="image" id="image"
+                            <label for="category"
+                                class="block text-sm font-medium text-gray-600 dark:text-gray-300">Kategori</label>
+                            <input type="text" name="category" id="category"
                                 class="w-full p-2 mt-1 border rounded-md focus:outline-none focus:border-indigo-500">
                         </div>
 

@@ -4,12 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Blogs;
+use App\Http\Requests\BlogRequest;
 
 class BlogsController extends Controller
 {
     public function index()
     {
-        $blogs = Blogs::paginate(5);
+        $blogs = Blogs::latest()->paginate(5);
         return view('dashboard.blogs.index', compact('blogs'));
     }
 
@@ -20,20 +21,24 @@ class BlogsController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
-            'title' => 'required|max:255|min:3',
-            'slug' => 'required|max:255|min:3',
-            'category' => 'required|max:255|min:3',
-            'author' => 'required|max:255|min:3',
-            'body' => 'required|max:255|min:3',
-            'image' => 'required|max:255|min:3',
-            'status' => 'required|max:255|min:3'
-        ]);
+        try {
+            $request->validate([
+                'title'    => 'required|max:255|min:3',
+                'slug'     => 'required|max:255|min:3',
+                'category' => 'required|max:255|min:3',
+                'author'   => 'required|max:255|min:3',
+                'body'     => 'required|min:3',  // Hapus max:255 yang tidak perlu
+                'status'   => 'required|max:255|min:3'
+            ]);
 
-        Blogs::create($request->all());
+            Blogs::create($request->all());
 
-        return redirect('/dashboard/blogs')->with('success', 'Data Berhasil Ditambahkan!');
+            return redirect()->route('blogs.index')->with('success', 'Blog berhasil ditambahkan.');
+        } catch (\Exception $e) {
+            return redirect()->route('blogs.index')->with('error', 'Terjadi kesalahan: ' . $e->getMessage());
+        }
     }
+
 
     public function show(Blogs $blog)
     {
@@ -45,29 +50,30 @@ class BlogsController extends Controller
         return view('dashboard.blogs.edit', compact('blog'));
     }
 
-    public function update(Request $request, Blogs $blog)
+    public function update(BlogRequest $request, Blogs $blog)
     {
-        $request->validate([
-            'title' => 'required|max:255|min:3',
-            'slug' => 'required|max:255|min:3',
-            'category' => 'required|max:255|min:3',
-            'author' => 'required|max:255|min:3',
-            'body' => 'required|max:255|min:3',
-            'image' => 'required|max:255|min:3',
-            'status' => 'required|max:255|min:3'
-        ]);
+        $blog = Blogs::find($blog->id);
 
-        Blogs::where('id', $blog->id)
-            ->update([
-                'title' => $request->title,
-                'slug' => $request->slug,
-                'category' => $request->category,
-                'author' => $request->author,
-                'body' => $request->body,
-                'image' => $request->image,
-                'status' => $request->status
-            ]);
-        return redirect('/dashboard/blogs')->with('success', 'Data Berhasil Diubah!');
+        try {
+            $updated = Blogs::where('id', $blog->id)
+                ->update([
+                    'title' => $request->title,
+                    'slug' => $request->slug,
+                    'category' => $request->category,
+                    'author' => $request->author,
+                    'body' => $request->body,
+                    'status' => $request->status
+                ]);
+
+            if ($updated) {
+                return redirect()->route('blogs.index')->with('success', 'Blog berhasil diupdate.');
+            } else {
+                return redirect()->route('blogs.index')->with('error', 'Blog tidak ditemukan atau update gagal.');
+            }
+        } catch (\Exception $e) {
+            // Tampilkan pesan kesalahan atau log jika diperlukan
+            dd($e->getMessage());
+        }
     }
 
     public function destroy(Blogs $blog)

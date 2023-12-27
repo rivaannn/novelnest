@@ -21,11 +21,11 @@
                 <div class="relative w-full max-w-screen-md mx-auto mb-4 md:mb-0" style="height: 24em;">
                     <div class="absolute bottom-0 left-0 z-10 w-full h-full"
                         style="background-image: linear-gradient(180deg,transparent,rgba(0,0,0,.7));"></div>
-                    <img src="{{ asset('public/' . $blog->image) }}" alt="blog"
+                    <img src="https://source.unsplash.com/1200x800/?book" alt="blog"
                         class="absolute top-0 left-0 z-0 object-cover w-full h-full" />
                     <div class="absolute bottom-0 left-0 z-20 p-4">
-                        <a href="#"
-                            class="inline-flex items-center justify-center px-4 py-1 mb-2 text-gray-200 bg-black">{{ $blog->category }}</a>
+                        <span
+                            class="inline-flex items-center justify-center px-4 py-1 mb-2 text-gray-200 bg-black">{{ $blog->category }}</span>
                         <h2 class="text-4xl font-semibold leading-tight text-gray-100">
                             {{ $blog->title }}
                         </h2>

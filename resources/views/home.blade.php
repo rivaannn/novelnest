@@ -22,10 +22,13 @@
                         </a>
                     </div>
                 </div>
-                <div class="flow-root sm:mt-20">
-                    <div id="gallery" class="relative w-full" data-carousel="slide">
+
+                <div class="flow-root mt-10 sm:mt-20">
+                    <div id="gallery"
+                        class="relative w-full p-2 -m-2 rounded-xl bg-gray-900/5 dark:bg-gray-800/70 ring-1 ring-inset ring-gray-900/10 lg:-m-4 lg:rounded-2xl lg:p-4"
+                        data-carousel="slide">
                         <!-- Carousel wrapper -->
-                        <div class="relative overflow-hidden rounded-lg md:h-96">
+                        <div class="relative overflow-hidden rounded-lg md:h-96 ">
                             <!-- Item 1 -->
                             <div class="hidden duration-700 ease-in-out" data-carousel-item>
                                 <img class="absolute h-auto max-w-full -translate-x-1/2 -translate-y-1/2 rounded-lg top-1/2 left-1/2"

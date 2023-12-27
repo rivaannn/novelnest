@@ -35,7 +35,7 @@
                                     src="https://source.unsplash.com/1200x800/?book" alt="">
                             </div>
                             <!-- Item 2 -->
-                            <div class="hidden duration-700 ease-in-out" data-carousel-item="active">
+                            <div class="hidden duration-700 ease-in-out" data-carousel-item>
                                 <img class="absolute h-auto max-w-full -translate-x-1/2 -translate-y-1/2 rounded-lg top-1/2 left-1/2"
                                     src="https://source.unsplash.com/1200x800/?study" alt="">
                             </div>

@@ -35,12 +35,14 @@
                 </div>
             </div>
 
-            <div id="keranjangSidebar" class="border-l border-gray-600 dark:border-gray-700 fixed right-0 top-0 z-40 w-96 h-screen p-4 overflow-y-auto transform translate-x-full bg-white dark:bg-gray-800 transition-transform ease-in-out duration-300">
-                <div class="flex h-14 items-center justify-between">
+            <div id="keranjangSidebar"
+                class="fixed top-0 right-0 z-40 h-screen p-4 overflow-y-auto transition-transform duration-300 ease-in-out transform translate-x-full bg-white border-l border-gray-600 dark:border-gray-700 w-96 dark:bg-gray-800">
+                <div class="flex items-center justify-between h-14">
                     <h5 class="text-base font-semibold text-gray-500 uppercase dark:text-gray-400">Keranjang</h5>
                     <!-- Sidebar content goes here -->
                     <button id="hideKeranjangBtn" class="text-gray-400 bg-transparent">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" class="w-6 h-6">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
                         </svg>
                     </button>
@@ -79,13 +81,13 @@
                         <x-dropdown-link :href="route('home')">
                             {{ __('Home') }}
                         </x-dropdown-link>
-                        <x-dropdown-link :href="route('profile.edit')">
+                        <x-dropdown-link :href="route('profile-user.edit')">
                             {{ __('Profile') }}
                         </x-dropdown-link>
                         @can('admin')
-                        <x-dropdown-link :href="route('dashboard')">
-                            {{ __('Dashboard') }}
-                        </x-dropdown-link>
+                            <x-dropdown-link :href="route('dashboard')">
+                                {{ __('Dashboard') }}
+                            </x-dropdown-link>
                         @endcan
 
                         <!-- Authentication -->

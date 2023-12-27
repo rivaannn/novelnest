@@ -145,9 +145,6 @@ Route::get('/kategori/filter', function (Request $request) {
     ]);
 })->name('kategori.filter');
 
-
-
-
 Route::get('/kategori/{category}', function ($category) {
     $categories = Category::all();
     $selectedCategory = Category::findOrFail($category);
@@ -204,7 +201,7 @@ Route::post('logout', [SocialiteController::class, 'logout'])
 
 Route::get('/dashboard', function () {
     return view('dashboard.dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+})->middleware(['auth', 'verified','admin'])->name('dashboard');
 
 Route::get('/dashboarduser', function () {
     return view('dashboarduser.dashboarduser');
@@ -219,7 +216,8 @@ Route::get('/order', function () {
 })->middleware(['auth', 'verified'])->name('order');
 
 Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit')->middleware(['admin']);
+    Route::get('/profile-user', [ProfileController::class, 'editUser'])->name('profile-user.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });

@@ -145,9 +145,6 @@ Route::get('/kategori/filter', function (Request $request) {
     ]);
 })->name('kategori.filter');
 
-
-
-
 Route::get('/kategori/{category}', function ($category) {
     $categories = Category::all();
     $selectedCategory = Category::findOrFail($category);
@@ -204,7 +201,7 @@ Route::post('logout', [SocialiteController::class, 'logout'])
 
 Route::get('/dashboard', function () {
     return view('dashboard.dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+})->middleware(['auth', 'verified','admin'])->name('dashboard');
 
 Route::get('/dashboarduser', function () {
     return view('dashboarduser.dashboarduser');
@@ -219,7 +216,8 @@ Route::get('/order', function () {
 })->middleware(['auth', 'verified'])->name('order');
 
 Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit')->middleware(['admin']);
+    Route::get('/profile-user', [ProfileController::class, 'editUser'])->name('profile-user.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
@@ -245,7 +243,7 @@ Route::get('/publishers/create', function () {
 });
 
 // Route Untuk Users
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth','admin'])->group(function () {
     Route::get('/users/book-report-pdf', [PDFController::class, 'generateUserPdfReport']);
     Route::get('/users', [UsersController::class, 'index'])->name('users.index');
     Route::get('/users/{user}', [UsersController::class, 'show'])->name('users.show');
@@ -257,7 +255,7 @@ Route::middleware(['auth'])->group(function () {
 });
 
 // Route Untuk Blog
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth','admin'])->group(function () {
     Route::get('/blogs', [BlogsController::class, 'index'])->name('blogs.index');
     Route::get('/blogs/{blog}', [BlogsController::class, 'show'])->name('blogs.show');
     Route::get('/blogs/create', [BlogsController::class, 'create'])->name('blogs.create');
@@ -268,7 +266,7 @@ Route::middleware(['auth'])->group(function () {
 });
 
 // Route Untuk Books
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth','admin'])->group(function () {
     Route::get('/books/book-report-pdf', [PDFController::class, 'generateBookPdfReport']);
     Route::get('/books', [BooksController::class, 'index'])->name('books.index');
     Route::get('/books/{book}', [BooksController::class, 'show'])->name('books.show');
@@ -281,7 +279,7 @@ Route::middleware(['auth'])->group(function () {
 });
 
 // Route untuk Writtes
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth','admin'])->group(function () {
     Route::get('/writters', [WritterController::class, 'index'])->name('writters.index');
     Route::get('/writters/{writter}', [WritterController::class, 'show'])->name('writters.show');
     Route::get('/writters/create', [WritterController::class, 'create'])->name('writters.create');
@@ -292,7 +290,7 @@ Route::middleware(['auth'])->group(function () {
 });
 
 // Route untuk Publishers
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth','admin'])->group(function () {
     Route::get('/publishers', [PublishersController::class, 'index'])->name('publishers.index');
     Route::get('/publishers/{publishers}', [PublishersController::class, 'show'])->name('publishers.show');
     Route::get('/publishers/create', [PublishersController::class, 'create'])->name('publishers.create');

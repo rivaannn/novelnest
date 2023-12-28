@@ -58,7 +58,8 @@ Route::get('/kategori/detailbuku/{id}', function ($id) {
         'books' => $books,
     ]);
 })->name('kategori.detailbuku');
-Route::get('/add_keranjang/{book}',[BooksController::class,'addKeranjang'])->name('add_keranjang');
+
+Route::post('/add_keranjang/{book}', [BooksController::class, 'addKeranjang'])->name('add_keranjang');
 
 Route::get('/kategori/search', function (Request $request) {
     $categories = Category::all();

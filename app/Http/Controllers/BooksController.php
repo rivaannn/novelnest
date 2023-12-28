@@ -111,9 +111,40 @@ class BooksController extends Controller
         ]);
     }
 
-    public function addKeranjang(Books $book, Request $requst) {
-        // dd($request);
+    public function addKeranjang(Request $request, Books $book)
+    {
+        $request->validate([
+            'jumlah' => 'required|integer|min:1',
+        ]);
+
+        $keranjang = session()->get('keranjang');
+
+        // Jika keranjang kosong, maka buat array baru
+        if (!$keranjang) {
+            $keranjang = [
+                $book->id => [
+                    'id' => $book->id,
+                    'title' => $book->title,
+                    'jumlah' => $request->jumlah,
+                    'price' => $book->price,
+                ]
+            ];
+
+            session()->put('keranjang', $keranjang);
+
+            return redirect()->route('books.index')->with('success', 'Buku berhasil ditambahkan ke keranjang.');
+        }
+
+        // Jika keranjang tidak kosong, maka cek apakah buku sudah ada di keranjang
+        if (isset($keranjang[$book->id])) {
+            // Jika buku sudah ada di keranjang, maka tambahkan jumlahnya
+            $keranjang[$book->id]['jumlah'] += $request->jumlah;
+            session()->put('keranjang', $keranjang);
+
+            return redirect()->route('books.index')->with('success', 'Buku berhasil ditambahkan ke keranjang.');
+        }
     }
+
 
     /**
      * Update the specified resource in storage.

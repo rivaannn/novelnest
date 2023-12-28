@@ -37,17 +37,18 @@
                         <span class="mt-1 text-xl font-medium text-blue-500 title-font">Rp.
                             {{ number_format($books->price, 0, ',', '.') }}</span>
 
-                        <div class="flex pl-28">
-                            <a href="{{ route('add_keranjang', ['book' => $books->id]) }}" method="post">
-                                <button
-                                    class="px-6 text-white bg-white border border-blue-500 rounded-full dark:bg-white ms-2 hover:bg-gray-200 dark:hover:bg-gray-300 dark:border-none"
-                                    type="button">
-                                    <img class="w-6 h-6 cursor-pointer cart" src="{{ asset('/img/keranjang') }}.png"
-                                        alt="Ikon Keranjang">
-                                </button>
-                            </a>
-                        </div>
-
+                        {{-- Add Keranjang --}}
+                        <form action="{{ route('addKeranjang') }}" method="POST">
+                            @csrf
+                            <input type="hidden" name="book_id" value="{{ $books->id }}">
+                            <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
+                            <input type="hidden" name="qty" value="1">
+                            <input type="hidden" name="price" value="{{ $books->price }}">
+                            <button class="px-4 py-2">
+                                <img class="ml-3 cursor-pointer w-7 h-7" src="{{ asset('img/keranjang.png') }}"
+                                    alt="Icon Keranjang">
+                            </button>
+                        </form>
 
                         <button
                             class="px-6 py-2 text-white bg-blue-500 border-0 rounded-full ms-2 focus:outline-none hover:bg-blue-600">Beli

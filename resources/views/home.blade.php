@@ -166,7 +166,7 @@
     <!-- Tombol "Lihat Semua Buku" -->
     <div class="container mx-auto mt-8 text-end dark:bg-gray-800">
         <a href="{{ url('/blog') }}"
-            class="px-4 py-2 text-white transition duration-300 bg-blue-500 rounded-full md:p-8 sm:p-8 hover:bg-blue-600">Lihat
+            class="px-4 py-2 text-white transition bg-blue-500 rounded-full duration-600 hover:bg-blue-600">Lihat
             Semua Blog</a>
     </div>
 

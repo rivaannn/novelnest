@@ -54,6 +54,11 @@
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('keranjang.index')" :active="request()->routeIs('keranjang.index')">
+                        {{ __('Keranjang') }}
+                    </x-nav-link>
+                </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link href="#">
                         {{ __('Order') }}
                     </x-nav-link>
@@ -93,17 +98,15 @@
 
                     <x-slot name="content">
                         {{-- Dashboard --}}
+                        <x-dropdown-link :href="route('dashboarduser')">
+                            {{ __('Dashboard User') }}
+                        </x-dropdown-link>
                         <x-dropdown-link :href="route('home')">
                             {{ __('Home') }}
                         </x-dropdown-link>
                         <x-dropdown-link :href="route('profile.edit')">
                             {{ __('Profile') }}
                         </x-dropdown-link>
-                        @can('guest')
-                            <x-dropdown-link :href="route('dashboarduser')">
-                                {{ __('Dashboard User') }}
-                            </x-dropdown-link>
-                        @endcan
                         <!-- Authentication -->
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf

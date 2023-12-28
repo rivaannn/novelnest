@@ -29,6 +29,8 @@
     @include('partials.backtoTop')
     @include('partials.footer')
 
+    <!-- Include Alpine.js -->
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script>
 
     {{-- Link CDN Jquey --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -38,6 +40,15 @@
 
     {{-- Link CDN Alternative Javescript Flowbite --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.0/flowbite.min.js"></script>
+
+    <script>
+        const keranjangSidebar = document.getElementById('hideKeranjang')
+
+        setTimeout(() => {
+            keranjangSidebar.classList.remove('hidden')
+        }, 500);
+    </script>
+
 </body>
 
 </html>

@@ -19,17 +19,13 @@
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('order')" :active="request()->routeIs('order')">
+                    <x-nav-link href="#">
                         {{ __('Order') }}
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('books.index')" :active="request()->routeIs('order')">
-                        {{ __('Buku') }}
-                    </x-nav-link>
-                </div>
-                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link id="showKeranjangBtn">
+                    {{-- id="showKeranjangBtn" --}}
+                    <x-nav-link href="#">
                         {{ __('Keranjang') }}
                     </x-nav-link>
                 </div>

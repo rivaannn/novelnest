@@ -38,10 +38,9 @@
                             {{ number_format($books->price, 0, ',', '.') }}</span>
 
                         <div class="flex pl-28">
-                            <button
-                                class="px-6 text-white bg-white border border-blue-500 dark:bg-white rounded-full ms-2  hover:bg-gray-200 dark:hover:bg-gray-300 dark:border-none">
-                                <img class="h-6 w-6 cursor-pointer cart" src="{{ asset('/img/keranjang') }}.png"
-                                    alt="Keranjang icon">
+                            <button class="px-6 text-white bg-white border border-blue-500 dark:bg-white rounded-full ms-2  hover:bg-gray-200 dark:hover:bg-gray-300 dark:border-none">
+                                <img class="h-6 w-6 cursor-pointer cart" src="{{ asset('/img/keranjang') }}.png" alt="Keranjang icon">
+                                <a href="{{ route('add_keranjang', $books->id) }}" method="get" class="ms-auto">
                             </button>
 
                             <button

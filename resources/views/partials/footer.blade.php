@@ -6,7 +6,7 @@
         </a>
         <p class="my-6 text-gray-500 dark:text-gray-400">Novelnest Tempat
             di Mana Cerita Tak Terbatas.</p>
-        <div class="flex items-center justify-center mx-auto mt-4 mb-6 space-x-5>
+        <div class="flex items-center justify-center mx-auto mt-4 mb-6 space-x-5">
             <a href="#" class="text-gray-400 hover:text-gray-900 dark:hover:text-white">
                 <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
                     viewBox="0 0 21 16">

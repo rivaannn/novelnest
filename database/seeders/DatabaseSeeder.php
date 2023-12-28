@@ -15,10 +15,20 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         User::factory(5)->create();
+
         User::factory()->create([
             'name' => 'rivan',
             'email' => 'rivan@gmail.com',
             'image' => 'images/users/default.png',
+        ]);
+        User::factory()->create([
+            'name' => 'admin',
+            'email' => 'admin@gmail.com',
+            'is_admin' => true,
+        ]);
+        User::factory()->create([
+            'name' => 'user',
+            'email' => 'user@gmail.com',
         ]);
 
         $this->call([

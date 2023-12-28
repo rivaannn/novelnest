@@ -15,6 +15,8 @@ return new class extends Migration
             $table->id();
             $table->integer("book_id")->nullable(false);
             $table->integer("order_id")->nullable(false);
+            $table->integer("jumlah")->default(1);
+            $table->integer('subtotal')->nullable(true);
             $table->timestamps();
         });
     }

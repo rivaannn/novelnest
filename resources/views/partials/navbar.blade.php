@@ -33,8 +33,14 @@
                                 class="inline-block px-4 py-2 transition duration-150 ease-in-out hover:bg-gray-100 dark:hover:bg-gray-700">Dashboard
                                 User</a>
                         @endif
-                        <a href="/profile"
-                            class="inline-block px-4 py-2 transition duration-150 ease-in-out hover:bg-gray-100 dark:hover:bg-gray-700">Profile</a>
+
+                        @if (Auth::user()->is_admin == 1)
+                            <a href="/profile"
+                                class="inline-block px-4 py-2 transition duration-150 ease-in-out hover:bg-gray-100 dark:hover:bg-gray-700">Profile</a>
+                        @elseif (Auth::user()->is_admin == 0)
+                            <a href="/profile-user"
+                                class="inline-block px-4 py-2 transition duration-150 ease-in-out hover:bg-gray-100 dark:hover:bg-gray-700">Profile</a>
+                        @endif
                         <form action="{{ route('logout') }}" method="POST">
                             @csrf
                             <button type="submit"

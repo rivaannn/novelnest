@@ -35,12 +35,14 @@
                 </div>
             </div>
 
-            <div id="keranjangSidebar" class="border-l border-gray-600 dark:border-gray-700 fixed right-0 top-0 z-40 w-96 h-screen p-4 overflow-y-auto transform translate-x-full bg-white dark:bg-gray-800 transition-transform ease-in-out duration-300">
-                <div class="flex h-14 items-center justify-between">
+            <div id="keranjangSidebar"
+                class="fixed top-0 right-0 z-40 h-screen p-4 overflow-y-auto transition-transform duration-300 ease-in-out transform translate-x-full bg-white border-l border-gray-600 dark:border-gray-700 w-96 dark:bg-gray-800">
+                <div class="flex items-center justify-between h-14">
                     <h5 class="text-base font-semibold text-gray-500 uppercase dark:text-gray-400">Keranjang</h5>
                     <!-- Sidebar content goes here -->
                     <button id="hideKeranjangBtn" class="text-gray-400 bg-transparent">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" class="w-6 h-6">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
                         </svg>
                     </button>
@@ -48,21 +50,20 @@
             </div>
 
             <!-- Settings Dropdown -->
-            <div class="hidden ps-96 sm:flex sm:items-center sm:ms-6">
+            <div class="hidden ps-48 sm:flex sm:items-center sm:ms-6">
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
                         <button
-                            class="inline-flex items-center px-3 py-2 text-sm font-medium leading-4 text-gray-500 transition duration-150 ease-in-out bg-white border border-transparent rounded-md dark:text-gray-400 dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none">
+                            class="inline-flex items-center px-3 py-2 text-sm font-medium leading-4 text-gray-500 transition duration-150 ease-in-out bg-white border border-transparent rounded-md dark:text-gray-400 dark:bg-gray-900 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none">
                             @if (substr(Auth::user()->image, 0, 4) == 'http')
                                 <img src="{{ Auth::user()->image }}" alt="Foto Profile"
                                     class="w-8 h-8 -mt-1 rounded-full">
                             @else
-                                <img class="w-8 h-8 -mt-1 rounded-full me-2"
+                                <img class="w-8 h-8 -mt-1 rounded-full"
                                     src=" {{ asset('storage/' . Auth::user()->image) }}"
                                     alt="{{ Auth::user()->name }}" />
                             @endif
-                            <div>{{ Auth::user()->name }}</div>
-
+                            <div class="ms-2">{{ Auth::user()->name }}</div>
                             <div class="ms-1">
                                 <svg class="w-4 h-4 fill-current" xmlns="http://www.w3.org/2000/svg"
                                     viewBox="0 0 20 20">
@@ -79,13 +80,13 @@
                         <x-dropdown-link :href="route('home')">
                             {{ __('Home') }}
                         </x-dropdown-link>
-                        <x-dropdown-link :href="route('profile.edit')">
+                        <x-dropdown-link :href="route('profileUser.edit')">
                             {{ __('Profile') }}
                         </x-dropdown-link>
                         @can('admin')
-                        <x-dropdown-link :href="route('dashboard')">
-                            {{ __('Dashboard') }}
-                        </x-dropdown-link>
+                            <x-dropdown-link :href="route('dashboard')">
+                                {{ __('Dashboard') }}
+                            </x-dropdown-link>
                         @endcan
 
                         <!-- Authentication -->

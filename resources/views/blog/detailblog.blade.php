@@ -15,11 +15,11 @@
                 <div class="relative w-full max-w-screen-md mx-auto mb-4 md:mb-0" style="height: 24em;">
                     <div class="absolute bottom-0 left-0 z-10 w-full h-full"
                         style="background-image: linear-gradient(180deg,transparent,rgba(0,0,0,.7));"></div>
-                    <img src="{{ asset('public/' . $blogs->image) }}" alt="blog"
+                    <img src="https://source.unsplash.com/1200x800/?book" alt="blog"
                         class="absolute top-0 left-0 z-0 object-cover w-full h-full" />
                     <div class="absolute bottom-0 left-0 z-20 p-4">
-                        <a href="#"
-                            class="inline-flex items-center justify-center px-4 py-1 mb-2 text-gray-200 bg-black">{{ $blogs->category }}</a>
+                        <span
+                            class="inline-flex items-center justify-center px-4 py-1 mb-2 text-gray-200 bg-black">{{ $blogs->category }}</span>
                         <h2 class="text-4xl font-semibold leading-tight text-gray-100">
                             {{ $blogs->title }}
                         </h2>
@@ -27,7 +27,7 @@
                             {{ $blogs->slug }}
                         </h2>
                         <div class="flex mt-3">
-                            <img src="https://randomuser.me/api/portraits/men/97.jpg"
+                            <img src="https://randomuser.me/api/portraits/men/69.jpg"
                                 class="object-cover w-10 h-10 mr-2 rounded-full" />
                             <div>
                                 <p class="text-sm font-semibold text-gray-200"> Mike Sullivan </p>
@@ -38,7 +38,7 @@
                 </div>
                 <div
                     class="max-w-screen-md px-4 mx-auto mt-12 text-lg leading-relaxed text-gray-700 dark:text-gray-200 lg:px-0">
-                    <p class="pb-6">{{ $blogs->body }}</p>
+                    <p class="pb-6">{!! $blogs->body !!}</p>
                 </div>
             </main>
         </div>

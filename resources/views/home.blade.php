@@ -5,7 +5,7 @@
         <div class="py-12 sm:py-24">
             <div class="px-6 mx-auto max-w-7xl lg:px-8">
                 <div class="max-w-4xl mx-auto text-center">
-                    <h1 class="mt-8 text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl dark:text-white">
+                    <h1 class="mt-8 font-bold tracking-tight text-gray-900 text-7xl sm:text-6xl dark:text-white">
                         <span class="text-transparent bg-clip-text bg-gradient-to-r to-blue-600 from-sky-400">Novel</span>
                         Nest.
                     </h1>
@@ -166,7 +166,7 @@
     <!-- Tombol "Lihat Semua Buku" -->
     <div class="container mx-auto mt-8 text-end dark:bg-gray-800">
         <a href="{{ url('/blog') }}"
-            class="px-4 py-2 text-white transition duration-300 bg-blue-500 rounded-full hover:bg-blue-600">Lihat
+            class="px-4 py-2 text-white transition duration-300 bg-blue-500 rounded-full md:p-8 sm:p-8 hover:bg-blue-600">Lihat
             Semua Blog</a>
     </div>
 

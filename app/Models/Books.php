@@ -46,11 +46,11 @@ class Books extends Model
 
     public function bookOrder()
     {
-        return $this->hasMany(BookOrder::class);
+        return $this->hasMany(BookOrder::class, 'book_id');
     }
 
     public function users()
     {
-        return $this->belongsToMany(User::class, 'book_orders');
+        return $this->belongsToMany(User::class, 'book_orders, user_id, book_id');
     }
 }

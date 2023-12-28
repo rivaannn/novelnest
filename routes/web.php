@@ -59,8 +59,6 @@ Route::get('/kategori/detailbuku/{id}', function ($id) {
     ]);
 })->name('kategori.detailbuku');
 
-Route::post('/add_keranjang/{book}', [BooksController::class, 'addKeranjang'])->name('add_keranjang');
-
 Route::get('/kategori/search', function (Request $request) {
     $categories = Category::all();
     $writters = Writter::all();
@@ -209,13 +207,13 @@ Route::get('/dashboarduser', function () {
     return view('dashboarduser.dashboarduser');
 })->middleware(['auth', 'verified'])->name('dashboarduser');
 
-Route::get('/keranjang', function () {
-    return view('dashboarduser.keranjang');
-})->middleware(['auth', 'verified'])->name('keranjang');
+// Route::get('/keranjang', function () {
+//     return view('dashboarduser.keranjang');
+// })->middleware(['auth', 'verified'])->name('keranjang');
 
-Route::get('/order', function () {
-    return view('dashboarduser.order');
-})->middleware(['auth', 'verified'])->name('order');
+// Route::get('/order', function () {
+//     return view('dashboarduser.order');
+// })->middleware(['auth', 'verified'])->name('order');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit')->middleware(['admin']);
@@ -303,6 +301,13 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::patch('/publishers/{publisher}', [PublishersController::class, 'update'])->name('publishers.update');
     Route::delete('/publishers/{publisher}', [PublishersController::class, 'destroy'])->name('publishers.destroy');
 });
+
+// Route untuk Keranjang
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('/keranjang', [BooksController::class, 'keranjangIndex'])->name('keranjang.index');
+    Route::post('/keranjang', [BooksController::class, 'addKeranjang'])->name('addKeranjang');
+});
+
 
 
 require __DIR__ . '/auth.php';

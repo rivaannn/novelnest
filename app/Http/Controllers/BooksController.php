@@ -11,6 +11,8 @@ use App\Http\Requests\StorebooksRequest;
 use App\Http\Requests\UpdatebooksRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Models\BookOrder;
+use App\Models\Orders;
 
 class BooksController extends Controller
 {
@@ -111,41 +113,6 @@ class BooksController extends Controller
         ]);
     }
 
-    public function addKeranjang(Request $request, Books $book)
-    {
-        $request->validate([
-            'jumlah' => 'required|integer|min:1',
-        ]);
-
-        $keranjang = session()->get('keranjang');
-
-        // Jika keranjang kosong, maka buat array baru
-        if (!$keranjang) {
-            $keranjang = [
-                $book->id => [
-                    'id' => $book->id,
-                    'title' => $book->title,
-                    'jumlah' => $request->jumlah,
-                    'price' => $book->price,
-                ]
-            ];
-
-            session()->put('keranjang', $keranjang);
-
-            return redirect()->route('books.index')->with('success', 'Buku berhasil ditambahkan ke keranjang.');
-        }
-
-        // Jika keranjang tidak kosong, maka cek apakah buku sudah ada di keranjang
-        if (isset($keranjang[$book->id])) {
-            // Jika buku sudah ada di keranjang, maka tambahkan jumlahnya
-            $keranjang[$book->id]['jumlah'] += $request->jumlah;
-            session()->put('keranjang', $keranjang);
-
-            return redirect()->route('books.index')->with('success', 'Buku berhasil ditambahkan ke keranjang.');
-        }
-    }
-
-
     /**
      * Update the specified resource in storage.
      */
@@ -207,5 +174,57 @@ class BooksController extends Controller
         }
 
         return view('dashboard.books.index', compact('books'));
+    }
+
+    // Fungsi Khusus Keranjang
+
+    public function keranjangIndex()
+    {
+        return view('dashboard.keranjang.index');
+    }
+
+    public function addKeranjang(Books $book)
+    {
+        // Cek apakah buku ditemukan
+        $book = Books::find($book->id);
+
+        if (!$book) {
+            return redirect()->route('keranjang.index')->with('error', 'Buku tidak ditemukan.');
+        }
+
+        // Misalkan Anda memiliki pesanan aktif untuk pengguna saat ini
+        $order = Orders::where('user_id', auth()->user()->id)
+            ->where('status', 'pending')
+            ->first();
+
+        // Jika tidak ada pesanan aktif, Anda perlu membuatnya terlebih dahulu
+        if (!$order) {
+            $order = new Orders([
+                'user_id' => auth()->user()->id,
+                'status' => 'pending',
+            ]);
+            $order->save();
+        }
+
+        // Selanjutnya, tambahkan atau perbarui informasi buku di book_orders
+        $bookOrder = BookOrder::where('book_id', $book->id)
+            ->where('order_id', $order->id)
+            ->first();
+
+        if ($bookOrder) {
+            $bookOrder->update([
+                'jumlah' => $bookOrder->jumlah + 1,
+                'subtotal' => $bookOrder->subtotal + $book->harga,
+            ]);
+        } else {
+            BookOrder::create([
+                'book_id' => $book->id,
+                'order_id' => $order->id,
+                'jumlah' => 1,
+                'subtotal' => $book->harga,
+            ]);
+        }
+
+        return redirect()->route('keranjang.index')->with('success', 'Buku berhasil ditambahkan ke keranjang.');
     }
 }

@@ -111,6 +111,10 @@ class BooksController extends Controller
         ]);
     }
 
+    public function addKeranjang(Books $book, Request $requst) {
+        // dd($request);
+    }
+
     /**
      * Update the specified resource in storage.
      */

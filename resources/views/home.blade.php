@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('content')
-    <header class="bg-gray-100 dark:bg-gray-900">
+    <header class="bg-gray-100 dark:bg-gray-900 mt-8">
         <div class="py-12 sm:py-24">
             <div class="px-6 mx-auto max-w-7xl lg:px-8">
                 <div class="max-w-4xl mx-auto text-center">

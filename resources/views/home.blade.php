@@ -81,12 +81,12 @@
 
     {{-- Kategori Buku --}}
     <div class="container mx-auto mt-8 dark:bg-gray-800">
-        <h1 class="mt-4 mb-8 text-4xl font-bold text-center dark:text-white">Kategori Buku</h1>
-        <div class="grid grid-cols-4 gap-4 md:grid-cols-3 lg:grid-cols-6">
+        <h1 class="mt-4 mb-8 text-2xl md:text-4xl font-bold text-center dark:text-white">Kategori Buku</h1>
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4">
             @foreach ($categories as $category)
                 <div class="flex flex-col items-center">
                     <a href="{{ route('kategori.filterByCategory', ['category' => $category->id]) }}"
-                        class="w-full relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-cyan-500 to-blue-500 group-hover:from-cyan-600 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800">
+                        class="w-full relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm md:text-base font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-cyan-500 to-blue-500 group-hover:from-cyan-600 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800">
                         <p
                             class="w-full text-center relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
                             {{ $category->name }}</p>
@@ -95,8 +95,6 @@
             @endforeach
         </div>
     </div>
-
-
 
     {{-- Rekomendasi Buku --}}
     <div class="container py-8 mx-auto dark:bg-gray-800">

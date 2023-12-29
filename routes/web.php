@@ -154,9 +154,8 @@ Route::get('/kategori/{category}', function ($category) {
         'active' => 'kategori',
         'categories' => $categories,
         'books' => $books,
-    ]); { {
-        }
-    }
+        'writters' => Writter::all(),
+    ]);
 })->name('kategori.filterByCategory');
 
 Route::get('/blog', function () {

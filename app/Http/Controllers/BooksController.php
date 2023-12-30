@@ -186,12 +186,14 @@ class BooksController extends Controller
 
     public function removeFromKeranjang(Request $request, Books $book_id) {
         // $request->session()->forget('books');
-        $books = $request->session()->get("books");
-        $book = $request->query('book_id');
-        $books = array_diff($books, [$book]);
-        $request->session()->forget('books');
-        $request->session()->put('books', $books);
-        return redirect()->route('kategori.index')->with('success', 'Buku berhasil dihapus dari keranjang.');
+        if($request->session()->get("books")) {
+            $books = $request->session()->get("books");
+            $book = $request->query('book_id');
+            $books = array_diff($books, [$book]);
+            $request->session()->forget('books');
+            $request->session()->put('books', $books);
+            return redirect()->route('kategori.index')->with('success', 'Buku berhasil dihapus dari keranjang.');
+        }
 
     }
     public function addKeranjang(Request $request) {

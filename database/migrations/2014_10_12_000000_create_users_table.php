@@ -17,6 +17,9 @@ return new class extends Migration
             $table->string('image')->nullable();
             $table->string('name');
             $table->string('email')->unique();
+            $table->string('alamat')->nullable();
+            $table->int('provinsi')->nullable();
+            $table->int('kota')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('is_admin')->default(false);

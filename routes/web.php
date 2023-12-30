@@ -57,23 +57,6 @@ Route::get('/kategori', function (Request $request) {
     ]);
 })->name('kategori.index');
 
-// Route untuk Keranjang
-Route::middleware(['auth', 'verified'])->group(function () {
-    Route::get('/keranjang', [BooksController::class, 'keranjangIndex'])->name('keranjang.index');
-    Route::post('/keranjang', [BooksController::class, 'addKeranjang'])->name('addKeranjang');
-    Route::get('/removekeranjang', [BooksController::class, 'removeFromKeranjang'])->name('remKeranjang');
-});
-
-// order
-Route::middleware(['auth'])->group(function() {
-    Route::post('/order-keranjang',[OrdersController::class, 'buatOrderDariKeranjang'])->name('order.keranjang');
-});
-
-
-Route::get('/order', function () {
-    return view('dashboarduser.order');
-})->middleware(['auth', 'verified'])->name('order');
-
 Route::get('/kategori/detailbuku/{id}', function ($id, Request $request) {
     $books = Books::find($id);
     $request->session()->all();
@@ -207,6 +190,30 @@ Route::get('/blog/detailblog/{id}', function ($id) {
     ]);
 });
 
+
+// Route untuk Keranjang
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('/keranjang', [BooksController::class, 'keranjangIndex'])->name('keranjang.index');
+    Route::post('/keranjang', [BooksController::class, 'addKeranjang'])->name('addKeranjang');
+    Route::get('/removekeranjang', [BooksController::class, 'removeFromKeranjang'])->name('remKeranjang');
+});
+
+// Route Order
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::post('/order-keranjang', [OrdersController::class, 'buatOrderDariKeranjang'])->name('order.keranjang');
+});
+
+Route::get('/dashboarduser/order', function () {
+    return view('dashboarduser.order.index');
+})->middleware(['auth', 'verified'])->name('order.index');
+
+Route::get('/dashboarduser/order/{order}', function () {
+    return view('dashboarduser.order.showOrder');
+})->middleware(['auth', 'verified'])->name('order.showOrder');
+
+
+
+// Route untuk Auth
 Route::get('/auth', function () {
     return view('auth.login');
 });

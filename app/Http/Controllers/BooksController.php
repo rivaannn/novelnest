@@ -3,16 +3,17 @@
 namespace App\Http\Controllers;
 
 use App\Models\Books;
+use App\Models\Orders;
 use App\Models\Writter;
 use App\Models\Category;
+use App\Models\BookOrder;
 use App\Models\Publishers;
+use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\DB;
 use App\Http\Requests\StorebooksRequest;
 use App\Http\Requests\UpdatebooksRequest;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use App\Models\BookOrder;
-use App\Models\Orders;
+use Illuminate\Contracts\Session\Session;
 
 class BooksController extends Controller
 {
@@ -183,48 +184,27 @@ class BooksController extends Controller
         return view('dashboard.keranjang.index');
     }
 
-    public function addKeranjang(Books $book)
-    {
-        // Cek apakah buku ditemukan
-        $book = Books::find($book->id);
-
-        if (!$book) {
-            return redirect()->route('keranjang.index')->with('error', 'Buku tidak ditemukan.');
+    public function removeFromKeranjang(Request $request, Books $book_id) {
+        // $request->session()->forget('books');
+        if($request->session()->get("books")) {
+            $books = $request->session()->get("books");
+            $book = $request->query('book_id');
+            $books = array_diff($books, [$book]);
+            $request->session()->forget('books');
+            $request->session()->put('books', $books);
+            return redirect()->route('kategori.index')->with('success', 'Buku berhasil dihapus dari keranjang.');
         }
 
-        // Misalkan Anda memiliki pesanan aktif untuk pengguna saat ini
-        $order = Orders::where('user_id', auth()->user()->id)
-            ->where('status', 'pending')
-            ->first();
-
-        // Jika tidak ada pesanan aktif, Anda perlu membuatnya terlebih dahulu
-        if (!$order) {
-            $order = new Orders([
-                'user_id' => auth()->user()->id,
-                'status' => 'pending',
-            ]);
-            $order->save();
-        }
-
-        // Selanjutnya, tambahkan atau perbarui informasi buku di book_orders
-        $bookOrder = BookOrder::where('book_id', $book->id)
-            ->where('order_id', $order->id)
-            ->first();
-
-        if ($bookOrder) {
-            $bookOrder->update([
-                'jumlah' => $bookOrder->jumlah + 1,
-                'subtotal' => $bookOrder->subtotal + $book->harga,
-            ]);
-        } else {
-            BookOrder::create([
-                'book_id' => $book->id,
-                'order_id' => $order->id,
-                'jumlah' => 1,
-                'subtotal' => $book->harga,
-            ]);
-        }
-
-        return redirect()->route('keranjang.index')->with('success', 'Buku berhasil ditambahkan ke keranjang.');
     }
+    public function addKeranjang(Request $request) {
+        $books =$request->session()->get("books");
+        if($books == NULL) {
+            $books = [];
+        }
+        $books[] = (int)$request->book_id;
+        $request->session()->put('books', $books);
+
+        return redirect()->route('kategori.index')->with('success', 'Buku berhasil ditambahkan ke keranjang.');
+
+   }
 }

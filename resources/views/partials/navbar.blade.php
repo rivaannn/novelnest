@@ -1,5 +1,4 @@
-<nav
-    class="fixed top-0 z-40 w-full bg-white border-b border-gray-200 shadow-sm dark:bg-gray-900 start-0 dark:border-gray-600">
+<nav class="fixed top-0 z-40 w-full shadow-md bg-gray-50 start-0 dark:bg-gradient-to-r from-black to-blue-800">
     <div class="flex flex-wrap items-center justify-between p-4 mx-auto max-w-screen-2xl">
         <a href="/" class="flex items-center ml-10 space-x-3 rtl:space-x-reverse">
             <img class="h-10" src="/img/logo.png" class="h-8 " alt="Novelnest">
@@ -56,22 +55,49 @@
                 </div>
             @endauth
 
+            <!-- Button Sebelum Login -->
             @guest
-                <div class="inline mx-auto">
+                <div class="flex pb-5">
                     <a href="/login"
-                        class="inline-flex items-center justify-center px-6 py-2 text-sm text-white bg-blue-600 rounded-full hover:bg-blue-700">
-                        <span>Masuk</span>
+                        class="relative inline-flex items-center justify-center px-5 py-2 overflow-hidden text-white bg-blue-600 rounded-lg group focus:ring-4 focus:ring-blue-300 me-2">
+                        <span class="z-40 text-sm">Masuk</span>
+                        <svg class="z-40 w-2 h-2 ml-1 -mr-0.5 transition-all duration-300 group-hover:translate-x-0.5"
+                            fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd"
+                                d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                                clip-rule="evenodd"></path>
+                        </svg>
+                        <div
+                            class="absolute inset-0 h-[200%] w-[200%] rotate-45 translate-x-[-70%] transition-all group-hover:scale-100 bg-white/30 group-hover:translate-x-[50%] z-20 duration-1000">
+                        </div>
                     </a>
+
                     <a href="/register"
-                        class="inline-flex items-center justify-center px-6 py-2 text-sm text-gray-600 bg-gray-300 rounded-full hover:bg-gray-200 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700">
-                        <span>Daftar</span>
+                        class="relative inline-flex items-center justify-center px-5 py-2 overflow-hidden text-white bg-gray-500 rounded-lg group focus:ring-4 focus:ring-blue-300">
+                        <span class="z-40 text-sm">Daftar</span>
+                        <svg class="z-40 w-2 h-2 ml-1 -mr-0.5 transition-all duration-300 group-hover:translate-x-0.5"
+                            fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd"
+                                d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                                clip-rule="evenodd"></path>
+                        </svg>
+                        <div
+                            class="absolute inset-0 h-[200%] w-[200%] rotate-45 translate-x-[-70%] transition-all group-hover:scale-100 bg-white/30 group-hover:translate-x-[50%] z-20 duration-1000">
+                        </div>
                     </a>
                 </div>
             @endguest
 
-            <div class="flex items-center justify-center">
-                <img class="w-5 h-5 ml-4 cursor-pointer sun" src="{{ asset('img/sun.png') }}" alt="DarkMode light">
-                <img class="w-5 h-5 ml-4 cursor-pointer moon" src="{{ asset('img/moon.png') }}" alt="DarkMode dark">
+
+            {{-- Dark Mode --}}
+            <div class="relative inline-block w-10 mt-1 mr-2 align-middle transition duration-200 ease-in select-none">
+                <img class="w-5 h-5 mb-3 ml-4 cursor-pointer sun" src="{{ asset('img/sun.png') }}" alt="DarkMode light">
+                <img class="w-5 h-5 mb-3 ml-4 cursor-pointer moon" src="{{ asset('img/moon.png') }}"
+                    alt="DarkMode dark">
+            </div>
+
+            {{-- Side Bar Keranjang --}}
+            <div class="relative inline-block align-middle transition duration-200 ease-in select-none">
                 {{-- Script untuk side bar  --}}
                 <div x-data="{ open: false }">
                     <!-- Sidebar Overlay -->
@@ -80,7 +106,7 @@
                             x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100"
                             x-transition:leave="transition-opacity ease-in duration-300"
                             x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0"
-                            class="absolute inset-0 transition-opacity bg-gray-500 bg-opacity-75"></div>
+                            class="absolute inset-0 transition-opacity bg-gray-700 bg-opacity-75"></div>
                         <!-- Sidebar Content -->
                         <section class="absolute inset-y-0 right-0 flex max-w-full pl-10">
                             <div x-show="open" x-transition:enter="transition-transform ease-out duration-300"
@@ -89,11 +115,13 @@
                                 x-transition:leave="transition-transform ease-in duration-300"
                                 x-transition:leave-start="transform translate-x-0"
                                 x-transition:leave-end="transform translate-x-full" class="w-screen max-w-md">
-                                <div class="flex flex-col h-full py-6 bg-white shadow-xl">
+                                <div class="flex flex-col h-full py-6 bg-white shadow-xl dark:bg-gray-900">
                                     <!-- Sidebar Header -->
                                     <div class="flex items-center justify-between px-4">
-                                        <h2 class="text-xl font-semibold text-black">Daftar Keranjang</h2>
-                                        <button x-on:click="open = false" class="text-gray-500 hover:text-gray-700">
+                                        <h2 class="text-xl font-semibold text-black dark:text-white">Daftar Keranjang
+                                        </h2>
+                                        <button x-on:click="open = false"
+                                            class="text-gray-500 hover:text-gray-700 dark:text-white">
                                             <span class="sr-only">Close</span>
                                             <svg class="w-6 h-6" x-description="Heroicon name: x"
                                                 xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -108,9 +136,10 @@
                                         <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
                                             <!-- Card 1 -->
                                             <div
-                                                class="p-4 transition-colors duration-300 border border-gray-300 rounded-md cursor-pointer bg-gray-50 hover:bg-gray-100">
-                                                <h3 class="mb-2 text-lg font-semibold text-black">Card 1</h3>
-                                                <p class="text-gray-600">Content for card 1.</p>
+                                                class="p-4 transition-colors duration-300 border border-gray-300 rounded-md cursor-pointer bg-gray-50 hover:bg-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600">
+                                                <h3 class="mb-2 text-lg font-semibold text-black dark:text-white">Card
+                                                    1</h3>
+                                                <p class="text-gray-600 dark:text-white">Content for card 1.</p>
                                             </div>
                                         </div>
                                     </div>
@@ -136,14 +165,13 @@
                         </section>
                     </div>
                     <!-- Open sidebar button -->
-                    <button x-on:click="open = true" class="px-4 py-2">
-                        <img class="ml-3 cursor-pointer w-7 h-7" src="{{ asset('img/keranjang.png') }}"
+                    <button @click="open = true"
+                        class="items-center px-4 pb-2 text-sm font-medium text-gray-700 transition duration-150 ease-in-out">
+                        <img class="cursor-pointer w-7 h-7" src="{{ asset('img/keranjang.png') }}"
                             alt="Icon Keranjang">
                     </button>
                 </div>
             </div>
-
-
 
             <button data-collapse-toggle="navbar-sticky" type="button"
                 class="inline-flex items-center justify-center w-10 h-10 p-2 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
@@ -157,9 +185,9 @@
             </button>
         </div>
 
-        <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
+        <div class="items-center justify-center hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
             <ul
-                class="flex flex-col p-4 mt-4 font-medium border border-gray-100 rounded-lg md:p-0 bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+                class="flex flex-col p-4 mt-4 font-medium border rounded-lg md:p-0 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0">
                 <li>
                     <a href="/"
                         class="block px-3 py-2 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0

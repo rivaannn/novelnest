@@ -33,10 +33,12 @@ use Illuminate\Support\Str;
 
 // Route Untuk Home
 Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('/about', function () {
+Route::get('/about', function (Request $request) {
+    $keranjangBuku = Books::find($request->session()->get('books'));
     return view('about.index', [
         'title' => 'Tentang NovelNest',
-        'active' => 'about'
+        'active' => 'about',
+        'keranjangBuku' => $keranjangBuku
     ]);
 });
 Route::get('/kategori', function (Request $request) {
@@ -173,13 +175,15 @@ Route::get('/kategori/{category}', function ($category) {
     ]);
 })->name('kategori.filterByCategory');
 
-Route::get('/blog', function () {
+Route::get('/blog', function (Request $request) {
     $categories = Category::all();
     $blogs = Blogs::latest()->paginate(8);
+    $keranjangBuku = Books::find($request->session()->get('books'));
     return view('blog.index', [
         'active' => 'blog',
         'categories' => $categories,
         'blogs' => $blogs,
+        'keranjangBuku' => $keranjangBuku
     ]);
 });
 

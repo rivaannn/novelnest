@@ -184,9 +184,10 @@ class BooksController extends Controller
         return view('dashboard.keranjang.index');
     }
 
-    public function removeFromKeranjang(Request $request, Books $book_id) {
+    public function removeFromKeranjang(Request $request)
+    {
         // $request->session()->forget('books');
-        if($request->session()->get("books")) {
+        if ($request->session()->get("books")) {
             $books = $request->session()->get("books");
             $book = $request->query('book_id');
             $books = array_diff($books, [$book]);
@@ -194,17 +195,17 @@ class BooksController extends Controller
             $request->session()->put('books', $books);
             return redirect()->route('kategori.index')->with('success', 'Buku berhasil dihapus dari keranjang.');
         }
-
     }
-    public function addKeranjang(Request $request) {
-        $books =$request->session()->get("books");
-        if($books == NULL) {
+
+    public function addKeranjang(Request $request)
+    {
+        $books = $request->session()->get("books");
+        if ($books == NULL) {
             $books = [];
         }
         $books[] = (int)$request->book_id;
         $request->session()->put('books', $books);
 
         return redirect()->route('kategori.index')->with('success', 'Buku berhasil ditambahkan ke keranjang.');
-
-   }
+    }
 }

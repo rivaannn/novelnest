@@ -2,7 +2,7 @@
 
 @section('content')
     <!-- Filter Section -->
-    <div class="container flex flex-wrap py-12 mx-auto mt-8 dark:bg-gray-800">
+    <div class="container flex flex-wrap py-12 mx-auto mt-14 dark:bg-gray-800">
         <div class="w-full pr-4 mb-8 md:w-1/4 md:mb-0">
             <!-- Filter Options -->
             <div class="mb-4 ">

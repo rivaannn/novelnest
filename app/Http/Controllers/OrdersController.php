@@ -23,7 +23,7 @@ class OrdersController extends Controller
     }
 
     public function buatOrderDariKeranjang(Request $request) {
-        return view('dashboarduser.order');
+        return view('dashboarduser.order.orderKeranjang');
     }
 
     /**

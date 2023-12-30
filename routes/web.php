@@ -201,16 +201,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
 // Route Order
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::post('/order-keranjang', [OrdersController::class, 'buatOrderDariKeranjang'])->name('order.keranjang');
+    Route::get('/dashboarduser/order', [OrdersController::class, 'index'])->name('order.index');
 });
-
-Route::get('/dashboarduser/order', function () {
-    return view('dashboarduser.order.index');
-})->middleware(['auth', 'verified'])->name('order.index');
-
-Route::get('/dashboarduser/order/{order}', function () {
-    return view('dashboarduser.order.showOrder');
-})->middleware(['auth', 'verified'])->name('order.showOrder');
-
 
 
 // Route untuk Auth

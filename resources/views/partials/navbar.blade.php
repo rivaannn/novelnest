@@ -131,7 +131,7 @@
                                             </svg>
                                         </button>
                                     </div>
-                                    <form action="" class="flex flex-col gap-2">
+                                    <form action="{{ route('order.keranjang') }}" method="post" class="flex flex-col gap-2">
                                         <!-- Sidebar Content -->
                                         <div class="h-4/6 p-2 bg-gray-100 px-4 mt-4 overflow-y-auto w-full">
                                             <div class="flex flex-col">

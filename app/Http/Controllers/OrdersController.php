@@ -2,26 +2,28 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\orders;
+use Illuminate\Http\Request;
 use App\Http\Requests\StoreordersRequest;
 use App\Http\Requests\UpdateordersRequest;
-use App\Models\orders;
 
 class OrdersController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
-    {
+    public function index() {
         //
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
-    {
-        //
+    public function create() {
+    }
+
+    public function buatOrderDariKeranjang(Request $request) {
+        return view('dashboarduser.order.orderKeranjang');
     }
 
     /**

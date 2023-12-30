@@ -24,12 +24,12 @@
                         </svg>
                     </button>
                     <div x-show="open" @click.away="open = false"
-                        class="absolute right-0 mt-2 space-y-2 text-gray-700 bg-white border border-gray-100 rounded-md shadow-md w-52 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400">
+                        class="absolute right-0 mt-2 space-y-2 text-gray-700 bg-white border border-gray-100 rounded-md shadow-md w-52 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-300">
                         @if (Auth::user()->is_admin == 1)
                             <a href="/dashboard"
-                                class="block w-full px-4 py-2 transition duration-150 ease-in-out hover:bg-gray-100 dark:hover:bg-gray-700">Dashboard</a>
+                                class="block w-full px-4 py-2 leading-5 transition duration-150 ease-in-out hover:bg-gray-100 dark:hover:bg-gray-700">Dashboard</a>
                             <a href="/dashboarduser"
-                                class="block w-full px-4 py-2 text-sm leading-5 text-gray-700 transition duration-150 ease-in-out text-start dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none focus:bg-gray-100 dark:focus:bg-gray-800">Dashboard
+                                class="block w-full px-4 py-2 leading-5 transition duration-150 ease-in-out hover:bg-gray-100 dark:hover:bg-gray-700">Dashboard
                                 User</a>
                         @elseif (Auth::user()->is_admin == 0)
                             <a href="/dashboarduser"
@@ -47,7 +47,7 @@
                         <form action="{{ route('logout') }}" method="POST">
                             @csrf
                             <button type="submit"
-                                class="block w-full px-4 py-2 text-sm leading-5 text-gray-700 transition duration-150 ease-in-out text-start dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none focus:bg-gray-100 dark:focus:bg-gray-800">
+                                class="block w-full px-4 py-2 leading-5 transition duration-150 ease-in-out hover:bg-gray-100 dark:hover:bg-gray-700 text-start">
                                 Logout
                             </button>
                         </form>
@@ -106,7 +106,8 @@
                             x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100"
                             x-transition:leave="transition-opacity ease-in duration-300"
                             x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0"
-                            class="absolute inset-0 transition-opacity bg-gray-500 dark:bg-gray-900 dark:bg-opacity-75 bg-opacity-75"></div>
+                            class="absolute inset-0 transition-opacity bg-gray-500 dark:bg-gray-900 dark:bg-opacity-75 bg-opacity-75">
+                        </div>
                         <!-- Sidebar Content -->
                         <section class="absolute inset-y-0 right-0 flex max-w-full pl-10">
                             <div x-show="open" x-transition:enter="transition-transform ease-out duration-300"
@@ -115,7 +116,7 @@
                                 x-transition:leave="transition-transform ease-in duration-300"
                                 x-transition:leave-start="transform translate-x-0"
                                 x-transition:leave-end="transform translate-x-full" class="w-screen max-w-md">
-                                <div class="flex flex-col h-full py-6 bg-white shadow-xl dark:bg-gray-900">
+                                <div class="flex flex-col h-full py-6 bg-white shadow-xl dark:bg-gray-800">
                                     <!-- Sidebar Header -->
                                     <div class="flex items-center justify-between px-4">
                                         <h2 class="text-xl font-semibold text-black dark:text-white">Daftar Keranjang
@@ -131,38 +132,55 @@
                                             </svg>
                                         </button>
                                     </div>
-                                    <form action="{{ route('order.keranjang') }}" method="post" class="flex flex-col gap-2">
+                                    <form action="{{ route('order.keranjang') }}" method="post"
+                                        class="flex flex-col gap-2">
                                         <!-- Sidebar Content -->
-                                        <div class="h-4/6 p-2 bg-gray-100 px-4 mt-4 overflow-y-auto w-full">
+                                        <div class="h-4/6 p-2 dark:bg-gray-700 px-4 mt-4 overflow-y-auto w-full">
                                             <div class="flex flex-col">
                                                 @if ($keranjangBuku)
-                                                @foreach ($keranjangBuku as $key => $book)
-                                                <div class="flex w-full h-40">
-                                                    <div class="w-1/4">
-                                                        <img class="object-cover object-center w-20 rounded h-20 mb-2" src="https://source.unsplash.com/1200x800/?book/{{ $book->id }}" alt="Book Image">
-                                                    </div>
-                                                    <div class="w-3/4">
-                                                        <input type="hidden" name="books[{{ $key }}]-id" value="{{ $book->id }}">
-                                                        <p class="font-bold">{{ $book->title }}</p>
-                                                        <p class="text-sm">{{ $book->description }}</p>
-                                                        <div class="flex items-center gap-3 mt-2">
-                                                            <span>Jumlah Buku </span>
-                                                            <input type="number" name="books[{{ $key }}]-quantity" id="books-{{ $key }}-number-input" min="1" aria-describedby="helper-text-explanation" class=" bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-20 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="1" value="1" required>
-                                                            <div>
-                                                                <a href="{{ route('remKeranjang', array('book_id' => $book->id)) }}">Hapus</a>
+                                                    @foreach ($keranjangBuku as $key => $book)
+                                                        <div class="flex w-full h-40">
+                                                            <div class="w-1/4">
+                                                                <img class="object-cover object-center w-20 rounded h-20 mb-2"
+                                                                    src="https://source.unsplash.com/1200x800/?book/{{ $book->id }}"
+                                                                    alt="Book Image">
+                                                            </div>
+                                                            <div class="w-3/4">
+                                                                <input type="hidden"
+                                                                    name="books[{{ $key }}]-id"
+                                                                    value="{{ $book->id }}">
+                                                                <p class="font-bold dark:text-white">
+                                                                    {{ $book->title }}</p>
+                                                                <p class="text-sm pt-2 dark:text-gray-200">Rp.
+                                                                    {{ number_format($book->price, 0, ',', '.') }}</p>
+                                                                <div
+                                                                    class="flex items-center gap-3 mt-2 dark:text-white">
+                                                                    <span>Jumlah Buku </span>
+                                                                    <input type="number"
+                                                                        name="books[{{ $key }}]-quantity"
+                                                                        id="books-{{ $key }}-number-input"
+                                                                        min="1"
+                                                                        aria-describedby="helper-text-explanation"
+                                                                        class=" bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-20 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                                                        placeholder="1" value="1" required>
+                                                                    <div>
+                                                                        <a class="flex items-center border border-red-600 rounded-md p-1 bg-red-600 text-white hover:bg-red-400 dark:"
+                                                                            href="{{ route('remKeranjang', ['book_id' => $book->id]) }}">Hapus</a>
+                                                                    </div>
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                </div>
-                                                @endforeach
+                                                    @endforeach
                                                 @else
-                                                <div class="h-40 w-full text-center text-gray-400 dark:text-gray-800">Keranjang Masih Kosong</div>
+                                                    <div class="h-40 w-full text-center text-gray-400 dark:text-white">
+                                                        Keranjang Masih Kosong</div>
                                                 @endif
                                             </div>
                                         </div>
                                         <!-- Sidebar Footer -->
                                         <div class="px-4 mt-2 w-full">
-                                            <button type="submit" class="border w-full bg-blue-600 py-4 text-white font-bold rounded-xl">
+                                            <button type="submit"
+                                                class="border w-full bg-blue-600 py-4 text-white font-bold rounded-xl">
                                                 Checkout
                                             </button>
                                         </div>

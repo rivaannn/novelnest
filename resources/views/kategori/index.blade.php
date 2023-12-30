@@ -106,23 +106,25 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4" id="no-search">
                 @foreach ($books as $book)
                     @if ($loop->iteration > 9)
-                @break
-                    @endif
-            <a href="/kategori/detailbuku/{{ $book->id }}"
-                class="block p-4 bg-white rounded-md shadow-md hover:shadow-lg dark:bg-gray-700">
-                <img class="object-cover object-center w-full h-56 mb-2"
-                    src="https://source.unsplash.com/430x932/?book/{{ $book->id }}" alt="Book Image">
-                <h3 class="text-base md:text-lg lg:text-xl font-semibold dark:text-white">{{ $book->title }}</h3>
-                <p class="text-sm md:text-base lg:text-lg text-gray-700 dark:text-white">Penulis: {{ $book->writter->name }}</p>
-                <p class="pt-2 text-base md:text-lg lg:text-xl text-blue-700">{{ 'RP.' . number_format($book->price) }}
-                    <span
-                        class="inline-block float-right px-2 py-1 text-xs md:text-sm lg:text-base tracking-wide text-white bg-blue-500 rounded">
-                        {{ $book->category->name }}
-                    </span>
-                </p>
-             </a>
-                @endforeach
-            </div>
+                    @break
+                @endif
+                <a href="/kategori/detailbuku/{{ $book->id }}"
+                    class="block p-4 bg-white rounded-md shadow-md hover:shadow-lg dark:bg-gray-700 dark:hover:bg-gray-400">
+                    <img class="object-cover object-center w-full h-56 mb-2"
+                        src="https://source.unsplash.com/430x932/?book/{{ $book->id }}" alt="Book Image">
+                    <h3 class="text-base md:text-lg lg:text-xl font-semibold dark:text-white">{{ $book->title }}</h3>
+                    <p class="text-sm md:text-base lg:text-lg text-gray-700 dark:text-white">Penulis:
+                        {{ $book->writter->name }}</p>
+                    <p class="pt-2 text-base md:text-lg lg:text-xl text-blue-700">
+                        {{ 'RP.' . number_format($book->price) }}
+                        <span
+                            class="inline-block float-right px-2 py-1 text-xs md:text-sm lg:text-base tracking-wide text-white bg-blue-500 rounded">
+                            {{ $book->category->name }}
+                        </span>
+                    </p>
+                </a>
+            @endforeach
+        </div>
 
 
         {{-- Jika tidak ada buku yang sesuai dengan filter --}}

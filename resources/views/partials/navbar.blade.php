@@ -80,7 +80,7 @@
                             x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100"
                             x-transition:leave="transition-opacity ease-in duration-300"
                             x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0"
-                            class="absolute inset-0 transition-opacity bg-gray-500 bg-opacity-75"></div>
+                            class="absolute inset-0 transition-opacity bg-gray-500 dark:bg-gray-900 dark:bg-opacity-75 bg-opacity-75"></div>
                         <!-- Sidebar Content -->
                         <section class="absolute inset-y-0 right-0 flex max-w-full pl-10">
                             <div x-show="open" x-transition:enter="transition-transform ease-out duration-300"
@@ -89,10 +89,10 @@
                                 x-transition:leave="transition-transform ease-in duration-300"
                                 x-transition:leave-start="transform translate-x-0"
                                 x-transition:leave-end="transform translate-x-full" class="w-screen max-w-md">
-                                <div class="flex flex-col h-full py-6 bg-white shadow-xl">
+                                <div class="flex flex-col h-full py-6 bg-white shadow-xl dark:bg-gray-800 dark:text-white">
                                     <!-- Sidebar Header -->
                                     <div class="flex items-center justify-between px-4">
-                                        <h2 class="text-xl font-semibold text-black">Daftar Keranjang</h2>
+                                        <h2 class="text-xl font-semibold ">Daftar Keranjang</h2>
                                         <button x-on:click="open = false" class="text-gray-500 hover:text-gray-700">
                                             <span class="sr-only">Close</span>
                                             <svg class="w-6 h-6" x-description="Heroicon name: x"
@@ -103,36 +103,42 @@
                                             </svg>
                                         </button>
                                     </div>
-                                    <!-- Sidebar Content -->
-                                    <div class="h-full px-4 mt-4 overflow-auto">
-                                        <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
-                                            <!-- Card 1 -->
-                                            @foreach ($keranjangBuku as $key => $book)
-                                            <div
-                                                class="p-4 transition-colors duration-300 border border-gray-300 rounded-md cursor-pointer bg-gray-50 hover:bg-gray-100">
-                                                <h3 class="mb-2 text-lg font-semibold text-black">Card 1</h3>
-                                                <p class="text-gray-600">{{ $book->title }}</p>
+                                    <form action="" class="flex flex-col gap-2">
+                                        <!-- Sidebar Content -->
+                                        <div class="h-4/6 p-2 bg-gray-100 px-4 mt-4 overflow-y-auto w-full">
+                                            <div class="flex flex-col">
+                                                @if ($keranjangBuku)
+                                                @foreach ($keranjangBuku as $key => $book)
+                                                <div class="flex w-full h-40">
+                                                    <div class="w-1/4">
+                                                        <img class="object-cover object-center w-20 rounded h-20 mb-2" src="https://source.unsplash.com/1200x800/?book/{{ $book->id }}" alt="Book Image">
+                                                    </div>
+                                                    <div class="w-3/4">
+                                                        <input type="hidden" name="books[{{ $key }}]-id" value="{{ $book->id }}">
+                                                        <p class="font-bold">{{ $book->title }}</p>
+                                                        <p class="text-sm">{{ $book->description }}</p>
+                                                        <div class="flex items-center gap-3 mt-2">
+                                                            <span>Jumlah Buku </span>
+                                                            <input type="number" name="books[{{ $key }}]-quantity" id="books-{{ $key }}-number-input" min="1" aria-describedby="helper-text-explanation" class=" bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-20 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="1" value="1" required>
+                                                            <div>
+                                                                <a href="{{ route('remKeranjang', array('book_id' => $book->id)) }}">Hapus</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                @endforeach
+                                                @else
+                                                <div class="h-40 w-full text-center text-gray-400 dark:text-gray-800">Keranjang Masih Kosong</div>
+                                                @endif
                                             </div>
-                                            @endforeach
                                         </div>
-                                    </div>
-                                    <!-- Sidebar Footer -->
-                                    <div class="px-4 mt-6">
-                                        <button
-                                            class="flex items-center justify-center gap-1 p-2 text-sm text-white bg-black rounded-md">
-                                            <svg width="1rem" height="1rem" viewBox="0 0 24 24" fill="none"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                                                <g id="SVGRepo_tracerCarrier" stroke-linecap="round"
-                                                    stroke-linejoin="round">
-                                                </g>
-                                                <g id="SVGRepo_iconCarrier">
-                                                    <path fill-rule="evenodd" clip-rule="evenodd"
-                                                        d="M3 7C3 6.44772 3.44772 6 4 6H20C20.5523 6 21 6.44772 21 7C21 7.55228 20.5523 8 20 8H4C3.44772 8 3 7.55228 3 7ZM6 12C6 11.4477 6.44772 11 7 11H17C17.5523 11 18 11.4477 18 12C18 12.5523 17.5523 13 17 13H7C6.44772 13 6 12.5523 6 12ZM9 17C9 16.4477 9.44772 16 10 16H14C14.5523 16 15 16.4477 15 17C15 17.5523 14.5523 18 14 18H10C9.44772 18 9 17.5523 9 17Z"
-                                                        fill="currentColor"></path>
-                                                </g>
-                                            </svg> Filters </button>
-                                    </div>
+                                        <!-- Sidebar Footer -->
+                                        <div class="px-4 mt-2 w-full">
+                                            <button type="submit" class="border w-full bg-blue-600 py-4 text-white font-bold rounded-xl">
+                                                Checkout
+                                            </button>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
                         </section>

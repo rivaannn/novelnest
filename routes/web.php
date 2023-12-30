@@ -54,6 +54,12 @@ Route::get('/kategori', function (Request $request) {
     ]);
 })->name('kategori.index');
 
+// Route untuk Keranjang
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('/keranjang', [BooksController::class, 'keranjangIndex'])->name('keranjang.index');
+    Route::post('/keranjang', [BooksController::class, 'addKeranjang'])->name('addKeranjang');
+    Route::get('/removekeranjang', [BooksController::class, 'removeFromKeranjang'])->name('remKeranjang');
+});
 Route::get('/kategori/detailbuku/{id}', function ($id, Request $request) {
     $books = Books::find($id);
     $request->session()->all();
@@ -311,10 +317,5 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::delete('/publishers/{publisher}', [PublishersController::class, 'destroy'])->name('publishers.destroy');
 });
 
-// Route untuk Keranjang
-Route::middleware(['auth', 'verified'])->group(function () {
-    Route::get('/keranjang', [BooksController::class, 'keranjangIndex'])->name('keranjang.index');
-    Route::post('/keranjang', [BooksController::class, 'addKeranjang'])->name('addKeranjang');
-});
 
 require __DIR__ . '/auth.php';

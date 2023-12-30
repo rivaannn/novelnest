@@ -2,7 +2,7 @@
     <!-- Primary Navigation Menu -->
     <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
-            <div class="flex">
+            <div class="flex items-center">
                 <!-- Logo -->
                 <div class="flex items-center shrink-0 dark:text-gray-200">
                     <a href="{{ route('dashboarduser') }}">
@@ -40,7 +40,7 @@
             </div>
 
             <!-- Settings Dropdown -->
-            <div class="hidden ps-48 sm:flex sm:items-center sm:ms-6">
+            <div class="hidden sm:flex sm:items-center sm:ms-6">
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
                         <button
@@ -67,18 +67,15 @@
 
                     <x-slot name="content">
                         {{-- Dashboard --}}
+                        <x-dropdown-link :href="route('dashboard')">
+                            {{ __('Dashboard') }}
+                        </x-dropdown-link>
                         <x-dropdown-link :href="route('home')">
                             {{ __('Home') }}
                         </x-dropdown-link>
                         <x-dropdown-link :href="route('profileUser.edit')">
                             {{ __('Profile') }}
                         </x-dropdown-link>
-                        @can('admin')
-                            <x-dropdown-link :href="route('dashboard')">
-                                {{ __('Dashboard') }}
-                            </x-dropdown-link>
-                        @endcan
-
                         <!-- Authentication -->
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
@@ -91,13 +88,13 @@
                         </form>
                     </x-slot>
                 </x-dropdown>
+                {{-- Darkmode --}}
+                <div class="hidden sm:flex sm:items-center sm:ms-6">
+                    <x-darkmode>
+                    </x-darkmode>
+                </div>
             </div>
 
-            {{-- Darkmode --}}
-            <div class="hidden sm:flex sm:items-center sm:ms-6">
-                <x-darkmode>
-                </x-darkmode>
-            </div>
 
             <!-- Hamburger -->
             <div class="flex items-center -me-2 sm:hidden">
@@ -126,9 +123,7 @@
             </x-responsive-nav-link>
         </div>
 
-        <x-darkmode>
 
-        </x-darkmode>
         <!-- Responsive Settings Options -->
         <div class="pt-4 pb-1 border-t border-gray-200 dark:border-gray-600">
             <div class="px-4">

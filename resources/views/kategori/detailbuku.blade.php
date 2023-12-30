@@ -44,7 +44,7 @@
                             {{-- <input type="hidden" name="user_id" value="{{ Auth::user()->id }}"> --}}
                             <input type="hidden" name="qty" value="1">
                             <input type="hidden" name="price" value="{{ $books->price }}">
-                            <button class="px-4 py-2">
+                            <button class="px-4 py-2 ">
                                 <img class="ml-3 cursor-pointer w-7 h-7" src="{{ asset('img/keranjang.png') }}"
                                     alt="Icon Keranjang">
                             </button>

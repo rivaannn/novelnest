@@ -102,12 +102,12 @@
         <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
             @foreach ($latestBooks as $book)
                 <a href="{{ route('kategori.detailbuku', $book->id) }}"
-                    class="overflow-hidden transition duration-300 bg-white rounded-lg shadow-md hover:shadow-lg">
+                    class="overflow-hidden transition duration-300 bg-white dark:bg-gray-700 rounded-lg shadow-md hover:shadow-lg">
                     <img class="object-cover object-center w-full h-48 dark:shadow-lg"
                         src="https://source.unsplash.com/800x1200/?book" alt="Book Image">
                     <div class="p-4">
-                        <h2 class="mb-2 text-xl font-bold">{{ $book->title }}</h2>
-                        <p class="mb-2 text-gray-700">Penulis: {{ $book->writter->name }} </p>
+                        <h2 class="mb-2 text-xl font-bold dark:text-white">{{ $book->title }}</h2>
+                        <p class="mb-2 text-gray-700 dark:text-gray-200">Penulis: {{ $book->writter->name }} </p>
                         <p class="mb-2 text-lg text-blue-500">{{ 'RP.' . number_format($book->price, 2, ',', '.') }}
                         </p>
                         <!-- Badges Kategori -->
@@ -128,30 +128,30 @@
 
     {{-- Blog NovelNest --}}
     <div class="py-16 mt-8 overflow-hidden bg-gray-100 dark:bg-gray-800">
-        <div class="container px-6 m-auto space-y-8 text-gray-500 md:px-12">
+        <div class="container px-6 m-auto space-y-8 text-gray-500 md:px-12 ">
             <div>
                 <h2 class="mt-4 text-2xl font-bold text-gray-900 md:text-4xl dark:text-white">Blog Novelnest</h2>
             </div>
 
             <div
-                class="grid mt-16 overflow-hidden border divide-x divide-y rounded-xl sm:grid-cols-2 lg:divide-y-0 lg:grid-cols-3 xl:grid-cols-4">
+                class="grid mt-16 overflow-hidden border dark:border-gray-500 divide-x divide-y rounded-xl sm:grid-cols-2 lg:divide-y-0 lg:grid-cols-3 xl:grid-cols-4 ">
                 @foreach ($blogs as $blog)
                     @if ($loop->iteration > 4)
                     @break
                 @endif
-                <div class="relative group bg-white transition hover:z-[1] hover:shadow-2xl">
+                <div class="relative group bg-white transition hover:z-[1] hover:shadow-2xl dark:bg-gray-700">
                     <div class="relative p-8 space-y-8">
                         <img src="https://source.unsplash.com/1600x800/?book" class="shadow-md"
                             alt="burger illustration">
                         <div class="space-y-2">
                             <h5
-                                class="text-xl font-medium text-gray-800 transition group-hover:text-blue-600 dark:text-white-100">
+                                class="text-xl font-medium text-gray-800 transition group-hover:text-blue-600 dark:text-white">
                                 {{ $blog->author }}</h5>
-                            <p class="text-sm text-gray-600 ">{{ $blog->title }}</p>
+                            <p class="text-sm text-gray-600 dark:text-gray-200">{{ $blog->title }}</p>
                         </div>
                         <a href="/blog/detailblog/{{ $blog->id }}"
                             class="flex items-center justify-between group-hover:text-blue-600">
-                            <span class="text-sm">Read more</span>
+                            <span class="text-sm dark:text-gray-100">Read more</span>
                             <span
                                 class="text-2xl transition -translate-x-4 opacity-0 duration-600 group-hover:opacity-100 group-hover:translate-x-0">
                                 &RightArrow;</span>

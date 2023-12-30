@@ -107,11 +107,13 @@
                                     <div class="h-full px-4 mt-4 overflow-auto">
                                         <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
                                             <!-- Card 1 -->
+                                            @foreach ($keranjangBuku as $key => $book)
                                             <div
                                                 class="p-4 transition-colors duration-300 border border-gray-300 rounded-md cursor-pointer bg-gray-50 hover:bg-gray-100">
                                                 <h3 class="mb-2 text-lg font-semibold text-black">Card 1</h3>
-                                                <p class="text-gray-600">Content for card 1.</p>
+                                                <p class="text-gray-600">{{ $book->title }}</p>
                                             </div>
+                                            @endforeach
                                         </div>
                                     </div>
                                     <!-- Sidebar Footer -->

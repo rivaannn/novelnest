@@ -39,23 +39,31 @@ Route::get('/about', function () {
         'active' => 'about'
     ]);
 });
-Route::get('/kategori', function () {
+Route::get('/kategori', function (Request $request) {
     $categories = Category::all();
     $writters = Writter::all();
     $books = Books::latest()->paginate(6);
+    $keranjangBuku = Books::find($request->session()->get('books'));
     return view('kategori.index', [
         'active' => 'kategori',
         'categories' => $categories,
         'books' => $books,
         'writters' => $writters,
+        'request' => $request,
+        'keranjangBuku' => $keranjangBuku
     ]);
 })->name('kategori.index');
 
-Route::get('/kategori/detailbuku/{id}', function ($id) {
+Route::get('/kategori/detailbuku/{id}', function ($id, Request $request) {
     $books = Books::find($id);
+    $request->session()->all();
+    $keranjangBuku = Books::find($request->session()->get('books'));
     return view('kategori.detailbuku', [
         'active' => 'kategori',
         'books' => $books,
+        'request' => $request,
+        'keranjangBuku' => $keranjangBuku
+
     ]);
 })->name('kategori.detailbuku');
 
@@ -78,6 +86,7 @@ Route::get('/kategori/search', function (Request $request) {
         'categories' => $categories,
         'books' => $books,
         'writters' => $writters,
+
     ]);
 })->name('kategori.search');
 
@@ -307,7 +316,5 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/keranjang', [BooksController::class, 'keranjangIndex'])->name('keranjang.index');
     Route::post('/keranjang', [BooksController::class, 'addKeranjang'])->name('addKeranjang');
 });
-
-
 
 require __DIR__ . '/auth.php';

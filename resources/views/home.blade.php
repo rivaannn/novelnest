@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('content')
-    <header class="bg-gray-100 dark:bg-gray-900 mt-8">
+    <header class="mt-8 bg-gray-100 dark:bg-gray-900">
         <div class="py-12 sm:py-24">
             <div class="px-6 mx-auto max-w-7xl lg:px-8">
                 <div class="max-w-4xl mx-auto text-center">
@@ -31,18 +31,18 @@
                         <div class="relative overflow-hidden rounded-lg md:h-96 ">
                             <!-- Item 1 -->
                             <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                                <img class="absolute h-auto max-w-full -translate-x-1/2 -translate-y-1/2 rounded-lg top-1/2 left-1/2"
+                                <img class="absolute object-cover h-auto max-w-full -translate-x-1/2 -translate-y-1/2 rounded-lg top-1/2 left-1/2"
                                     src="https://source.unsplash.com/1200x800/?book" alt="">
                             </div>
                             <!-- Item 2 -->
                             <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                                <img class="absolute h-auto max-w-full -translate-x-1/2 -translate-y-1/2 rounded-lg top-1/2 left-1/2"
-                                    src="https://source.unsplash.com/1200x800/?study" alt="">
+                                <img class="absolute object-cover h-auto max-w-full -translate-x-1/2 -translate-y-1/2 rounded-lg top-1/2 left-1/2"
+                                    src="https://source.unsplash.com/1200x800/?books" alt="">
                             </div>
                             <!-- Item 3 -->
                             <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                                <img class="absolute h-auto max-w-full -translate-x-1/2 -translate-y-1/2 rounded-lg top-1/2 left-1/2"
-                                    src="https://source.unsplash.com/1200x800/?library" alt="">
+                                <img class="absolute object-cover h-auto max-w-full -translate-x-1/2 -translate-y-1/2 rounded-lg top-1/2 left-1/2"
+                                    src="https://source.unsplash.com/1200x800/?libary" alt="">
                             </div>
                             <!-- Slider controls -->
                             <button type="button"
@@ -81,8 +81,8 @@
 
     {{-- Kategori Buku --}}
     <div class="container mx-auto mt-8 dark:bg-gray-800">
-        <h1 class="mt-4 mb-8 text-2xl md:text-4xl font-bold text-center dark:text-white">Kategori Buku</h1>
-        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4">
+        <h1 class="mt-4 mb-8 text-2xl font-bold text-center md:text-4xl dark:text-white">Kategori Buku</h1>
+        <div class="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6">
             @foreach ($categories as $category)
                 <div class="flex flex-col items-center">
                     <a href="{{ route('kategori.filterByCategory', ['category' => $category->id]) }}"

@@ -11,6 +11,7 @@ use App\Http\Controllers\PDFController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\BlogsController;
 use App\Http\Controllers\BooksController;
+use App\Http\Controllers\OrdersController;
 use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Controllers\ProfileController;
@@ -33,10 +34,12 @@ use Illuminate\Support\Str;
 
 // Route Untuk Home
 Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('/about', function () {
+Route::get('/about', function (Request $request) {
+    $keranjangBuku = Books::find($request->session()->get('books'));
     return view('about.index', [
         'title' => 'Tentang NovelNest',
-        'active' => 'about'
+        'active' => 'about',
+        'keranjangBuku' => $keranjangBuku
     ]);
 });
 Route::get('/kategori', function (Request $request) {
@@ -60,6 +63,17 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::post('/keranjang', [BooksController::class, 'addKeranjang'])->name('addKeranjang');
     Route::get('/removekeranjang', [BooksController::class, 'removeFromKeranjang'])->name('remKeranjang');
 });
+
+// order
+Route::middleware(['auth'])->group(function() {
+    Route::post('/order-keranjang',[OrdersController::class, 'buatOrderDariKeranjang'])->name('order.keranjang');
+});
+
+
+Route::get('/order', function () {
+    return view('dashboarduser.order');
+})->middleware(['auth', 'verified'])->name('order');
+
 Route::get('/kategori/detailbuku/{id}', function ($id, Request $request) {
     $books = Books::find($id);
     $request->session()->all();
@@ -173,13 +187,15 @@ Route::get('/kategori/{category}', function ($category) {
     ]);
 })->name('kategori.filterByCategory');
 
-Route::get('/blog', function () {
+Route::get('/blog', function (Request $request) {
     $categories = Category::all();
     $blogs = Blogs::latest()->paginate(8);
+    $keranjangBuku = Books::find($request->session()->get('books'));
     return view('blog.index', [
         'active' => 'blog',
         'categories' => $categories,
         'blogs' => $blogs,
+        'keranjangBuku' => $keranjangBuku
     ]);
 });
 
@@ -225,9 +241,6 @@ Route::get('/dashboarduser', function () {
 //     return view('dashboarduser.keranjang');
 // })->middleware(['auth', 'verified'])->name('keranjang');
 
-// Route::get('/order', function () {
-//     return view('dashboarduser.order');
-// })->middleware(['auth', 'verified'])->name('order');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit')->middleware(['admin']);

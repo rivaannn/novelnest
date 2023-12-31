@@ -20,10 +20,11 @@ class OrdersController extends Controller
         $books = Books::all();
         $keranjangBuku = session()->get('books');
         $users = auth()->user();
+
         return view('dashboarduser.order.index', [
             'books' => $books,
             'keranjangBuku' => $keranjangBuku,
-            'users' => $users
+            'users' => $users,
         ]);
     }
 

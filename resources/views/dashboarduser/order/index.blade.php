@@ -149,8 +149,6 @@
                                         class="text-base font-semibold leading-4 text-left text-gray-800 dark:text-white">
                                         {{ $users->name }}
                                     </p>
-                                    <p class="text-sm leading-5 text-gray-600 dark:text-gray-300">
-                                        10 Previous Orders</p>
                                 </div>
                             </div>
 

@@ -17,10 +17,9 @@
                 <div class="lg:py-16">
                     <article class="space-y-4">
                         <p class="mb-4 text-3xl font-bold sm:text-4xl dark:text-white">Awal Mula
-                        <p class="space-x-2 leading-6 text-justify text-md sm:text-md dark:text-white">Website
-                            ini
-                            didirikan untuk
-                            meningkatkan
+                        <p class="space-x-2 leading-6 text-justify text-md sm:text-md dark:text-white">
+                            Website
+                            ini didirikan untuk meningkatkan
                             kesadaran betapa
                             pentingnya memaksimalkan potensi
                             internet melalui sebuah website. Website ini diciptakan sebagai platform daring yang inovatif

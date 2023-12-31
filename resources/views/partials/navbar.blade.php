@@ -28,10 +28,7 @@
                         @if (Auth::user()->is_admin == 1)
                             <a href="/dashboard"
                                 class="block w-full px-4 py-2 leading-5 transition duration-150 ease-in-out hover:bg-gray-100 dark:hover:bg-gray-700">Dashboard</a>
-                            <a href="/dashboarduser"
-                                class="block w-full px-4 py-2 leading-5 transition duration-150 ease-in-out hover:bg-gray-100 dark:hover:bg-gray-700">Dashboard
-                                User</a>
-                        @elseif (Auth::user()->is_admin == 0)
+                        @else
                             <a href="/dashboarduser"
                                 class="block w-full px-4 py-2 text-sm leading-5 text-gray-700 transition duration-150 ease-in-out text-start dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none focus:bg-gray-100 dark:focus:bg-gray-800">Dashboard
                                 User</a>
@@ -106,7 +103,7 @@
                             x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100"
                             x-transition:leave="transition-opacity ease-in duration-300"
                             x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0"
-                            class="absolute inset-0 transition-opacity bg-gray-500 dark:bg-gray-900 dark:bg-opacity-75 bg-opacity-75">
+                            class="absolute inset-0 transition-opacity bg-gray-500 bg-opacity-75 dark:bg-gray-900 dark:bg-opacity-75">
                         </div>
                         <!-- Sidebar Content -->
                         <section class="absolute inset-y-0 right-0 flex max-w-full pl-10">
@@ -132,16 +129,16 @@
                                             </svg>
                                         </button>
                                     </div>
-                                    <form action="{{ route('order.keranjang') }}" method="post"
+                                    <form action="{{ route('order.index') }}" method="get"
                                         class="flex flex-col gap-2">
                                         <!-- Sidebar Content -->
-                                        <div class="h-4/6 p-2 dark:bg-gray-700 px-4 mt-4 overflow-y-auto w-full">
+                                        <div class="w-full p-2 px-4 mt-4 overflow-y-auto h-4/6 dark:bg-gray-700">
                                             <div class="flex flex-col">
                                                 @if ($keranjangBuku)
                                                     @foreach ($keranjangBuku as $key => $book)
                                                         <div class="flex w-full h-40">
                                                             <div class="w-1/4">
-                                                                <img class="object-cover object-center w-20 rounded h-20 mb-2"
+                                                                <img class="object-cover object-center w-20 h-20 mb-2 rounded"
                                                                     src="https://source.unsplash.com/1200x800/?book/{{ $book->id }}"
                                                                     alt="Book Image">
                                                             </div>
@@ -151,7 +148,7 @@
                                                                     value="{{ $book->id }}">
                                                                 <p class="font-bold dark:text-white">
                                                                     {{ $book->title }}</p>
-                                                                <p class="text-sm pt-2 dark:text-gray-200">Rp.
+                                                                <p class="pt-2 text-sm dark:text-gray-200">Rp.
                                                                     {{ number_format($book->price, 0, ',', '.') }}</p>
                                                                 <div
                                                                     class="flex items-center gap-3 mt-2 dark:text-white">
@@ -164,7 +161,7 @@
                                                                         class=" bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-20 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                                                         placeholder="1" value="1" required>
                                                                     <div>
-                                                                        <a class="flex items-center border border-red-600 rounded-md p-1 bg-red-600 text-white hover:bg-red-400 dark:"
+                                                                        <a class="flex items-center p-1 text-white bg-red-600 border border-red-600 rounded-md hover:bg-red-400 dark:"
                                                                             href="{{ route('remKeranjang', ['book_id' => $book->id]) }}">Hapus</a>
                                                                     </div>
                                                                 </div>
@@ -172,15 +169,15 @@
                                                         </div>
                                                     @endforeach
                                                 @else
-                                                    <div class="h-40 w-full text-center text-gray-400 dark:text-white">
+                                                    <div class="w-full h-40 text-center text-gray-400 dark:text-white">
                                                         Keranjang Masih Kosong</div>
                                                 @endif
                                             </div>
                                         </div>
                                         <!-- Sidebar Footer -->
-                                        <div class="px-4 mt-2 w-full">
+                                        <div class="w-full px-4 mt-2">
                                             <button type="submit"
-                                                class="border w-full bg-blue-600 py-4 text-white font-bold rounded-xl">
+                                                class="w-full py-4 font-bold text-white bg-blue-600 border rounded-xl">
                                                 Checkout
                                             </button>
                                         </div>

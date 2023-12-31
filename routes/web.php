@@ -34,6 +34,8 @@ use Illuminate\Support\Str;
 
 // Route Untuk Home
 Route::get('/', [HomeController::class, 'index'])->name('home');
+
+// Route Untuk About
 Route::get('/about', function (Request $request) {
     $keranjangBuku = Books::find($request->session()->get('books'));
     return view('about.index', [
@@ -42,6 +44,8 @@ Route::get('/about', function (Request $request) {
         'keranjangBuku' => $keranjangBuku
     ]);
 });
+
+// Route Untuk Kategori
 Route::get('/kategori', function (Request $request) {
     $categories = Category::all();
     $writters = Writter::all();
@@ -157,16 +161,18 @@ Route::get('/kategori/filter', function (Request $request) {
     ]);
 })->name('kategori.filter');
 
-Route::get('/kategori/{category}', function ($category) {
+Route::get('/kategori/{category}', function (Request $request, $category) {
     $categories = Category::all();
     $selectedCategory = Category::findOrFail($category);
     $books = $selectedCategory->books()->latest()->paginate(6);
+    $keranjangBuku = Books::find($request->session()->get('books'));
 
     return view('kategori.index', [
         'active' => 'kategori',
         'categories' => $categories,
         'books' => $books,
         'writters' => Writter::all(),
+        'keranjangBuku' => $keranjangBuku
     ]);
 })->name('kategori.filterByCategory');
 

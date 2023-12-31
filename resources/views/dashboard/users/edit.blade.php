@@ -36,9 +36,9 @@
                             <div class="img-preview-container">
                                 @if ($user->image)
                                     <img src="{{ asset('storage/' . $user->image) }}"
-                                        class="object-cover w-full h-full mt-2 mb-3 img-preview rounded-xl">
+                                        class="object-cover mt-2 mb-3 w-15 h-15 img-preview rounded-xl">
                                 @else
-                                    <img class="object-cover w-full h-full mt-2 mb-3 img-preview rounded-xl"
+                                    <img class="object-cover mt-2 mb-3 w-15 h-15 img-preview rounded-xl"
                                         style="display: none;">
                                 @endif
                             </div>

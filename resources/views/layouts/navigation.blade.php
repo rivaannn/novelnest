@@ -106,12 +106,11 @@
                         </form>
                     </x-slot>
                 </x-dropdown>
-            </div>
-
-            {{-- Darkmode --}}
-            <div class="hidden sm:flex sm:items-center sm:ms-6">
-                <x-darkmode>
-                </x-darkmode>
+                {{-- Darkmode --}}
+                <div class="hidden sm:flex sm:items-center sm:ms-6">
+                    <x-darkmode>
+                    </x-darkmode>
+                </div>
             </div>
 
             <!-- Hamburger -->

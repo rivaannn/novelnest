@@ -17,7 +17,14 @@ class OrdersController extends Controller
 
     public function index()
     {
-        return view('dashboarduser.order.index');
+        $books = Books::all();
+        $keranjangBuku = session()->get('books');
+        $users = auth()->user();
+        return view('dashboarduser.order.index', [
+            'books' => $books,
+            'keranjangBuku' => $keranjangBuku,
+            'users' => $users
+        ]);
     }
 
     /**
@@ -27,13 +34,25 @@ class OrdersController extends Controller
     {
     }
 
-    public function buatOrderDariKeranjang(Request $request) {
-        $books = Books::find($request->session()->get('books'));
-        // return view('dashboarduser.order.index', compact('books'));
+    public function buatOrderDariKeranjang(Request $request)
+    {
+        $bookIds = session()->get('books');
+
+        // Check if $bookIds is not null before querying the database
+        if ($bookIds) {
+            $books = Books::whereIn('id', $bookIds)->get();
+        } else {
+            $books = [];
+        }
+
+        $keranjangBuku = session()->get('books');
+
         return view('dashboarduser.order.index', [
-            'books' => $books
+            'books' => $books,
+            'keranjangBuku' => $keranjangBuku
         ]);
     }
+
 
     /**
      * Store a newly created resource in storage.

@@ -102,7 +102,7 @@
         <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
             @foreach ($latestBooks as $book)
                 <a href="{{ route('kategori.detailbuku', $book->id) }}"
-                    class="overflow-hidden transition duration-300 bg-white dark:bg-gray-700 rounded-lg shadow-md hover:shadow-lg">
+                    class="overflow-hidden transition duration-300 bg-white rounded-lg shadow-md dark:bg-slate-700 dark:shadow-2xl hover:shadow-lg">
                     <img class="object-cover object-center w-full h-48 dark:shadow-lg"
                         src="https://source.unsplash.com/800x1200/?book" alt="Book Image">
                     <div class="p-4">
@@ -134,12 +134,12 @@
             </div>
 
             <div
-                class="grid mt-16 overflow-hidden border dark:border-gray-500 divide-x divide-y rounded-xl sm:grid-cols-2 lg:divide-y-0 lg:grid-cols-3 xl:grid-cols-4 ">
+                class="grid mt-16 overflow-hidden border divide-x divide-y dark:border-gray-500 rounded-xl sm:grid-cols-2 lg:divide-y-0 lg:grid-cols-3 xl:grid-cols-4 ">
                 @foreach ($blogs as $blog)
                     @if ($loop->iteration > 4)
                     @break
                 @endif
-                <div class="relative group bg-white transition hover:z-[1] hover:shadow-2xl dark:bg-gray-700">
+                <div class="relative group bg-white transition hover:z-[1] hover:shadow-2xl dark:bg-slate-700">
                     <div class="relative p-8 space-y-8">
                         <img src="https://source.unsplash.com/1600x800/?book" class="shadow-md"
                             alt="burger illustration">

@@ -1,6 +1,22 @@
 @extends('layouts.main')
 
 @section('content')
+    @if (session('success'))
+        <div class="flex items-center px-4 py-3 mb-4 text-sm text-white bg-green-500 rounded-lg shadow-md" role="alert">
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        </div>
+    @elseif (session('error'))
+        <div class="flex items-center px-4 py-3 mb-4 text-sm text-white bg-red-500 rounded-lg shadow-md" role="alert">
+            <div class="alert alert-danger">
+                {{ session('error') }}
+            </div>
+        </div>
+    @endif
+
+
+
     <button
         class="flex items-start px-3 py-2 mb-4 ml-56 text-gray-600 bg-gray-300 border-0 rounded-full mt-28 focus:outline-none hover:bg-gray-200 dark:bg-gray-900 dark:text-gray-400 dark:hover:bg-gray-700"><svg
             class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"

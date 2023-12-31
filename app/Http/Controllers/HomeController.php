@@ -6,7 +6,6 @@ use App\Models\Blogs;
 use App\Models\Books;
 use App\Models\Category;
 use Illuminate\Http\Request;
-use Database\Seeders\BookSeeder;
 use Illuminate\Routing\Controller;
 
 class HomeController extends Controller

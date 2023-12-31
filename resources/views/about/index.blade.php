@@ -3,7 +3,7 @@
     <section class="bg-gray-100 dark:bg-gray-900">
         <div class="max-w-screen-xl px-4 py-16 mx-auto sm:px-6 sm:py-24 lg:px-8">
             <div class="max-w-3xl">
-                <h2 class="text-3xl font-bold sm:text-4xl dark:text-white">
+                <h2 class="mt-12 text-3xl font-bold sm:text-4xl dark:text-white">
                     {{ $title }}
                 </h2>
             </div>
@@ -51,35 +51,41 @@
 
                 <div class="grid grid-cols-1 gap-8 mt-8 xl:mt-0 xl:mx-4 xl:w-1/2 md:grid-cols-2">
                     <div>
-                        <img class="object-cover w-full h-64 rounded-xl" src="{{ asset('/img/rivan') }}.jpg" alt="">
-
-                        <h1 class="mt-4 text-2xl font-semibold text-gray-700 capitalize dark:text-white">Muhamad Rivan
-                            Sahronie</h1>
-                        <p class="mt-2 text-gray-500 capitalize dark:text-gray-300">Full stack developer</p>
+                        <a href="https://github.com/rivaannn" target="_blank">
+                            <img class="object-cover w-full h-64 hover:shadow-xl rounded-xl"
+                                src="{{ asset('/img/rivan') }}.jpg" alt="Foto Van">
+                            <h1 class="mt-4 text-2xl font-semibold text-gray-700 capitalize dark:text-white">Muhamad Rivan
+                                Sahronie</h1>
+                            <p class="mt-2 text-gray-500 capitalize dark:text-gray-300">Full stack developer</p>
+                        </a>
                     </div>
 
                     <div>
-                        <img class="object-cover w-full h-64 rounded-xl" src="{{ asset('/img/angga') }}.jpg" alt="">
-
-                        <h1 class="mt-4 text-2xl font-semibold text-gray-700 capitalize dark:text-white">Muhammad Angga
-                            Kusuma</h1>
-
-                        <p class="mt-2 text-gray-500 capitalize dark:text-gray-300">Front End Developer</p>
+                        <a href="https://github.com/Anggakusuma74" target="_blank">
+                            <img class="object-cover w-full h-64 hover:shadow-xl rounded-xl"
+                                src="{{ asset('/img/angga') }}.jpg" alt="">
+                            <h1 class="mt-4 text-2xl font-semibold text-gray-700 capitalize dark:text-white">Muhammad Angga
+                                Kusuma</h1>
+                            <p class="mt-2 text-gray-500 capitalize dark:text-gray-300">Front End Developer</p>
+                        </a>
                     </div>
                     <div>
-                        <img class="object-cover w-full h-64 rounded-xl" src="{{ asset('/img/rejka') }}.jpg" alt="">
-
-                        <h1 class="mt-4 text-2xl font-semibold text-gray-700 capitalize dark:text-white">Muhammad Rejka
-                            Permana </h1>
-
-                        <p class="mt-2 text-gray-500 capitalize dark:text-gray-300">Back End Developer</p>
+                        <a href="https://github.com/jusondac" target="_blank">
+                            <img class="object-cover w-full h-64 hover:shadow-xl rounded-xl"
+                                src="{{ asset('/img/rejka') }}.jpg" alt="">
+                            <h1 class="mt-4 text-2xl font-semibold text-gray-700 capitalize dark:text-white">Muhammad Rejka
+                                Permana </h1>
+                            <p class="mt-2 text-gray-500 capitalize dark:text-gray-300">Back End Developer</p>
+                        </a>
                     </div>
                     <div>
-                        <img class="object-cover w-full h-64 rounded-xl" src="{{ asset('/img/yudha') }}.jpg" alt="">
-
-                        <h1 class="mt-4 text-2xl font-semibold text-gray-700 capitalize dark:text-white">Yudha Prasetya</h1>
-
-                        <p class="mt-2 text-gray-500 capitalize dark:text-gray-300">Front End Developer</p>
+                        <a href="https://github.com/YudhaPew" target="_blank">
+                            <img class="object-cover w-full h-64 hover:shadow-xl rounded-xl"
+                                src="{{ asset('/img/yudha') }}.jpg" alt="">
+                            <h1 class="mt-4 text-2xl font-semibold text-gray-700 capitalize dark:text-white">Yudha Prasetya
+                            </h1>
+                            <p class="mt-2 text-gray-500 capitalize dark:text-gray-300">Front End Developer</p>
+                        </a>
                     </div>
                 </div>
             </div>

@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Books;
 use App\Models\orders;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreordersRequest;
 use App\Http\Requests\UpdateordersRequest;
 
@@ -25,9 +27,12 @@ class OrdersController extends Controller
     {
     }
 
-    public function buatOrderDariKeranjang(Request $request)
-    {
-        return view('dashboarduser.order.orderKeranjang');
+    public function buatOrderDariKeranjang(Request $request) {
+        $books = Books::find($request->session()->get('books'));
+        // return view('dashboarduser.order.index', compact('books'));
+        return view('dashboarduser.order.index', [
+            'books' => $books
+        ]);
     }
 
     /**

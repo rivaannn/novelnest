@@ -24,21 +24,6 @@
                     </x-nav-link>
                 </div>
             </div>
-
-            <div id="keranjangSidebar"
-                class="fixed top-0 right-0 z-40 h-screen p-4 overflow-y-auto transition-transform duration-300 ease-in-out transform translate-x-full bg-white border-l border-gray-600 dark:border-gray-700 w-96 dark:bg-gray-800">
-                <div class="flex items-center justify-between h-14">
-                    <h5 class="text-base font-semibold text-gray-500 uppercase dark:text-gray-400">Keranjang</h5>
-                    <!-- Sidebar content goes here -->
-                    <button id="hideKeranjangBtn" class="text-gray-400 bg-transparent">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                            stroke="currentColor" class="w-6 h-6">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
-                        </svg>
-                    </button>
-                </div>
-            </div>
-
             <!-- Settings Dropdown -->
             <div class="hidden sm:flex sm:items-center sm:ms-6">
                 <x-dropdown align="right" width="48">
@@ -67,9 +52,6 @@
 
                     <x-slot name="content">
                         {{-- Dashboard --}}
-                        <x-dropdown-link :href="route('dashboard')">
-                            {{ __('Dashboard') }}
-                        </x-dropdown-link>
                         <x-dropdown-link :href="route('home')">
                             {{ __('Home') }}
                         </x-dropdown-link>
@@ -79,7 +61,6 @@
                         <!-- Authentication -->
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
-
                             <x-dropdown-link :href="route('logout')"
                                 onclick="event.preventDefault();
                                                 this.closest('form').submit();">

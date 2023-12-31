@@ -18,9 +18,9 @@
                 <div
                     class="flex flex-col items-start justify-start w-full px-4 py-4 dark:bg-gray-800 bg-gray-50 md:py-6 md:p-6 xl:p-8">
                     <p class="text-lg font-semibold leading-6 text-gray-800 md:text-xl dark:text-white xl:leading-5">
-                        Customer’s Cart</p>
-                    <div
-                        class="flex flex-col items-start justify-start w-full mt-4 md:mt-6 md:flex-row md:items-center md:space-x-6 xl:space-x-8">
+                        Order Buku</p>
+                    @foreach( $books as $book)
+                    <div class="flex flex-col items-start justify-start w-full mt-4 md:mt-6 md:flex-row md:items-center md:space-x-6 xl:space-x-8">
                         <div class="w-full pb-4 md:pb-8 md:w-40">
                             <img class="hidden w-full md:block" src="https://i.ibb.co/84qQR4p/Rectangle-10.png"
                                 alt="dress" />
@@ -51,38 +51,8 @@
                             </div>
                         </div>
                     </div>
-                    <div
-                        class="flex flex-col items-start justify-start w-full mt-6 space-y-4 md:mt-0 md:flex-row md:items-center md:space-x-6 xl:space-x-8">
-                        <div class="w-full md:w-40">
-                            <img class="hidden w-full md:block" src="https://i.ibb.co/s6snNx0/Rectangle-17.png"
-                                alt="dress" />
-                            <img class="w-full md:hidden" src="https://i.ibb.co/BwYWJbJ/Rectangle-10.png"
-                                alt="dress" />
-                        </div>
-                        <div
-                            class="flex flex-col items-start justify-between w-full space-y-4 md:flex-row md:space-y-0">
-                            <div class="flex flex-col items-start justify-start w-full space-y-8">
-                                <h3 class="text-xl font-semibold leading-6 text-gray-800 dark:text-white xl:text-2xl">
-                                    High Quaility Italic Dress</h3>
-                                <div class="flex flex-col items-start justify-start space-y-2">
-                                    <p class="text-sm leading-none text-gray-800 dark:text-white"><span
-                                            class="text-gray-300 dark:text-gray-400">Style: </span> Italic Minimal
-                                        Design</p>
-                                    <p class="text-sm leading-none text-gray-800 dark:text-white"><span
-                                            class="text-gray-300 dark:text-gray-400">Size: </span> Small</p>
-                                    <p class="text-sm leading-none text-gray-800 dark:text-white"><span
-                                            class="text-gray-300 dark:text-gray-400">Color: </span> Light Blue</p>
-                                </div>
-                            </div>
-                            <div class="flex items-start justify-between w-full space-x-8">
-                                <p class="text-base leading-6 dark:text-white xl:text-lg">$20.00 <span
-                                        class="text-red-300 line-through"> $30.00</span></p>
-                                <p class="text-base leading-6 text-gray-800 dark:text-white xl:text-lg">01</p>
-                                <p class="text-base font-semibold leading-6 text-gray-800 dark:text-white xl:text-lg">
-                                    $20.00</p>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
+
                 </div>
                 <div
                     class="flex flex-col items-stretch justify-center w-full space-y-4 md:flex-row md:space-y-0 md:space-x-6 xl:space-x-8">

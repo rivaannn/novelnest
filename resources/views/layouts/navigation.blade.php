@@ -54,16 +54,6 @@
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('keranjang.index')" :active="request()->routeIs('keranjang.index')">
-                        {{ __('Keranjang') }}
-                    </x-nav-link>
-                </div>
-                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link href="#">
-                        {{ __('Order') }}
-                    </x-nav-link>
-                </div>
-                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('users.index')" :active="request()->routeIs('users.index', 'users.show', 'users.edit', 'users.create')">
                         {{ __('User') }}
                     </x-nav-link>
@@ -98,9 +88,6 @@
 
                     <x-slot name="content">
                         {{-- Dashboard --}}
-                        <x-dropdown-link :href="route('dashboarduser')">
-                            {{ __('Dashboard User') }}
-                        </x-dropdown-link>
                         <x-dropdown-link :href="route('home')">
                             {{ __('Home') }}
                         </x-dropdown-link>
@@ -155,7 +142,7 @@
             <x-responsive-nav-link :href="route('blogs.index')" :active="request()->routeIs('blogs.index')">
                 {{ __('Blog') }}
             </x-responsive-nav-link>
-            <x-responsive-nav-link href="">
+            <x-responsive-nav-link :href="route('writters.index')" :active="request()->routeIs('writters.index')">
                 {{ __('Penulis') }}
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('users.index')" :active="request()->routeIs('users.index')">
